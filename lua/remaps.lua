@@ -27,22 +27,6 @@ kmap ('n', '<Up>',    '<cmd>resize -3<CR>')
 -- clear hlsearch
 kmap ('n', '<leader>Q', vim.cmd.noh)
 
--- detect if running under wsl
-local in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
-if in_wsl then
-  vim.g.clipboard = {
-    name = 'WslClipboard',
-    copy = {
-      ["+"] = 'clip.exe',
-      ["*"] = 'clip.exe',
-    },
-    paste = {
-      ["+"] = 'powershell.exe -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-      ["*"] = 'powershell.exe -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-    },
-    cache_enabled = 0,
-  }
-end
 -- system clipboard copy/paste
 kmap ('n', '<leader>y', '"+y')
 kmap ('n', '<leader>Y', '"+Y')

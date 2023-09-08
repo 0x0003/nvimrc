@@ -68,3 +68,20 @@ set.shiftwidth = 2
 set.listchars = 'tab:■■,trail:»,nbsp:■'
 set.list = true
 
+-- detect if running under wsl
+local in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
+if in_wsl then
+  vim.g.clipboard = {
+    name = 'WslClipboard',
+    copy = {
+      ["+"] = 'clip.exe',
+      ["*"] = 'clip.exe',
+    },
+    paste = {
+      ["+"] = 'powershell.exe -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ["*"] = 'powershell.exe -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0,
+  }
+end
+
