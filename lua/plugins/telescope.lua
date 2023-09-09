@@ -27,11 +27,9 @@ telescope.setup({
     layout_strategy = "bottom_pane",
     sorting_strategy = "ascending", -- display results top -> bottom
     layout_config = {
-      bottom_pane = {
-        preview_width = 0.6,
-        height = 25,
-        prompt_position = "top"
-      },
+      preview_width = 0.6,
+      height = 25,
+      prompt_position = "top"
     },
   },
 
@@ -39,26 +37,44 @@ telescope.setup({
     file_browser = {
       hijack_netrw = true,
       disable_devicons = true,
-      layout_strategy = "vertical",
+      previewer = false,
+      layout_strategy = "horizontal",
       initial_mode = "normal",
       layout_config = {
-        vertical = {
-          preview_height = 0.4,
-          height = 500,
-          width = 500,
-          prompt_position = "top"
-        },
+        width = 100,
+        height = 50,
+        prompt_position = "top"
       },
     },
+
     ["ui-select"] = {
       layout_strategy = "cursor",
       initial_mode = "normal",
       layout_config = {
-        cursor = {
-          height = 10,
-          width = 80,
-          prompt_position = "top"
+        height = 10,
+        width = 80,
+        prompt_position = "top"
+      },
+    },
+
+    undo = {
+      user_delta = false,
+      initial_mode = "normal",
+      layout_strategy = "horizontal",
+      layout_config = {
+        preview_width = 0.6,
+        width = 500,
+        height = 500,
+      },
+      mappings = {
+        i = {
+          ["<CR>"] = require('telescope-undo.actions').restore,
         },
+        n = {
+          ["<CR>"] = require('telescope-undo.actions').restore,
+          ["y"] = require('telescope-undo.actions').yank_additions,
+          ["d"] = require('telescope-undo.actions').yank_deletions,
+        }
       },
     },
   }
@@ -69,6 +85,7 @@ local ext = (require'telescope').load_extension
 pcall(ext, 'fzf')
 pcall(ext, 'file_browser')
 pcall(ext, 'ui-select')
+pcall(ext, 'undo')
 
 -- maps
 local builtin = require('telescope.builtin')
@@ -99,3 +116,5 @@ kmap('n', '<leader>sd', builtin.diagnostics)
 kmap('n', '<leader>sg', '<cmd>lua FuzzyGrep{}<CR>')
 kmap('n', '<leader>e', '<cmd>Telescope file_browser<CR>')
 kmap('n', '<leader>E', '<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>')
+kmap('n', '<leader>u', '<cmd>Telescope undo<CR>')
+
