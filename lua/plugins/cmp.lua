@@ -1,4 +1,4 @@
----@diagnostic disable: missing-fields
+---@diagnostic disable: missing-fields, duplicate-index
 local present, cmp = pcall (require, 'cmp')
 
 if not present then

@@ -19,9 +19,7 @@ require('lazy').setup({
   -- colorscheme
   {
     'RRethy/nvim-base16',
-    config = function()
-      require('plugins.colors')
-    end,
+    config = function() require('plugins.colors') end,
   },
 
   -- git
@@ -29,9 +27,7 @@ require('lazy').setup({
   'tpope/vim-rhubarb',
   {
     'lewis6991/gitsigns.nvim',
-    config = function()
-      require('plugins.gitsigns')
-    end,
+    config = function() require('plugins.gitsigns') end,
   },
 
   -- detect tabstop and shiftwidth automatically
@@ -39,17 +35,13 @@ require('lazy').setup({
 
   -- indent guides
   {'lukas-reineke/indent-blankline.nvim',
-    config = function()
-      require('plugins.indent_blankline')
-    end,
+    config = function() require('plugins.indent_blankline') end,
   },
 
   -- visualise rgb and hex values
   {
     'norcalli/nvim-colorizer.lua',
-    config = function()
-      require('colorizer').setup()
-    end,
+    config = function() require('colorizer').setup() end,
     lazy = true,
     ft = {"css", "html", "javascript", "typescript", "lua", "vim", "markdown" },
   },
@@ -57,18 +49,14 @@ require('lazy').setup({
   -- automatically close parentheses, brackets, etc
   {
     'windwp/nvim-autopairs',
-    config = function()
-      require('nvim-autopairs').setup()
-    end,
+    config = function() require('nvim-autopairs').setup() end,
     event = "VeryLazy",
   },
 
   -- surround text objects
   {
-    "kylechui/nvim-surround",
-    config = function()
-      require("nvim-surround").setup()
-    end,
+    'kylechui/nvim-surround',
+    config = function() require("nvim-surround").setup() end,
     version = "*",
     event = "VeryLazy",
   },
@@ -76,18 +64,14 @@ require('lazy').setup({
   -- `gc` to comment visual regions/lines
   {
     'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup()
-    end,
+    config = function() require('Comment').setup() end,
     event = "VeryLazy",
   },
 
   -- LSP
   {
     'neovim/nvim-lspconfig',
-    config = function()
-      require('plugins.lsp')
-    end,
+    config = function() require('plugins.lsp') end,
     dependencies = {
       -- automatically install servers
       { 'williamboman/mason.nvim', config = true },
@@ -102,9 +86,7 @@ require('lazy').setup({
   -- autocompletion
   {
     'hrsh7th/nvim-cmp',
-    config = function()
-      require('plugins.cmp')
-    end,
+    config = function() require('plugins.cmp') end,
     dependencies = {
       -- snippet engine and its associated nvim-cmp source
       'L3MON4D3/LuaSnip',
@@ -119,9 +101,7 @@ require('lazy').setup({
   -- fuzzy finder
   {
     'nvim-telescope/telescope.nvim',
-    config = function()
-      require('plugins.telescope')
-    end,
+    config = function() require('plugins.telescope') end,
     branch = '0.1.x',
     dependencies = {
       'nvim-telescope/telescope-file-browser.nvim', -- file browser
@@ -140,9 +120,7 @@ require('lazy').setup({
   -- syntax hl
   {
     'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require('plugins.treesitter')
-    end,
+    config = function() require('plugins.treesitter') end,
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
