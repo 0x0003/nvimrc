@@ -70,7 +70,7 @@ hl("CmpItemKindSnippet", color.b0E)
 
 -- numbers
 hl("CursorLine", nil, color.b01)
-hl("CursorLineNR")
+hl("CursorLineNr", color.b04, color.b01)
 hl("LineNr", color.b03)
 
 -- misc
