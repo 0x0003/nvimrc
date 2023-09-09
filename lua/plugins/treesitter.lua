@@ -6,7 +6,10 @@ if not present then
 end
 
 treesitter.setup {
-  ensure_installed = { 'c', 'haskell', 'lua', 'python', 'bash', 'fish', 'javascript', 'typescript', 'vimdoc', 'vim' },
+  ensure_installed = {
+    'c', 'haskell', 'lua', 'python', 'bash', 'fish', 'javascript', 'typescript',
+    'vimdoc', 'vim', 'css', 'html'
+  },
   auto_install = false,
   highlight = { enable = true },
   indent = { enable = true },
