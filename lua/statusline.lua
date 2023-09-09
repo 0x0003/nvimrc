@@ -96,7 +96,7 @@ Status = function()
     "%#StatusActive#",
     " %f ", -- file path
     "%#StatusVisual#",
-    "[%{FugitiveHead()}]", -- git branch
+    "%{FugitiveHead()}", -- git branch
     lsp(),
     "%#StatusActive#",
     "%=", -- right align

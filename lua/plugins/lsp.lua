@@ -35,7 +35,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local servers = {
-  -- hls = {}, -- NOTE: needs ghcup
+  hls = {}, -- NOTE: needs ghcup
   html = { filetypes = { 'html', 'twig', 'hbs' } },
   tsserver = {},
   lua_ls = {
