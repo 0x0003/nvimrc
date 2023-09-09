@@ -8,8 +8,8 @@ gitsigns.setup {
   signs = {
     add = { text = '+' },
     change = { text = '~' },
-    delete = { text = '_' },
-    topdelete = { text = '‾' },
+    delete = { text = '-' },
+    topdelete = { text = '^' },
     changedelete = { text = '~' },
   },
   attach_to_untracked = false,

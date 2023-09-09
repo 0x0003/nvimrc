@@ -36,6 +36,6 @@ kmap ('n', '<leader>P', '<cmd>set paste<CR>"+p<cmd>set nopaste<CR>')
 -- diagnostics
 kmap('n', '[d', vim.diagnostic.goto_prev)
 kmap('n', ']d', vim.diagnostic.goto_next)
-kmap('n', '<leader>e', vim.diagnostic.open_float)
+-- kmap('n', '<leader>e', vim.diagnostic.open_float)
 kmap('n', '<leader>q', vim.diagnostic.setloclist)
 
