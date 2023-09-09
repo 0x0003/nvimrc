@@ -40,17 +40,6 @@ local function color()
   return mode_color
 end
 
-local function branch()
-  local cmd = io.popen('git branch --show-current 2>/dev/null')
-  local branch = cmd:read("*l") or cmd:read("*a")
-  cmd:close()
-  if branch ~= "" then
-    return string.format("[" .. branch .. "]")
-  else
-    return ""
-  end
-end
-
 local function lsp()
   local count = {}
   local levels = {
@@ -107,7 +96,7 @@ Status = function()
     "%#StatusActive#",
     " %f ", -- file path
     "%#StatusVisual#",
-    branch(),
+    "[%{FugitiveHead()}]", -- git branch
     lsp(),
     "%#StatusActive#",
     "%=", -- right align
