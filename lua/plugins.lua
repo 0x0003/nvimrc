@@ -107,7 +107,7 @@ require('lazy').setup({
       'nvim-telescope/telescope-file-browser.nvim', -- file browser
       'nvim-telescope/telescope-ui-select.nvim', -- vim.ui.select
       'debugloop/telescope-undo.nvim', -- undo tree
-      'nvim-lua/plenary.nvim', { -- NOTE: `make' needs to be present in PATH
+      'nvim-lua/plenary.nvim', {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make',
         cond = function()

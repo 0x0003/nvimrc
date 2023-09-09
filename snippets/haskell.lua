@@ -25,8 +25,8 @@ local file_pattern = "*.lua"
 local appl = s({ trig = "-", hidden = true }, fmt([[
 {} -> {}
 ]], {
-    i(1, "a"),
-    i(2, "a"),
+  i(1, "a"),
+  i(2, "a"),
 }))
 table.insert(snippets, appl)
 
