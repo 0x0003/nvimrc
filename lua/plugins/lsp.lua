@@ -46,18 +46,30 @@ local servers = {
   },
 }
 
--- autoinstall severs
-local present, mason = pcall(require, "mason-lspconfig")
+-- autoinstall servers
+local present, mason = pcall(require, "mason")
 
 if not present then
   return
 end
 
 mason.setup {
+  ui = {
+    icons = {
+      package_installed = "o",
+      package_pending = "~",
+      package_uninstalled = "x",
+    }
+  }
+}
+
+local mason_lsp = require ("mason-lspconfig")
+
+mason_lsp.setup {
   ensure_installed = vim.tbl_keys(servers),
 }
 
-mason.setup_handlers {
+mason_lsp.setup_handlers {
   function(server_name)
     require('lspconfig')[server_name].setup {
       capabilities = capabilities,

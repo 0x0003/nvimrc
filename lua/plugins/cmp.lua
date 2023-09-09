@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 local present, cmp = pcall (require, 'cmp')
 
 if not present then
@@ -7,11 +8,34 @@ end
 local luasnip = require 'luasnip'
 
 require('luasnip.loaders.from_vscode').lazy_load()
-luasnip.config.setup {}
+require('luasnip.loaders.from_lua').load({
+  paths = {
+    vim.fn.stdpath('config') .. '/snippets'
+  }
+})
+
+luasnip.config.setup ({
+  history = true,
+  enable_autosnippets = true,
+  ext_opts = {
+    [require("luasnip.util.types").choiceNode] ={
+      active = {
+        virt_text = { { "• Choice node", "Base04" } }
+      }
+    }
+  }
+})
 
 cmp.setup {
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+  },
   snippet = {
     expand = function(args)
+      if not luasnip then
+        return
+      end
       luasnip.lsp_expand(args.body)
     end,
   },
@@ -35,10 +59,16 @@ cmp.setup {
         luasnip.jump(-1)
       end
     end, { 'i', 's' }),
-  },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    ['<C-h>'] = cmp.mapping(function()
+      if luasnip.choice_active() then
+        luasnip.change_choice(-1)
+      end
+    end, { 'i', 's' }),
+    ['<C-l>'] = cmp.mapping(function()
+      if luasnip.choice_active() then
+        luasnip.change_choice(1)
+      end
+    end, { 'i', 's' }),
   },
 }
 
