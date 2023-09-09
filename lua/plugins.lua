@@ -125,6 +125,7 @@ require('lazy').setup({
     branch = '0.1.x',
     dependencies = {
       'nvim-telescope/telescope-file-browser.nvim', -- file browser
+      'nvim-telescope/telescope-ui-select.nvim', -- vim.ui.select in telescope
       'nvim-lua/plenary.nvim', { -- NOTE: `make' needs to be present in PATH
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make',

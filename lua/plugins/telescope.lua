@@ -49,14 +49,26 @@ telescope.setup({
           prompt_position = "top"
         },
       },
-    }
+    },
+    ["ui-select"] = {
+      layout_strategy = "cursor",
+      initial_mode = "normal",
+      layout_config = {
+        cursor = {
+          height = 10,
+          width = 80,
+          prompt_position = "top"
+        },
+      },
+    },
   }
 })
 
--- enable telescope fzf native, if installed
-pcall(require('telescope').load_extension, 'fzf')
--- enable file browser
-pcall(require('telescope').load_extension, 'file_browser')
+-- load extensions
+local ext = (require'telescope').load_extension
+pcall(ext, 'fzf')
+pcall(ext, 'file_browser')
+pcall(ext, 'ui-select')
 
 -- maps
 local builtin = require('telescope.builtin')
@@ -87,4 +99,3 @@ kmap('n', '<leader>sd', builtin.diagnostics)
 kmap('n', '<leader>sg', '<cmd>lua FuzzyGrep{}<CR>')
 kmap('n', '<leader>e', '<cmd>Telescope file_browser<CR>')
 kmap('n', '<leader>E', '<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>')
-
