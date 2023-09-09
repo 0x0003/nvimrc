@@ -86,4 +86,5 @@ kmap('n', '<leader>sw', builtin.grep_string)
 kmap('n', '<leader>sd', builtin.diagnostics)
 kmap('n', '<leader>sg', '<cmd>lua FuzzyGrep{}<CR>')
 kmap('n', '<leader>e', '<cmd>Telescope file_browser<CR>')
+kmap('n', '<leader>E', '<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>')
 
