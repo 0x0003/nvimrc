@@ -31,7 +31,7 @@ set.cursorline = true
 -- set.ruler = true                    -- display cursor and viewbuffer positions
 
 -- statusline setup
-set.laststatus = 2
+set.laststatus = 3
 set.showmode = false
 set.cmdheight = 0
 set.ruler = false
