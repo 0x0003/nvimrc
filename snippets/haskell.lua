@@ -1,3 +1,4 @@
+---@diagnostic disable: unused-local
 -- boilerplate
 local ls = require("luasnip")
 
