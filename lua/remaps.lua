@@ -25,7 +25,7 @@ kmap ('n', '<Down>',  '<cmd>resize +3<CR>')
 kmap ('n', '<Up>',    '<cmd>resize -3<CR>')
 
 -- clear hlsearch
-kmap ('n', '<leader>Q', vim.cmd.noh)
+kmap ('n', '<leader>\\', vim.cmd.noh)
 
 -- system clipboard copy/paste
 kmap ('n', '<leader>y', '"+y')
@@ -36,6 +36,5 @@ kmap ('n', '<leader>P', '<cmd>set paste<CR>"+p<cmd>set nopaste<CR>')
 -- diagnostics
 kmap('n', '[d', vim.diagnostic.goto_prev)
 kmap('n', ']d', vim.diagnostic.goto_next)
--- kmap('n', '<leader>e', vim.diagnostic.open_float)
-kmap('n', '<leader>q', vim.diagnostic.setloclist)
+kmap('n', '<leader>sd', vim.diagnostic.open_float)
 

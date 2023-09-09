@@ -81,7 +81,7 @@ telescope.setup({
 })
 
 -- load extensions
-local ext = (require'telescope').load_extension
+local ext = (require 'telescope').load_extension
 pcall(ext, 'fzf')
 pcall(ext, 'file_browser')
 pcall(ext, 'ui-select')
@@ -112,7 +112,8 @@ kmap('n', '<leader>l', builtin.buffers)
 kmap('n', '<leader>/', builtin.current_buffer_fuzzy_find)
 kmap('n', '<leader>sh', builtin.help_tags)
 kmap('n', '<leader>sw', builtin.grep_string)
-kmap('n', '<leader>sd', builtin.diagnostics)
+kmap('n', '<leader>q', function() builtin.diagnostics({ bufnr = 0, initial_mode = "normal" }) end)
+kmap('n', '<leader>Q', function() builtin.diagnostics({ initial_mode = "normal" }) end)
 kmap('n', '<leader>sg', '<cmd>lua FuzzyGrep{}<CR>')
 kmap('n', '<leader>e', '<cmd>Telescope file_browser<CR>')
 kmap('n', '<leader>E', '<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>')
