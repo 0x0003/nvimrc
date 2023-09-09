@@ -9,7 +9,11 @@ telescope.setup({
     mappings = {
       i = {
         ['<C-u>'] = false,
-        ['<C-d>'] = false,
+        ['<C-d>'] = require('telescope.actions').delete_buffer,
+      },
+      n = {
+        ['<C-h>'] = "which_key",
+        ['<C-d>'] = require('telescope.actions').delete_buffer,
       },
     },
     file_ignore_patterns = {
@@ -25,15 +29,34 @@ telescope.setup({
     layout_config = {
       bottom_pane = {
         preview_width = 0.6,
-        height = 20,
+        height = 25,
         prompt_position = "top"
       },
     },
+  },
+
+  extensions = {
+    file_browser = {
+      hijack_netrw = true,
+      disable_devicons = true,
+      layout_strategy = "vertical",
+      initial_mode = "normal",
+      layout_config = {
+        vertical = {
+          preview_height = 0.4,
+          height = 500,
+          width = 500,
+          prompt_position = "top"
+        },
+      },
+    }
   }
 })
 
 -- enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
+-- enable file browser
+pcall(require('telescope').load_extension, 'file_browser')
 
 -- maps
 local builtin = require('telescope.builtin')
@@ -53,13 +76,14 @@ function FuzzyGrep()
 end
 
 kmap('n', '<leader>?', builtin.oldfiles)
-kmap('n', '<leader><space>', builtin.buffers)
 kmap('n', '<leader>o', builtin.find_files)
+kmap('n', '<leader>gf', builtin.git_files)
+kmap('n', '<leader><space>', builtin.buffers)
 kmap('n', '<leader>l', builtin.buffers)
 kmap('n', '<leader>/', builtin.current_buffer_fuzzy_find)
-kmap('n', '<leader>gf', builtin.git_files)
 kmap('n', '<leader>sh', builtin.help_tags)
 kmap('n', '<leader>sw', builtin.grep_string)
 kmap('n', '<leader>sd', builtin.diagnostics)
 kmap('n', '<leader>sg', '<cmd>lua FuzzyGrep{}<CR>')
+kmap('n', '<leader>e', '<cmd>Telescope file_browser<CR>')
 
