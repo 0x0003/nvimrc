@@ -50,23 +50,23 @@ vim.api.nvim_create_autocmd('BufRead', {
 })
 
 -- disable cursorline in insert mode and in inactive windows
-local cline vim.api.nvim_create_augroup('cline', { clear = true})
-vim.api.nvim_create_autocmd ( {'WinEnter', 'BufWinEnter'}, {
+local cline = vim.api.nvim_create_augroup('cline', { clear = true })
+vim.api.nvim_create_autocmd({ 'WinEnter', 'BufWinEnter' }, {
   pattern = '*',
   group = cline,
   command = 'setlocal cursorline',
 })
-vim.api.nvim_create_autocmd ( {'WinLeave'}, {
+vim.api.nvim_create_autocmd({ 'WinLeave' }, {
   pattern = '*',
   group = cline,
   command = 'setlocal nocursorline',
 })
-vim.api.nvim_create_autocmd ( 'InsertEnter', {
+vim.api.nvim_create_autocmd('InsertEnter', {
   pattern = '*',
   group = cline,
   command = 'set nocursorline'
 })
-vim.api.nvim_create_autocmd ( 'InsertLeave', {
+vim.api.nvim_create_autocmd('InsertLeave', {
   pattern = '*',
   group = cline,
   command = 'set cursorline'

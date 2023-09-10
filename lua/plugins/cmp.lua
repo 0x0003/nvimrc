@@ -1,5 +1,5 @@
 ---@diagnostic disable: missing-fields, duplicate-index
-local present, cmp = pcall (require, 'cmp')
+local present, cmp = pcall(require, 'cmp')
 
 if not present then
   return
@@ -14,11 +14,11 @@ require('luasnip.loaders.from_lua').load({
   }
 })
 
-luasnip.config.setup ({
+luasnip.config.setup({
   history = true,
   enable_autosnippets = true,
   ext_opts = {
-    [require("luasnip.util.types").choiceNode] ={
+    [require("luasnip.util.types").choiceNode] = {
       active = {
         virt_text = { { "• Choice node", "Base04" } }
       }

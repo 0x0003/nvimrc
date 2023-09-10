@@ -34,7 +34,8 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   -- indent guides
-  {'lukas-reineke/indent-blankline.nvim',
+  {
+    'lukas-reineke/indent-blankline.nvim',
     config = function() require('plugins.indent_blankline') end,
   },
 
@@ -43,7 +44,7 @@ require('lazy').setup({
     'norcalli/nvim-colorizer.lua',
     config = function() require('colorizer').setup() end,
     lazy = true,
-    ft = {"css", "html", "javascript", "typescript", "lua", "vim", "markdown" },
+    ft = { "css", "html", "javascript", "typescript", "lua", "vim", "markdown" },
   },
 
   -- automatically close parentheses, brackets, etc
@@ -77,7 +78,7 @@ require('lazy').setup({
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
       -- status
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
       -- extra nvim-specific lua configuration
       'folke/neodev.nvim',
     },
@@ -105,15 +106,15 @@ require('lazy').setup({
     branch = '0.1.x',
     dependencies = {
       'nvim-telescope/telescope-file-browser.nvim', -- file browser
-      'nvim-telescope/telescope-ui-select.nvim', -- vim.ui.select
-      'debugloop/telescope-undo.nvim', -- undo tree
+      'nvim-telescope/telescope-ui-select.nvim',    -- vim.ui.select
+      'debugloop/telescope-undo.nvim',              -- undo tree
       'nvim-lua/plenary.nvim', {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'make',
-        cond = function()
-          return vim.fn.executable 'make' == 1
-        end,
-      },
+      'nvim-telescope/telescope-fzf-native.nvim',
+      build = 'make',
+      cond = function()
+        return vim.fn.executable 'make' == 1
+      end,
+    },
     },
   },
 

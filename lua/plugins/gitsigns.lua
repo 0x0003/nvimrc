@@ -1,4 +1,4 @@
-local present, gitsigns = pcall (require, 'gitsigns')
+local present, gitsigns = pcall(require, 'gitsigns')
 
 if not present then
   return
