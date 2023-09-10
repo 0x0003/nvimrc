@@ -7,26 +7,28 @@ local function kmap(mode, keys, command, opts)
   vim.keymap.set(mode, keys, command, opts)
 end
 
+local buf = vim.lsp.buf
+
 -- run on attach
 local on_attach = function()
   -- LSP
-  kmap('n', '<leader>rn', vim.lsp.buf.rename)
-  kmap('n', '<leader>ca', vim.lsp.buf.code_action)
-  kmap('n', 'gd', vim.lsp.buf.definition)
+  kmap('n', '<leader>rn', buf.rename)
+  kmap('n', '<leader>ca', buf.code_action)
+  kmap('n', 'gd', buf.definition)
   kmap('n', 'gr', require('telescope.builtin').lsp_references)
-  kmap('n', 'gI', vim.lsp.buf.implementation)
-  kmap('n', '<leader>D', vim.lsp.buf.type_definition)
+  kmap('n', 'gI', buf.implementation)
+  kmap('n', '<leader>D', buf.type_definition)
   kmap('n', '<leader>ds', require('telescope.builtin').lsp_document_symbols)
   kmap('n', '<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols)
-  kmap('n', 'K', vim.lsp.buf.hover)
-  -- kmap('n','<C-k>', vim.lsp.buf.signature_help)
+  kmap('n', 'K', buf.hover)
+  -- kmap('n','<C-k>', buf.signature_help)
   -- Lesser used LSP functionality
-  kmap('n', '<leader>F', vim.lsp.buf.format)
-  kmap('n', 'gD', vim.lsp.buf.declaration)
-  kmap('n', '<leader>wa', vim.lsp.buf.add_workspace_folder)
-  kmap('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder)
+  kmap('n', '<leader>F', buf.format)
+  kmap('n', 'gD', buf.declaration)
+  kmap('n', '<leader>wa', buf.add_workspace_folder)
+  kmap('n', '<leader>wr', buf.remove_workspace_folder)
   kmap('n', '<leader>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    print(vim.inspect(buf.list_workspace_folders()))
   end)
 end
 
