@@ -82,5 +82,5 @@ hl("Search", color.b00, color.b0B) -- hlsearch
 -- hl("Todo", color.b04, color.b0B) -- hlsearch
 
 -- extra
-vim.cmd("hi Comment guifg=#555555 gui=italic")
+vim.cmd("hi Comment gui=italic")
 
