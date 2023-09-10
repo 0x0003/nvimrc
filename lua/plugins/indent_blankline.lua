@@ -5,10 +5,6 @@ if not present then
 end
 
 indent_blankline.setup {
-  char = "",
-  context_char = " ",
-  show_current_context = true,
-  show_trailing_blankline_indent = false,
   filetype_exclude = {
     "help",
     "terminal",
@@ -18,11 +14,15 @@ indent_blankline.setup {
   char_highlight_list = {
     "IndentBlanklineIndent1",
     "IndentBlanklineIndent2",
-},
+  },
   space_char_highlight_list = {
     "IndentBlanklineIndent1",
     "IndentBlanklineIndent2",
-},
+  },
+  char = "",
+  context_char = " ",
+  -- show_current_context = true,
+  show_trailing_blankline_indent = false,
 }
 
 vim.cmd [[highlight IndentBlanklineIndent1 guibg=#1f1f1f gui=nocombine]]
