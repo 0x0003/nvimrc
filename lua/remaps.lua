@@ -4,7 +4,6 @@ local function kmap (mode, keys, command, opts)
 end
 
 -- marks
-kmap ('n', '<leader>m', '<cmd>marks<CR>:normal \'')
 kmap ('n', '`', '\'')
 kmap ('n', '\'', '`')
 
