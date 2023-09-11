@@ -91,7 +91,7 @@ local function macro_recording()
   if recording_register == "" then
     return ""
   else
-    return "Recording @" .. recording_register
+    return "  Recording @" .. recording_register
   end
 end
 
@@ -112,7 +112,7 @@ Status = function()
     encoding(),
     format(),
     color(),
-    " %l:%c",
+    " %l:%c  ",
   }
 end
 
