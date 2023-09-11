@@ -1,24 +1,24 @@
 local modes = {
-  ["n"] = "NORMAL", -- normal
-  ["no"] = "NORMAL", -- normal
-  ["v"] = "VISUAL", -- visual
-  ["V"] = "VISUAL LINE", -- visual line
-  [""] = "VISUAL BLOCK", -- visual block
-  ["s"] = "SELECT", -- select
-  ["S"] = "SELECT LINE", -- select line
-  [""] = "SELECT BLOCK", -- select block
-  ["i"] = "INSERT", -- insert
-  ["ic"] = "INSERT", -- insert
-  ["R"] = "REPLACE", -- replace
+  ["n"] = "NORMAL",          -- normal
+  ["no"] = "NORMAL",         -- normal
+  ["v"] = "VISUAL",          -- visual
+  ["V"] = "VISUAL LINE",     -- visual line
+  [""] = "VISUAL BLOCK",   -- visual block
+  ["s"] = "SELECT",          -- select
+  ["S"] = "SELECT LINE",     -- select line
+  [""] = "SELECT BLOCK",   -- select block
+  ["i"] = "INSERT",          -- insert
+  ["ic"] = "INSERT",         -- insert
+  ["R"] = "REPLACE",         -- replace
   ["Rv"] = "VISUAL REPLACE", -- visual replace
-  ["c"] = "COMMAND", -- command
-  ["cv"] = "VIM EX", -- vim ex
-  ["ce"] = "EX", -- ex
-  ["r"] = "PROMPT", -- prompt
-  ["rm"] = "MOAR", -- moar
-  ["r?"] = "CONFIRM", -- configm
-  ["!"] = "SHELL", -- shell
-  ["t"] = "TERMINAL", -- terminal
+  ["c"] = "COMMAND",         -- command
+  ["cv"] = "VIM EX",         -- vim ex
+  ["ce"] = "EX",             -- ex
+  ["r"] = "PROMPT",          -- prompt
+  ["rm"] = "MOAR",           -- moar
+  ["r?"] = "CONFIRM",        -- configm
+  ["!"] = "SHELL",           -- shell
+  ["t"] = "TERMINAL",        -- terminal
 }
 
 local function color()
@@ -62,20 +62,28 @@ local function lsp()
     errors = " %#StatusReplace#E" .. count["errors"]
   end
   if count["warnings"] ~= 0 then
-    warnings = " %#StatusCommand#W" .. count["warnings"]
+    warnings = " %#StatusTerminal#W" .. count["warnings"]
   end
   if count["hints"] ~= 0 then
     hints = " %#StatusVisual#H" .. count["hints"]
   end
   if count["info"] ~= 0 then
-    info = " %#StatusVisual#I" .. count["info"]
+    info = " %#StatusNormal#I" .. count["info"]
   end
 
   return errors .. warnings .. hints .. info .. "%#Normal#"
 end
 
 local function filetype()
-  return string.format(" %s ", vim.bo.filetype):upper()
+  return string.format(" %s", vim.bo.filetype):upper()
+end
+
+local function encoding()
+  return string.format(" %s ", vim.bo.fileencoding):upper()
+end
+
+local function format()
+  return string.format("%s", vim.bo.fileformat):upper()
 end
 
 local function macro_recording()
@@ -101,8 +109,10 @@ Status = function()
     "%#StatusActive#",
     "%=", -- right align
     filetype(),
+    encoding(),
+    format(),
     color(),
-    " %l:%c  ",
+    " %l:%c",
   }
 end
 
