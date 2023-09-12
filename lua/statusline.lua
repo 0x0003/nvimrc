@@ -32,7 +32,7 @@ local modes = {
 
 local function mode_color()
   local mode = vim.api.nvim_get_mode().mode
-  local color = "%#StatusLine#"
+  local color = ""
   if mode == "n" then
     color = "%#StatusNormal#"
   elseif mode == "i" or mode == "ic" then
@@ -45,6 +45,17 @@ local function mode_color()
     color = "%#StatusCommand#"
   elseif mode == "t" then
     color = "%#StatusTerminal#"
+  end
+  return color
+end
+
+local function file_color()
+  local status = vim.api.nvim_buf_get_option(0, "modified")
+  local color = ""
+  if status == true then
+    color = "%#StatusCommand#"
+  else
+    color = "%#StatusNormal#"
   end
   return color
 end
@@ -106,6 +117,7 @@ Status = function()
     mode_color(),
     string.format("  %s", modes[vim.api.nvim_get_mode().mode]):upper(),
     "%#StatusActive#", -- reset color
+    file_color(),
     " %f ",            -- file path
     "%#StatusVisual#",
     git_branch(),
@@ -116,7 +128,7 @@ Status = function()
     encoding(),
     format(),
     mode_color(),
-    " %l:%c  ",
+    " %l:%c %P  ",
   }
 end
 
