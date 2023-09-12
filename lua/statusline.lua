@@ -99,6 +99,17 @@ local function lsp()
   return errors .. warnings .. hints .. info .. "%#Normal#"
 end
 
+local search_count = function(args)
+  if vim.v.hlsearch == 0 then return "" end
+  local ok, s_count = pcall(vim.fn.searchcount, (args or {}).options or { recompute = true })
+  if not ok or s_count.current == nil or s_count.total == 0 then return "" end
+  if s_count.incomplete == 1 then return "?/?" end
+  local too_many = ('>%d'):format(s_count.maxcount)
+  local current = s_count.current > s_count.maxcount and too_many or s_count.current
+  local total = s_count.total > s_count.maxcount and too_many or s_count.total
+  return ("[%s/%s]          "):format(current, total)
+end
+
 local function filetype()
   return string.format(" %s", vim.bo.filetype):upper()
 end
@@ -124,6 +135,7 @@ Status = function()
     lsp(),
     "%#StatusActive#", -- reset color
     "%=",              -- right align
+    search_count(),
     filetype(),
     encoding(),
     format(),
