@@ -1,4 +1,4 @@
-local present, indent_blankline = pcall(require, "indent_blankline")
+local present, indent_blankline = pcall(require, 'indent_blankline')
 
 if not present then
   return
@@ -6,21 +6,21 @@ end
 
 indent_blankline.setup {
   filetype_exclude = {
-    "help",
-    "terminal",
-    "TelescopePrompt",
-    "TelescopeResults"
+    'help',
+    'terminal',
+    'TelescopePrompt',
+    'TelescopeResults'
   },
   char_highlight_list = {
-    "IndentBlanklineIndent1",
-    "IndentBlanklineIndent2",
+    'IndentBlanklineIndent1',
+    'IndentBlanklineIndent2',
   },
   space_char_highlight_list = {
-    "IndentBlanklineIndent1",
-    "IndentBlanklineIndent2",
+    'IndentBlanklineIndent1',
+    'IndentBlanklineIndent2',
   },
-  char = "",
-  context_char = " ",
+  char = '',
+  context_char = ' ',
   -- show_current_context = true,
   show_trailing_blankline_indent = false,
 }

@@ -9,13 +9,13 @@ local modules = {
 for _, a in ipairs(modules) do
   local ok, err = pcall(require, a)
   if not ok then
-    error("Error calling " .. a .. err)
+    error('Error calling ' .. a .. err)
   end
 end
 
 -- set POSIX compatible shell if using fish
 if (os.getenv('SHELL')) ~= 'fish' then
-  vim.o.shell = "sh"
+  vim.o.shell = 'sh'
 end
 
 -- highlight on yank `:help vim.highlight.on_yank()`

@@ -16,12 +16,12 @@ local on_attach = function()
   kmap('n', '<leader>rn', buf.rename)
   kmap('n', '<leader>ca', buf.code_action)
   kmap('n', 'gd', function()
-    tele.lsp_definitions({ initial_mode = "normal" })
+    tele.lsp_definitions({ initial_mode = 'normal' })
   end)
   kmap('n', 'gr', tele.lsp_references)
   kmap('n', 'gI', buf.implementation)
   kmap('n', '<leader>D', function()
-    tele.lsp_type_definitions({ initial_mode = "normal" })
+    tele.lsp_type_definitions({ initial_mode = 'normal' })
   end)
   kmap('n', '<leader>ds', tele.lsp_document_symbols)
   kmap('n', '<leader>ws', tele.lsp_dynamic_workspace_symbols)
@@ -53,7 +53,7 @@ local servers = {
 }
 
 -- autoinstall servers
-local present, mason = pcall(require, "mason")
+local present, mason = pcall(require, 'mason')
 
 if not present then
   return
@@ -62,14 +62,14 @@ end
 mason.setup {
   ui = {
     icons = {
-      package_installed = "o",
-      package_pending = "~",
-      package_uninstalled = "x",
+      package_installed = 'o',
+      package_pending = '~',
+      package_uninstalled = 'x',
     }
   }
 }
 
-local mason_lsp = require("mason-lspconfig")
+local mason_lsp = require('mason-lspconfig')
 
 mason_lsp.setup {
   ensure_installed = vim.tbl_keys(servers),

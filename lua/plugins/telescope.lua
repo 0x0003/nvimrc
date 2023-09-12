@@ -1,4 +1,4 @@
-local present, telescope = pcall(require, "telescope")
+local present, telescope = pcall(require, 'telescope')
 
 if not present then
   return
@@ -12,24 +12,24 @@ telescope.setup({
         ['<C-d>'] = require('telescope.actions').delete_buffer,
       },
       n = {
-        ['<C-h>'] = "which_key",
+        ['<C-h>'] = 'which_key',
         ['<C-d>'] = require('telescope.actions').delete_buffer,
       },
     },
     file_ignore_patterns = {
-      "%.jpg",
-      "%.jpeg",
-      "%.png",
+      '%.jpg',
+      '%.jpeg',
+      '%.png',
     },
-    prompt_prefix = "  ",
-    selection_caret = "  ",
-    entry_prefix = "  ",
-    layout_strategy = "bottom_pane",
-    sorting_strategy = "ascending", -- display results top -> bottom
+    prompt_prefix = '  ',
+    selection_caret = '  ',
+    entry_prefix = '  ',
+    layout_strategy = 'bottom_pane',
+    sorting_strategy = 'ascending', -- display results top -> bottom
     layout_config = {
       preview_width = 0.6,
       height = 25,
-      prompt_position = "top"
+      prompt_position = 'top'
     },
   },
 
@@ -38,29 +38,29 @@ telescope.setup({
       hijack_netrw = true,
       disable_devicons = true,
       previewer = false,
-      layout_strategy = "horizontal",
-      initial_mode = "normal",
+      layout_strategy = 'horizontal',
+      initial_mode = 'normal',
       layout_config = {
         width = 100,
         height = 50,
-        prompt_position = "top"
+        prompt_position = 'top'
       },
     },
 
-    ["ui-select"] = {
-      layout_strategy = "cursor",
-      initial_mode = "normal",
+    ['ui-select'] = {
+      layout_strategy = 'cursor',
+      initial_mode = 'normal',
       layout_config = {
         height = 10,
         width = 80,
-        prompt_position = "top"
+        prompt_position = 'top'
       },
     },
 
     undo = {
       user_delta = false,
-      initial_mode = "normal",
-      layout_strategy = "horizontal",
+      initial_mode = 'normal',
+      layout_strategy = 'horizontal',
       layout_config = {
         preview_width = 0.6,
         width = 500,
@@ -68,12 +68,12 @@ telescope.setup({
       },
       mappings = {
         i = {
-          ["<CR>"] = require('telescope-undo.actions').restore,
+          ['<CR>'] = require('telescope-undo.actions').restore,
         },
         n = {
-          ["<CR>"] = require('telescope-undo.actions').restore,
-          ["y"] = require('telescope-undo.actions').yank_additions,
-          ["d"] = require('telescope-undo.actions').yank_deletions,
+          ['<CR>'] = require('telescope-undo.actions').restore,
+          ['y'] = require('telescope-undo.actions').yank_additions,
+          ['d'] = require('telescope-undo.actions').yank_deletions,
         }
       },
     },
@@ -99,7 +99,7 @@ function FuzzyGrep()
   builtin.grep_string({
     path_display = { 'smart' },
     only_sort_text = true,
-    word_match = "-w",
+    word_match = '-w',
     search = '',
   })
 end
@@ -112,9 +112,9 @@ nkmap('<leader>l', builtin.buffers)
 nkmap('<leader>/', builtin.current_buffer_fuzzy_find)
 nkmap('<leader>sh', builtin.help_tags)
 nkmap('<leader>sw', builtin.grep_string)
-nkmap('<leader>q', function() builtin.diagnostics({ bufnr = 0, initial_mode = "normal" }) end)
-nkmap('<leader>Q', function() builtin.diagnostics({ initial_mode = "normal" }) end)
-nkmap('<leader>m', function() builtin.marks({ initial_mode = "normal" }) end)
+nkmap('<leader>q', function() builtin.diagnostics({ bufnr = 0, initial_mode = 'normal' }) end)
+nkmap('<leader>Q', function() builtin.diagnostics({ initial_mode = 'normal' }) end)
+nkmap('<leader>m', function() builtin.marks({ initial_mode = 'normal' }) end)
 nkmap('<leader>sg', '<cmd>lua FuzzyGrep{}<CR>')
 nkmap('<leader>e', '<cmd>Telescope file_browser<CR>')
 nkmap('<leader>E', '<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>')

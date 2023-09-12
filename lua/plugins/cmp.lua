@@ -18,9 +18,9 @@ luasnip.config.setup({
   history = true,
   enable_autosnippets = true,
   ext_opts = {
-    [require("luasnip.util.types").choiceNode] = {
+    [require('luasnip.util.types').choiceNode] = {
       active = {
-        virt_text = { { "• Choice node", "Base04" } }
+        virt_text = { { '• Choice node', 'Base04' } }
       }
     }
   }

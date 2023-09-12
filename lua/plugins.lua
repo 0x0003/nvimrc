@@ -1,15 +1,15 @@
 -- set leader to spacebar
-vim.g.mapleader = " "
+vim.g.mapleader = ' '
 
 -- bootstrap
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable',
     lazypath,
   })
 end
@@ -44,29 +44,29 @@ require('lazy').setup({
     'norcalli/nvim-colorizer.lua',
     config = function() require('colorizer').setup() end,
     lazy = true,
-    ft = { "css", "html", "javascript", "typescript", "lua", "vim", "markdown" },
+    ft = { 'css', 'html', 'javascript', 'typescript', 'lua', 'vim', 'markdown' },
   },
 
   -- automatically close parentheses, brackets, etc
   {
     'windwp/nvim-autopairs',
     config = function() require('nvim-autopairs').setup() end,
-    event = "VeryLazy",
+    event = 'VeryLazy',
   },
 
   -- surround text objects
   {
     'kylechui/nvim-surround',
-    config = function() require("nvim-surround").setup() end,
-    version = "*",
-    event = "VeryLazy",
+    config = function() require('nvim-surround').setup() end,
+    version = '*',
+    event = 'VeryLazy',
   },
 
   -- `gc` to comment visual regions/lines
   {
     'numToStr/Comment.nvim',
     config = function() require('Comment').setup() end,
-    event = "VeryLazy",
+    event = 'VeryLazy',
   },
 
   -- LSP
