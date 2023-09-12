@@ -1,3 +1,6 @@
+-- set leader to spacebar
+vim.g.mapleader = ' '
+
 local modules = {
   'options',
   'plugins',
