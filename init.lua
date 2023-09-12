@@ -6,7 +6,8 @@ local modules = {
   'plugins',
   'remaps',
   'statusline',
-  'jp'
+  'jp',
+  'sessions',
 }
 
 for _, a in ipairs(modules) do
