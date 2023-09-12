@@ -2,9 +2,8 @@ local sessiondir = vim.fn.stdpath('config') .. '/.sessions' .. vim.fn.getcwd()
 local sessionfile = sessiondir .. '/session.vim'
 
 function SessionMake()
-  -- silently fail if sessiondir doesn't exist
   if vim.fn.filewritable(sessiondir) ~= 2 then
-    return
+    os.execute('mkdir -p ' .. sessiondir)
   end
   vim.cmd.mksession({ bang = true, args = { sessionfile } })
 end
