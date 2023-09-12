@@ -50,9 +50,9 @@ local function mode_color()
 end
 
 local function file_color()
-  local status = vim.api.nvim_buf_get_option(0, 'modified')
+  local modified = vim.api.nvim_buf_get_option(0, 'modified')
   local color = ''
-  if status == true then
+  if modified == true then
     color = '%#StatusCommand#'
   else
     color = '%#StatusNormal#'
