@@ -38,7 +38,7 @@ kmap('n', ']d', vim.diagnostic.goto_next)
 kmap('n', '<leader>sd', vim.diagnostic.open_float)
 
 -- fugitive
-kmap('n', '<leader>G', '<cmd>G<CR>')
+kmap('n', '<leader>GG', '<cmd>G<CR>')
 kmap('n', '<leader>GP', '<cmd>Git push<CR>')
 kmap('n', '<leader>GL', '<cmd>Git pull<CR>')
 
