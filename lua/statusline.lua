@@ -30,11 +30,6 @@ local modes = {
   ["t"] = "terminal",        -- terminal
 }
 
-local function current_mode()
-  local m = modes[vim.api.nvim_get_mode().mode]
-  return string.format("  %s", m:upper())
-end
-
 local function mode_color()
   local mode = vim.api.nvim_get_mode().mode
   local color = "%#StatusLine#"
@@ -109,7 +104,7 @@ Status = function()
   return table.concat {
     macro_recording(),
     mode_color(),
-    current_mode(),
+    string.format("  %s", modes[vim.api.nvim_get_mode().mode]):upper(),
     "%#StatusActive#", -- reset color
     " %f ",            -- file path
     "%#StatusVisual#",
