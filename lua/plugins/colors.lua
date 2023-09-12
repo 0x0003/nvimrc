@@ -80,7 +80,6 @@ hl("NormalFloat", nil, color.b01)
 hl("FloatBorder", color.b01, color.b01)
 hl("ColorColumn", nil, color.b01) -- colorcolumn
 hl("Search", color.b00, color.b0B) -- hlsearch
--- hl("Todo", color.b04, color.b0B) -- hlsearch
 
 -- extra
 vim.cmd("hi Comment gui=italic")
