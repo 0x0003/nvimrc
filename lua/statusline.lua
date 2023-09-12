@@ -1,43 +1,66 @@
+local function macro_recording()
+  local recording_register = vim.fn.reg_recording()
+  if recording_register == "" then
+    return ""
+  else
+    return "%#StatusInsert#  recording @" .. recording_register
+  end
+end
+
 local modes = {
-  ["n"] = "NORMAL",          -- normal
-  ["no"] = "NORMAL",         -- normal
-  ["v"] = "VISUAL",          -- visual
-  ["V"] = "VISUAL LINE",     -- visual line
-  [""] = "VISUAL BLOCK",   -- visual block
-  ["s"] = "SELECT",          -- select
-  ["S"] = "SELECT LINE",     -- select line
-  [""] = "SELECT BLOCK",   -- select block
-  ["i"] = "INSERT",          -- insert
-  ["ic"] = "INSERT",         -- insert
-  ["R"] = "REPLACE",         -- replace
-  ["Rv"] = "VISUAL REPLACE", -- visual replace
-  ["c"] = "COMMAND",         -- command
-  ["cv"] = "VIM EX",         -- vim ex
-  ["ce"] = "EX",             -- ex
-  ["r"] = "PROMPT",          -- prompt
-  ["rm"] = "MOAR",           -- moar
-  ["r?"] = "CONFIRM",        -- configm
-  ["!"] = "SHELL",           -- shell
-  ["t"] = "TERMINAL",        -- terminal
+  ["n"] = "normal",          -- normal
+  ["no"] = "normal",         -- normal
+  ["v"] = "visual",          -- visual
+  ["V"] = "visual line",     -- visual line
+  [""] = "visual block",   -- visual block
+  ["s"] = "select",          -- select
+  ["S"] = "select line",     -- select line
+  [""] = "select block",   -- select block
+  ["i"] = "insert",          -- insert
+  ["ic"] = "insert",         -- insert
+  ["R"] = "replace",         -- replace
+  ["Rv"] = "visual replace", -- visual replace
+  ["c"] = "command",         -- command
+  ["cv"] = "vim ex",         -- vim ex
+  ["ce"] = "ex",             -- ex
+  ["r"] = "prompt",          -- prompt
+  ["rm"] = "moar",           -- moar
+  ["r?"] = "confirm",        -- confirm
+  ["!"] = "shell",           -- shell
+  ["t"] = "terminal",        -- terminal
 }
 
-local function color()
+local function current_mode()
+  local m = modes[vim.api.nvim_get_mode().mode]
+  return string.format("  %s", m:upper())
+end
+
+local function mode_color()
   local mode = vim.api.nvim_get_mode().mode
-  local mode_color = "%#StatusLine#"
+  local color = "%#StatusLine#"
   if mode == "n" then
-    mode_color = "%#StatusNormal#"
+    color = "%#StatusNormal#"
   elseif mode == "i" or mode == "ic" then
-    mode_color = "%#StatusInsert#"
+    color = "%#StatusInsert#"
   elseif mode == "v" or mode == "V" or mode == "" then
-    mode_color = "%#StatusVisual#"
+    color = "%#StatusVisual#"
   elseif mode == "R" then
-    mode_color = "%#StatusReplace#"
+    color = "%#StatusReplace#"
   elseif mode == "c" then
-    mode_color = "%#StatusCommand#"
+    color = "%#StatusCommand#"
   elseif mode == "t" then
-    mode_color = "%#StatusTerminal#"
+    color = "%#StatusTerminal#"
   end
-  return mode_color
+  return color
+end
+
+local function git_branch()
+  local head = vim.api.nvim_call_function("FugitiveHead", {})
+  if head == "" then
+    return ""
+  else
+    return "%#StatusVisual#[" .. head .. "]"
+  end
 end
 
 local function lsp()
@@ -48,16 +71,13 @@ local function lsp()
     info = "Info",
     hints = "Hint",
   }
-
   for k, level in pairs(levels) do
     count[k] = vim.tbl_count(vim.diagnostic.get(0, { severity = level }))
   end
-
   local errors = ""
   local warnings = ""
   local hints = ""
   local info = ""
-
   if count["errors"] ~= 0 then
     errors = " %#DiagnosticError#E" .. count["errors"]
   end
@@ -70,7 +90,6 @@ local function lsp()
   if count["info"] ~= 0 then
     info = " %#DiagnosticInfo#I" .. count["info"]
   end
-
   return errors .. warnings .. hints .. info .. "%#Normal#"
 end
 
@@ -86,41 +105,22 @@ local function format()
   return string.format("%s", vim.bo.fileformat):upper()
 end
 
-local function git_branch()
-  local head = vim.api.nvim_call_function("FugitiveHead", {})
-  if head == "" then
-    return ""
-  else
-    return "[" .. head .. "]"
-  end
-end
-
-local function macro_recording()
-  local recording_register = vim.fn.reg_recording()
-  if recording_register == "" then
-    return ""
-  else
-    return "  Recording @" .. recording_register
-  end
-end
-
 Status = function()
   return table.concat {
-    "%#StatusInsert#",
     macro_recording(),
-    color(),
-    string.format("  %s", modes[vim.api.nvim_get_mode().mode]):upper(),
+    mode_color(),
+    current_mode(),
     "%#StatusActive#", -- reset color
-    " %f ", -- file path
+    " %f ",            -- file path
     "%#StatusVisual#",
     git_branch(),
     lsp(),
     "%#StatusActive#", -- reset color
-    "%=", -- right align
+    "%=",              -- right align
     filetype(),
     encoding(),
     format(),
-    color(),
+    mode_color(),
     " %l:%c  ",
   }
 end
