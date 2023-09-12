@@ -14,9 +14,10 @@ gitsigns.setup {
   },
   attach_to_untracked = false,
   on_attach = function(bufnr)
-    vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr })
-    vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr })
-    vim.keymap.set('n', '<leader>gh', require('gitsigns').preview_hunk, { buffer = bufnr })
+    local gs = require('gitsigns')
+    vim.keymap.set('n', '<leader>gp', gs.prev_hunk, { buffer = bufnr })
+    vim.keymap.set('n', '<leader>gn', gs.next_hunk, { buffer = bufnr })
+    vim.keymap.set('n', '<leader>gh', gs.preview_hunk, { buffer = bufnr })
   end
 }
 
