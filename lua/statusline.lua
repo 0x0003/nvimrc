@@ -65,7 +65,7 @@ local function git_branch()
   if head == "" then
     return ""
   else
-    return "%#StatusVisual# " .. head
+    return " %#StatusVisual# " .. head
   end
 end
 
@@ -108,17 +108,17 @@ local function encoding()
 end
 
 local function format()
-  return string.format("%s", vim.bo.fileformat):upper()
+  return string.format("%s ", vim.bo.fileformat):upper()
 end
 
 Status = function()
   return table.concat {
     macro_recording(),
     mode_color(),
-    string.format("  %s", modes[vim.api.nvim_get_mode().mode]):upper(),
+    string.format("  %s ", modes[vim.api.nvim_get_mode().mode]):upper(),
     "%#StatusActive#", -- reset color
     file_color(),
-    " %f ",            -- file path
+    "%f",              -- file path
     "%#StatusVisual#",
     git_branch(),
     lsp(),
@@ -128,7 +128,7 @@ Status = function()
     encoding(),
     format(),
     mode_color(),
-    " %l:%c %P  ",
+    "%l:%c %P  ",
   }
 end
 
