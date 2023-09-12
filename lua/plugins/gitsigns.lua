@@ -4,6 +4,11 @@ if not present then
   return
 end
 
+local function nkmap(keys, command, opts)
+  opts = { noremap = true, silent = true }
+  vim.keymap.set('n', keys, command, opts)
+end
+
 gitsigns.setup {
   signs = {
     add = { text = '+' },
@@ -15,9 +20,13 @@ gitsigns.setup {
   attach_to_untracked = false,
   on_attach = function(bufnr)
     local gs = require('gitsigns')
-    vim.keymap.set('n', '<leader>gp', gs.prev_hunk, { buffer = bufnr })
-    vim.keymap.set('n', '<leader>gn', gs.next_hunk, { buffer = bufnr })
-    vim.keymap.set('n', '<leader>gh', gs.preview_hunk, { buffer = bufnr })
+    nkmap('[g', gs.prev_hunk, { buffer = bufnr })
+    nkmap(']g', gs.next_hunk, { buffer = bufnr })
+    nkmap('<leader>gh', gs.preview_hunk, { buffer = bufnr })
+    nkmap('<leader>gs', '<cmd>Git<CR>')
+    nkmap('<leader>gd', '<cmd>Gvdiffsplit!<CR>')
+    nkmap('<leader>gP', '<cmd>Git push<CR>')
+    nkmap('<leader>gL', '<cmd>Git pull<CR>')
   end
 }
 

@@ -20,11 +20,13 @@ require('lazy').setup({
   },
 
   -- git
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
   {
     'lewis6991/gitsigns.nvim',
     config = function() require('plugins.gitsigns') end,
+    dependencies = {
+      'tpope/vim-fugitive',
+      'tpope/vim-rhubarb',
+    },
   },
 
   -- detect tabstop and shiftwidth automatically
