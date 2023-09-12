@@ -54,7 +54,7 @@ local function git_branch()
   if head == "" then
     return ""
   else
-    return "%#StatusVisual#[" .. head .. "]"
+    return "%#StatusVisual# " .. head
   end
 end
 
