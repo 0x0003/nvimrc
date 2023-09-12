@@ -32,6 +32,11 @@ kmap('n', '<leader>Y', '"+Y')
 kmap('x', '<leader>y', '"+y')
 kmap('n', '<leader>P', '<cmd>set paste<CR>"+p<cmd>set nopaste<CR>')
 
+-- run macro over visual range
+vim.keymap.set('x', '@', function ()
+  return ':norm @' .. vim.fn.getcharstr() .. '<cr>'
+end, { expr = true, noremap = true })
+
 -- diagnostics
 kmap('n', '[d', vim.diagnostic.goto_prev)
 kmap('n', ']d', vim.diagnostic.goto_next)
