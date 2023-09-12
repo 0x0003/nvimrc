@@ -59,16 +59,16 @@ local function lsp()
   local info = ""
 
   if count["errors"] ~= 0 then
-    errors = " %#StatusReplace#E" .. count["errors"]
+    errors = " %#DiagnosticError#E" .. count["errors"]
   end
   if count["warnings"] ~= 0 then
-    warnings = " %#StatusTerminal#W" .. count["warnings"]
+    warnings = " %#DiagnosticWarn#W" .. count["warnings"]
   end
   if count["hints"] ~= 0 then
-    hints = " %#StatusVisual#H" .. count["hints"]
+    hints = " %#DiagnosticHint#H" .. count["hints"]
   end
   if count["info"] ~= 0 then
-    info = " %#StatusNormal#I" .. count["info"]
+    info = " %#DiagnosticInfo#I" .. count["info"]
   end
 
   return errors .. warnings .. hints .. info .. "%#Normal#"
@@ -86,6 +86,15 @@ local function format()
   return string.format("%s", vim.bo.fileformat):upper()
 end
 
+local function git_branch()
+  local head = vim.api.nvim_call_function("FugitiveHead", {})
+  if head == "" then
+    return ""
+  else
+    return "[" .. head .. "]"
+  end
+end
+
 local function macro_recording()
   local recording_register = vim.fn.reg_recording()
   if recording_register == "" then
@@ -101,12 +110,12 @@ Status = function()
     macro_recording(),
     color(),
     string.format("  %s", modes[vim.api.nvim_get_mode().mode]):upper(),
-    "%#StatusActive#",
+    "%#StatusActive#", -- reset color
     " %f ", -- file path
     "%#StatusVisual#",
-    "%{FugitiveHead()}", -- git branch
+    git_branch(),
     lsp(),
-    "%#StatusActive#",
+    "%#StatusActive#", -- reset color
     "%=", -- right align
     filetype(),
     encoding(),
@@ -117,6 +126,7 @@ Status = function()
 end
 
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
+  group = vim.api.nvim_create_augroup('statusline', { clear = true }),
   pattern = "*",
   command = "setlocal statusline=%!v:lua.Status()",
 })
