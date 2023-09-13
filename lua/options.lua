@@ -1,6 +1,6 @@
 local set = vim.o
 
-set.nolangremap = true
+set.langremap = false
 
 set.termguicolors = true
 set.shortmess = 'filnxtToFIO'
@@ -8,7 +8,7 @@ set.autoread = true
 set.relativenumber = true          -- display line numbers relative to the cursor
 set.numberwidth = 1
 set.belloff = 'all'                -- don't nag me
-set.novisualbell = true            -- ^
+set.visualbell = false             -- ^
 set.autoindent = true              -- keep indentation when inserting newline
 set.encoding = 'utf-8'             -- character encoding used inside vim
 set.scrolloff = 10                 -- lines to keep above/below the cursor
@@ -68,18 +68,18 @@ set.shiftwidth = 2
 set.listchars = 'tab:■■,trail:»,nbsp:■'
 set.list = true
 
--- detect if running under wsl
+-- detect if running under wsl and handle clipboard accordingly
 local in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
 if in_wsl then
   vim.g.clipboard = {
     name = 'WslClipboard',
     copy = {
-      ['+'] = 'clip.exe',
-      ['*'] = 'clip.exe',
+      ['+'] = 'win32yank.exe -i --crlf',
+      ['*'] = 'win32yank.exe -i --crlf',
     },
     paste = {
-      ['+'] = 'powershell.exe -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-      ['*'] = 'powershell.exe -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ['+'] = 'win32yank.exe -o --lf',
+      ['*'] = 'win32yank.exe -o --lf',
     },
     cache_enabled = 0,
   }
