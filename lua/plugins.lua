@@ -33,6 +33,7 @@ require('lazy').setup({
   {
     'lukas-reineke/indent-blankline.nvim',
     config = function() require('plugins.indent_blankline') end,
+    event = 'VeryLazy',
   },
 
   -- visualise rgb and hex values
