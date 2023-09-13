@@ -1,9 +1,12 @@
 -- set leader to spacebar
 vim.g.mapleader = ' '
 
+_G.colorscheme = "main"
+
 local modules = {
   'options',
   'plugins',
+  'colors',
   'remaps',
   'statusline',
   'jp',
