@@ -3,7 +3,7 @@ local function nkmap(keys, command, opts)
   vim.keymap.set('n', keys, command, opts)
 end
 
--- rempas for slightly better japanese IME experience
+-- remaps for slightly better japanese IME experience
 nkmap('ｈ', 'h')
 nkmap('ｊ', 'j')
 nkmap('ｋ', 'k')
