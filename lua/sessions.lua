@@ -9,7 +9,7 @@ function SessionMake()
 end
 
 function SessionLoad()
-  if vim.fn.filereadable(sessionfile) then
+  if vim.fn.filereadable(sessionfile) == 1 then
     vim.cmd.source(sessionfile)
   else
     print('No session loaded.')
