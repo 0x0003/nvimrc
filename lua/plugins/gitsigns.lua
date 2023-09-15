@@ -25,8 +25,8 @@ gitsigns.setup {
     nkmap('<leader>gh', gs.preview_hunk, { buffer = bufnr })
     nkmap('<leader>gs', '<cmd>Git<CR>')
     nkmap('<leader>gd', '<cmd>Gvdiffsplit!<CR>')
-    nkmap('<leader>gP', '<cmd>Git push<CR>')
-    nkmap('<leader>gL', '<cmd>Git pull<CR>')
+    nkmap('<leader>gP', '<cmd>Git! push<CR>')
+    nkmap('<leader>gL', '<cmd>Git! pull<CR>')
   end
 }
 
