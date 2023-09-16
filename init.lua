@@ -80,11 +80,11 @@ vim.api.nvim_create_autocmd('InsertLeave', {
   command = 'set cursorline'
 })
 
--- remove all trailing whitespaces
-function Trimspaces()
+-- remove all trailing whitespaces in active buffer
+vim.api.nvim_create_user_command('Trim', function()
   local save = vim.fn.winsaveview()
   vim.cmd([[%s/\s\+$//ge]])
+  vim.cmd.nohlsearch()
   vim.fn.winrestview(save)
-end
-vim.api.nvim_create_user_command('Trim', function() Trimspaces() end, {})
+end, {})
 
