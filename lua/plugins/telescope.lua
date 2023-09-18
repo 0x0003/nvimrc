@@ -82,10 +82,10 @@ telescope.setup({
 
 -- load extensions
 local ext = (require 'telescope').load_extension
-pcall(ext, 'fzf')
-pcall(ext, 'file_browser')
-pcall(ext, 'ui-select')
-pcall(ext, 'undo')
+ext('fzf')
+ext('file_browser')
+ext('ui-select')
+ext('undo')
 
 -- maps
 local builtin = require('telescope.builtin')
