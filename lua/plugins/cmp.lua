@@ -62,6 +62,8 @@ cmp.setup {
     ['<C-h>'] = cmp.mapping(function()
       if luasnip.choice_active() then
         luasnip.change_choice(-1)
+      else
+        vim.api.nvim_input('<BS>') -- retain default <C-h> behavior
       end
     end, { 'i', 's' }),
     ['<C-l>'] = cmp.mapping(function()
