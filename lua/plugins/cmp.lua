@@ -49,26 +49,32 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<C-j>'] = cmp.mapping(function()
+    ['<C-j>'] = cmp.mapping(function(fallback)
       if luasnip.expand_or_locally_jumpable() then
         luasnip.expand_or_jump()
+      else
+        fallback()
       end
     end, { 'i', 's' }),
-    ['<C-k>'] = cmp.mapping(function()
+    ['<C-k>'] = cmp.mapping(function(fallback)
       if luasnip.locally_jumpable(-1) then
         luasnip.jump(-1)
+      else
+        fallback()
       end
     end, { 'i', 's' }),
-    ['<C-h>'] = cmp.mapping(function()
+    ['<C-h>'] = cmp.mapping(function(fallback)
       if luasnip.choice_active() then
         luasnip.change_choice(-1)
       else
-        vim.api.nvim_input('<BS>') -- retain default <C-h> behavior
+        fallback()
       end
     end, { 'i', 's' }),
-    ['<C-l>'] = cmp.mapping(function()
+    ['<C-l>'] = cmp.mapping(function(fallback)
       if luasnip.choice_active() then
         luasnip.change_choice(1)
+      else
+        fallback()
       end
     end, { 'i', 's' }),
   },
