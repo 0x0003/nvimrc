@@ -19,7 +19,7 @@ require('lazy').setup({
   -- git
   {
     'lewis6991/gitsigns.nvim',
-    config = function() require('plugins.gitsigns') end,
+    config = function() require('plugins.git') end,
     dependencies = {
       'tpope/vim-fugitive',
       'tpope/vim-rhubarb',
