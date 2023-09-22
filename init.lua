@@ -57,6 +57,25 @@ vim.api.nvim_create_autocmd('BufRead', {
   end,
 })
 
+-- keep window position when swtiching buffers
+local bufpos = vim.api.nvim_create_augroup('bufpos', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufLeave' }, {
+  pattern = '*',
+  group = bufpos,
+  callback = function()
+    vim.b[0].winview = vim.fn.winsaveview()
+  end
+})
+vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+  pattern = '*',
+  group = bufpos,
+  callback = function()
+    if vim.b[0].winview ~= nil then
+      vim.fn.winrestview(vim.b[0].winview)
+    end
+  end
+})
+
 -- disable cursorline in insert mode and in inactive windows
 local cline = vim.api.nvim_create_augroup('cline', { clear = true })
 vim.api.nvim_create_autocmd({ 'WinEnter', 'BufWinEnter' }, {
