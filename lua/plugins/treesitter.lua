@@ -59,10 +59,10 @@ treesitter.setup {
     swap = {
       enable = true,
       swap_next = {
-        ['<leader>x'] = '@parameter.inner',
+        ['<leader>>'] = '@parameter.inner',
       },
       swap_previous = {
-        ['<leader>X'] = '@parameter.inner',
+        ['<leader><'] = '@parameter.inner',
       },
     },
   },
