@@ -115,6 +115,15 @@ require('lazy').setup({
     },
   },
 
+  -- effortless file navigation
+  {
+    'ThePrimeagen/harpoon',
+    config = function() require('plugins.harpoon') end,
+    dependencies = {
+      'nvim-lua/plenary.nvim'
+    }
+  },
+
   -- syntax hl
   {
     'nvim-treesitter/nvim-treesitter',

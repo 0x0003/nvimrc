@@ -53,6 +53,10 @@ hl('CmpItemKind', c.base0E)
 hl('CmpItemMenu', c.base0E)
 hl('CmpItemKindSnippet', c.base0E)
 
+-- harpoon
+hl('HarpoonWindow', nil, c.base00)
+hl('HarpoonBorder', c.base00, c.base00)
+
 -- numbers
 hl('CursorLine', nil, c.base01)
 hl('CursorLineNr', c.base04, c.base01)
