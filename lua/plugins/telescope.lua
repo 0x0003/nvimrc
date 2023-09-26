@@ -90,11 +90,6 @@ ext('undo')
 -- maps
 local builtin = require('telescope.builtin')
 
-local function nkmap(keys, command, opts)
-  opts = { noremap = true, silent = true }
-  vim.keymap.set('n', keys, command, opts)
-end
-
 function FuzzyGrep()
   builtin.grep_string({
     path_display = { 'smart' },
@@ -104,19 +99,19 @@ function FuzzyGrep()
   })
 end
 
-nkmap('<leader>?', builtin.oldfiles)
-nkmap('<leader>o', builtin.find_files)
-nkmap('<leader>go', builtin.git_files)
-nkmap('<leader><space>', builtin.buffers)
-nkmap('<leader>l', builtin.buffers)
-nkmap('<leader>/', builtin.current_buffer_fuzzy_find)
-nkmap('<leader>sh', builtin.help_tags)
-nkmap('<leader>sw', builtin.grep_string)
-nkmap('<leader>sg', '<cmd>lua FuzzyGrep{}<CR>')
-nkmap('<leader>q', function() builtin.diagnostics({ bufnr = 0, initial_mode = 'normal' }) end)
-nkmap('<leader>Q', function() builtin.diagnostics({ initial_mode = 'normal' }) end)
-nkmap('<leader>m', function() builtin.marks({ initial_mode = 'normal' }) end)
-nkmap('<leader>e', '<cmd>Telescope file_browser<CR>')
-nkmap('<leader>E', '<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>')
-nkmap('<leader>u', '<cmd>Telescope undo<CR>')
+kmap('n', '<leader>?', builtin.oldfiles)
+kmap('n', '<leader>o', builtin.find_files)
+kmap('n', '<leader>go', builtin.git_files)
+kmap('n', '<leader><space>', builtin.buffers)
+kmap('n', '<leader>l', builtin.buffers)
+kmap('n', '<leader>/', builtin.current_buffer_fuzzy_find)
+kmap('n', '<leader>sh', builtin.help_tags)
+kmap('n', '<leader>sw', builtin.grep_string)
+kmap('n', '<leader>sg', '<cmd>lua FuzzyGrep{}<CR>')
+kmap('n', '<leader>q', function() builtin.diagnostics({ bufnr = 0, initial_mode = 'normal' }) end)
+kmap('n', '<leader>Q', function() builtin.diagnostics({ initial_mode = 'normal' }) end)
+kmap('n', '<leader>m', function() builtin.marks({ initial_mode = 'normal' }) end)
+kmap('n', '<leader>e', '<cmd>Telescope file_browser<CR>')
+kmap('n', '<leader>E', '<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>')
+kmap('n', '<leader>u', '<cmd>Telescope undo<CR>')
 

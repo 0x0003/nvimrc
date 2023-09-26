@@ -1,20 +1,14 @@
-local function nkmap(keys, command, opts)
-  opts = { noremap = true, silent = true }
-  vim.keymap.set('n', keys, command, opts)
-end
-
--- remaps for slightly better japanese IME experience
-nkmap('ｈ', 'h')
-nkmap('ｊ', 'j')
-nkmap('ｋ', 'k')
-nkmap('ｌ', 'l')
-nkmap('ｒ', 'r')
-nkmap('あ', 'a')
-nkmap('い', 'i')
-nkmap('う', 'u')
-nkmap('お', 'o')
-nkmap('っｄ', 'dd')
-nkmap('っｙ', 'yy')
-nkmap('し”', 'ci"')
-nkmap('し’', 'ci\'')
+kmap('n', 'ｈ', 'h')
+kmap('n', 'ｊ', 'j')
+kmap('n', 'ｋ', 'k')
+kmap('n', 'ｌ', 'l')
+kmap('n', 'ｒ', 'r')
+kmap('n', 'あ', 'a')
+kmap('n', 'い', 'i')
+kmap('n', 'う', 'u')
+kmap('n', 'お', 'o')
+kmap('n', 'っｄ', 'dd')
+kmap('n', 'っｙ', 'yy')
+kmap('n', 'し”', 'ci"')
+kmap('n', 'し’', 'ci\'')
 

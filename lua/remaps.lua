@@ -1,8 +1,3 @@
-local function kmap(mode, keys, command, opts)
-  opts = { noremap = true, silent = true }
-  vim.keymap.set(mode, keys, command, opts)
-end
-
 -- marks
 kmap('n', '`', '\'')
 kmap('n', '\'', '`')
@@ -32,8 +27,17 @@ kmap('n', '<leader>Y', '"+Y')
 kmap('x', '<leader>y', '"+y')
 kmap('n', '<leader>P', '<cmd>set paste<CR>"+p<cmd>set nopaste<CR>')
 
+-- emacs-style command-line editing
+kmap('c', '<C-a>', '<Home>', { silent = false })
+kmap('c', '<C-e>', '<End>', { silent = false })
+kmap('c', '<C-b>', '<Left>', { silent = false })
+kmap('c', '<C-f>', '<Right>', { silent = false })
+kmap('c', '<C-d>', '<Del>', { silent = false })
+kmap('c', '<C-n>', '<Down>', { silent = false })
+kmap('c', '<C-p>', '<Up>', { silent = false })
+
 -- run macro over visual range
-vim.keymap.set('x', '@', function ()
+kmap('x', '@', function()
   return ':norm @' .. vim.fn.getcharstr() .. '<cr>'
 end, { expr = true, noremap = true })
 

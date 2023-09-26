@@ -2,11 +2,6 @@
 -- load before lsp to fix Undefined Global 'vim'
 require('neodev').setup()
 
-local function kmap(mode, keys, command, opts)
-  opts = { noremap = true, silent = true }
-  vim.keymap.set(mode, keys, command, opts)
-end
-
 local buf = vim.lsp.buf
 local tele = require('telescope.builtin')
 
@@ -46,6 +41,9 @@ local servers = {
   tsserver = {},
   lua_ls = {
     Lua = {
+      diagnostics = {
+        globals = { 'kmap' }
+      },
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
     },
