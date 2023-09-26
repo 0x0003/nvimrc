@@ -27,8 +27,8 @@ set.nrformats = ''                 -- increment and subtract in decimal
 set.showcmd = true                 -- display keypresses/size of the selected area
 set.fillchars = 'vert:│'           -- character used to draw vsplit borders
 set.cursorline = true
--- set.laststatus = 1                  -- don't display statusline with only 1 window
 -- set.colorcolumn = '80'              -- highlight 80th column
+-- set.laststatus = 1                  -- don't display statusline with only 1 window
 -- set.ruler = true                    -- display cursor and viewbuffer positions
 
 -- statusline setup
@@ -36,6 +36,7 @@ set.laststatus = 3
 set.showmode = false
 set.cmdheight = 0
 set.ruler = false
+set.showcmdloc = 'statusline'
 -- set.shortmess = 'nocI'
 
 -- data to keep in session files

@@ -12,10 +12,10 @@ local modes = {
   ['no'] = 'normal',         -- normal
   ['v'] = 'visual',          -- visual
   ['V'] = 'visual line',     -- visual line
-  [''] = 'visual block',   -- visual block
+  [''] = 'visual block',    -- visual block
   ['s'] = 'select',          -- select
   ['S'] = 'select line',     -- select line
-  [''] = 'select block',   -- select block
+  [''] = 'select block',    -- select block
   ['i'] = 'insert',          -- insert
   ['ic'] = 'insert',         -- insert
   ['R'] = 'replace',         -- replace
@@ -100,9 +100,12 @@ local function lsp()
 end
 
 local search_count = function(args)
-  if vim.v.hlsearch == 0 then return '' end
   local ok, s_count = pcall(vim.fn.searchcount, (args or {}).options or { recompute = true })
-  if not ok or s_count.current == nil or s_count.total == 0 then return '' end
+  if not ok
+    or s_count.current == nil
+    or s_count.total == 0
+    or vim.v.hlsearch == 0
+  then return '' end
   if s_count.incomplete == 1 then return '?/?' end
   local too_many = ('>%d'):format(s_count.maxcount)
   local current = s_count.current > s_count.maxcount and too_many or s_count.current
@@ -136,6 +139,7 @@ Status = function()
     '%#StatusActive#', -- reset color
     '%=',              -- right align
     search_count(),
+    -- '%S',              -- showcmd
     filetype(),
     encoding(),
     format(),
