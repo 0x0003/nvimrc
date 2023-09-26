@@ -36,6 +36,10 @@ kmap('c', '<C-d>', '<Del>', { silent = false })
 kmap('c', '<C-n>', '<Down>', { silent = false })
 kmap('c', '<C-p>', '<Up>', { silent = false })
 
+-- don't start new undo sequence (see `:help i_CTRL-G_u`) with C-w/C-u
+kmap('i', '<C-w>', '<C-w>')
+kmap('i', '<C-u>', '<C-u>')
+
 -- run macro over visual range
 kmap('x', '@', function()
   return ':norm @' .. vim.fn.getcharstr() .. '<cr>'
