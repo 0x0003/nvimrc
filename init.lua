@@ -4,6 +4,17 @@ vim.g.mapleader = ' '
 -- colors
 _G.colorscheme = 'main'
 
+-- shorter vim.keymap.set()
+function kmap(mode, keys, command, extra)
+  local opts = { noremap = true, silent = true }
+  if extra ~= nil then
+    for x, y in pairs(extra) do
+      opts[x] = y
+    end
+  end
+  vim.keymap.set(mode, keys, command, opts)
+end
+
 local modules = {
   'options',
   'plugins',
@@ -19,17 +30,6 @@ for _, a in ipairs(modules) do
   if not ok then
     error('Error calling ' .. a .. err)
   end
-end
-
--- shorter vim.keymap.set()
-function kmap(mode, keys, command, extra)
-  local opts = { noremap = true, silent = true }
-  if extra ~= nil then
-    for x, y in pairs(extra) do
-      opts[x] = y
-    end
-  end
-  vim.keymap.set(mode, keys, command, opts)
 end
 
 -- set POSIX compatible shell if using fish
