@@ -13,9 +13,10 @@ oil.setup({
     -- 'icon',
     -- 'permissions',
     -- {'mtime', highlight = 'StatusCommand'},
-    {'size', highlight = 'Special'},
+    { 'size', highlight = 'Special' },
   },
   keymaps = {
+    ['<BS>'] = 'actions.parent',
     ['<C-k>'] = 'actions.refresh',
     ['<C-l>'] = 'actions.select_vsplit',
     ['<C-j>'] = 'actions.select_split',
