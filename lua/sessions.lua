@@ -3,7 +3,8 @@ local sessionfile = sessiondir .. '/session.vim'
 
 function SessionMake()
   if vim.fn.filewritable(sessiondir) ~= 2 then
-    os.execute('mkdir -p ' .. sessiondir)
+    -- NOTE: fails on directories with aphostrophes in their names
+    os.execute('mkdir -p ' .. '\'' .. sessiondir .. '\'')
   end
   vim.cmd.mksession({ bang = true, args = { sessionfile } })
 end
