@@ -1,3 +1,4 @@
+---@diagnostic disable: lowercase-global
 -- set leader to spacebar
 vim.g.mapleader = ' '
 

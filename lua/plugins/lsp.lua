@@ -37,14 +37,19 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local servers = {
   hls = {}, -- NOTE: needs ghcup
-  html = { filetypes = { 'html', 'twig', 'hbs' } },
+
+  html = {
+    filetypes = { 'html', 'twig', 'hbs' }
+  },
+
   tsserver = {},
+
   lua_ls = {
     Lua = {
-      diagnostics = {
-        globals = { 'kmap' }
+      workspace = {
+        checkThirdParty = false,
+        library = vim.api.nvim_get_runtime_file("", true),
       },
-      workspace = { checkThirdParty = false },
       telemetry = { enable = false },
     },
   },
