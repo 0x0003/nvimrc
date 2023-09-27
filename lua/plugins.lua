@@ -96,13 +96,18 @@ require('lazy').setup({
     },
   },
 
+  -- file browser
+  {
+    'stevearc/oil.nvim',
+    config = function() require('plugins.oil') end,
+  },
+
   -- fuzzy finder
   {
     'nvim-telescope/telescope.nvim',
     config = function() require('plugins.telescope') end,
     branch = '0.1.x',
     dependencies = {
-      'nvim-telescope/telescope-file-browser.nvim', -- file browser
       'nvim-telescope/telescope-ui-select.nvim',    -- vim.ui.select
       'debugloop/telescope-undo.nvim',              -- undo tree
       'nvim-lua/plenary.nvim', {

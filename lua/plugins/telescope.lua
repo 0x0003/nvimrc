@@ -83,7 +83,6 @@ telescope.setup({
 -- load extensions
 local ext = (require 'telescope').load_extension
 ext('fzf')
-ext('file_browser')
 ext('ui-select')
 ext('undo')
 
@@ -111,7 +110,5 @@ kmap('n', '<leader>sg', '<cmd>lua FuzzyGrep{}<CR>')
 kmap('n', '<leader>q', function() builtin.diagnostics({ bufnr = 0, initial_mode = 'normal' }) end)
 kmap('n', '<leader>Q', function() builtin.diagnostics({ initial_mode = 'normal' }) end)
 kmap('n', '<leader>m', function() builtin.marks({ initial_mode = 'normal' }) end)
-kmap('n', '<leader>e', '<cmd>Telescope file_browser<CR>')
-kmap('n', '<leader>E', '<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>')
 kmap('n', '<leader>u', '<cmd>Telescope undo<CR>')
 
