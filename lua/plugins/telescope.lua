@@ -56,27 +56,6 @@ telescope.setup({
         prompt_position = 'top'
       },
     },
-
-    undo = {
-      user_delta = false,
-      initial_mode = 'normal',
-      layout_strategy = 'horizontal',
-      layout_config = {
-        preview_width = 0.6,
-        width = 500,
-        height = 500,
-      },
-      mappings = {
-        i = {
-          ['<CR>'] = require('telescope-undo.actions').restore,
-        },
-        n = {
-          ['<CR>'] = require('telescope-undo.actions').restore,
-          ['y'] = require('telescope-undo.actions').yank_additions,
-          ['d'] = require('telescope-undo.actions').yank_deletions,
-        }
-      },
-    },
   }
 })
 
@@ -84,7 +63,6 @@ telescope.setup({
 local ext = (require 'telescope').load_extension
 ext('fzf')
 ext('ui-select')
-ext('undo')
 
 -- maps
 local builtin = require('telescope.builtin')
@@ -110,5 +88,4 @@ kmap('n', '<leader>sg', '<cmd>lua FuzzyGrep{}<CR>')
 kmap('n', '<leader>q', function() builtin.diagnostics({ bufnr = 0, initial_mode = 'normal' }) end)
 kmap('n', '<leader>Q', function() builtin.diagnostics({ initial_mode = 'normal' }) end)
 kmap('n', '<leader>m', function() builtin.marks({ initial_mode = 'normal' }) end)
-kmap('n', '<leader>u', '<cmd>Telescope undo<CR>')
 

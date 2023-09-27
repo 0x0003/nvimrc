@@ -102,14 +102,19 @@ require('lazy').setup({
     config = function() require('plugins.oil') end,
   },
 
+  -- visualise undo history
+  {
+    'mbbill/undotree',
+    config = function() require('plugins.undotree') end,
+  },
+
   -- fuzzy finder
   {
     'nvim-telescope/telescope.nvim',
     config = function() require('plugins.telescope') end,
     branch = '0.1.x',
     dependencies = {
-      'nvim-telescope/telescope-ui-select.nvim',    -- vim.ui.select
-      'debugloop/telescope-undo.nvim',              -- undo tree
+      'nvim-telescope/telescope-ui-select.nvim', -- vim.ui.select
       'nvim-lua/plenary.nvim', {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
