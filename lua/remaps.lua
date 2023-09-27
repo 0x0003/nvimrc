@@ -8,11 +8,9 @@ kmap('n', '<leader>p', vim.cmd.bp)
 kmap('n', '<BS>', '<C-^>')
 
 -- windows
+kmap('n', '<leader>w', '<C-w>')
+kmap('n', '<leader>wd', '<C-w>c')
 kmap('n', '<leader>f', vim.cmd.close)
-kmap('n', '<C-h>', '<C-w>h')
-kmap('n', '<C-j>', '<C-w>j')
-kmap('n', '<C-k>', '<C-w>k')
-kmap('n', '<C-l>', '<C-w>l')
 kmap('n', '<Right>', '<cmd>vertical resize +3<CR>')
 kmap('n', '<Left>', '<cmd>vertical resize -3<CR>')
 kmap('n', '<Down>', '<cmd>resize +3<CR>')

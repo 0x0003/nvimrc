@@ -2,7 +2,7 @@ local set = vim.o
 
 set.langremap = false
 
-set.guicursor = 'n-v-c-sm-i-ci-ve:block,r-cr-o:hor20'
+-- set.guicursor = 'n-v-c-sm-i-ci-ve:block,r-cr-o:hor20'
 set.termguicolors = true
 set.shortmess = 'filnxtToFIO'
 set.autoread = true
