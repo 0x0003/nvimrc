@@ -114,15 +114,7 @@ local search_count = function(args)
 end
 
 local function filetype()
-  return string.format(' %s', vim.bo.filetype):upper()
-end
-
-local function encoding()
-  return string.format(' %s ', vim.bo.fileencoding):upper()
-end
-
-local function format()
-  return string.format('%s ', vim.bo.fileformat):upper()
+  return string.format(' %s ', vim.bo.filetype):upper()
 end
 
 Status = function()
@@ -141,8 +133,6 @@ Status = function()
     search_count(),
     -- '%S',              -- showcmd
     filetype(),
-    encoding(),
-    format(),
     mode_color(),
     '%l:%c %P  ',
   }

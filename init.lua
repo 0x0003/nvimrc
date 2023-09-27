@@ -119,3 +119,8 @@ vim.api.nvim_create_user_command('Trim', function()
   vim.fn.winrestview(save)
 end, {})
 
+-- show file encoding (utf-8/etc) and format (unix/dos)
+vim.api.nvim_create_user_command('FF', function()
+  print (vim.bo.fileencoding .. ' ・' .. vim.bo.fileformat)
+end, {})
+
