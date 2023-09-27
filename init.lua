@@ -21,7 +21,6 @@ local modules = {
   'colors',
   'remaps',
   'statusline',
-  'jp',
   'sessions',
 }
 
