@@ -5,13 +5,15 @@ if not present then
 end
 
 oil.setup({
+  view_options = {
+    show_hidden = true,
+  },
   default_file_explorer = true,
-  show_hidden = true,
   columns = {
     -- 'icon',
     -- 'permissions',
-    -- 'size',
-    -- 'mtime',
+    -- {'mtime', highlight = 'StatusCommand'},
+    {'size', highlight = 'Special'},
   },
   keymaps = {
     ['g?'] = 'actions.show_help',
