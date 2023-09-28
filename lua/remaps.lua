@@ -60,7 +60,13 @@ kmap('i', '<C-u>', '<C-u>')
 -- run macro over visual range
 kmap('x', '@', function()
   return ':norm @' .. vim.fn.getcharstr() .. '<cr>'
-end, { expr = true, noremap = true })
+end, { expr = true })
+
+-- xdg-open file/URL under the cursor
+kmap('n', 'gx', function()
+  local f = vim.fn
+  f.execute('!xdg-open ' .. f.shellescape(f.expand('<cfile>'), 1))
+end, { expr = true })
 
 -- diagnostics
 kmap('n', '[d', vim.diagnostic.goto_prev)
