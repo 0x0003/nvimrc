@@ -2,7 +2,6 @@ local set = vim.o
 
 set.langremap = false
 
--- set.guicursor = 'n-v-c-sm-i-ci-ve:block,r-cr-o:hor20'
 set.termguicolors = true
 set.shortmess = 'filnxtToFIO'
 set.autoread = true
@@ -28,16 +27,13 @@ set.showcmd = true                 -- display keypresses/size of the selected ar
 set.fillchars = 'vert:│'           -- character used to draw vsplit borders
 set.cursorline = true
 -- set.colorcolumn = '80'              -- highlight 80th column
--- set.laststatus = 1                  -- don't display statusline with only 1 window
--- set.ruler = true                    -- display cursor and viewbuffer positions
 
 -- statusline setup
-set.laststatus = 3
+set.laststatus = 2
 set.showmode = false
 set.cmdheight = 0
 set.ruler = false
 set.showcmdloc = 'statusline'
--- set.shortmess = 'nocI'
 
 -- data to keep in session files
 set.sessionoptions = 'blank,buffers,curdir,help,tabpages,winsize,terminal'

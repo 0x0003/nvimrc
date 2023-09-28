@@ -3,32 +3,9 @@ local function macro_recording()
   if recording_register == '' then
     return ''
   else
-    return '%#StatusInsert#  recording @' .. recording_register
+    return '%#StatusInsert#recording @' .. recording_register .. ' '
   end
 end
-
-local modes = {
-  ['n'] = 'normal',          -- normal
-  ['no'] = 'normal',         -- normal
-  ['v'] = 'visual',          -- visual
-  ['V'] = 'visual line',     -- visual line
-  [''] = 'visual block',    -- visual block
-  ['s'] = 'select',          -- select
-  ['S'] = 'select line',     -- select line
-  [''] = 'select block',    -- select block
-  ['i'] = 'insert',          -- insert
-  ['ic'] = 'insert',         -- insert
-  ['R'] = 'replace',         -- replace
-  ['Rv'] = 'visual replace', -- visual replace
-  ['c'] = 'command',         -- command
-  ['cv'] = 'vim ex',         -- vim ex
-  ['ce'] = 'ex',             -- ex
-  ['r'] = 'prompt',          -- prompt
-  ['rm'] = 'moar',           -- moar
-  ['r?'] = 'confirm',        -- confirm
-  ['!'] = 'shell',           -- shell
-  ['t'] = 'terminal',        -- terminal
-}
 
 local function mode_color()
   local mode = vim.api.nvim_get_mode().mode
@@ -55,18 +32,9 @@ local function file_color()
   if modified == true then
     color = '%#StatusCommand#'
   else
-    color = '%#StatusNormal#'
+    color = '%#StatusLine#'
   end
   return color
-end
-
-local function git_branch()
-  local head = vim.api.nvim_call_function('FugitiveHead', {})
-  if head == '' then
-    return ''
-  else
-    return ' %#StatusVisual# ' .. head
-  end
 end
 
 local function lsp()
@@ -110,37 +78,53 @@ local search_count = function(args)
   local too_many = ('>%d'):format(s_count.maxcount)
   local current = s_count.current > s_count.maxcount and too_many or s_count.current
   local total = s_count.total > s_count.maxcount and too_many or s_count.total
-  return ('[%s/%s]          '):format(current, total)
+  return ('[%s/%s]'):format(current, total)
 end
 
-local function filetype()
-  return string.format(' %s ', vim.bo.filetype):upper()
-end
+Status = {}
 
-Status = function()
+Status.active = function()
   return table.concat {
     macro_recording(),
+    '%#StatusActive#', -- reset color
     mode_color(),
-    string.format('  %s ', modes[vim.api.nvim_get_mode().mode]):upper(),
-    '%#StatusActive#', -- reset color
+    '%<',              -- truncate
+    '%f ',             -- buffer name
     file_color(),
-    '%f',              -- file path
-    '%#StatusVisual#',
-    git_branch(),
+    '%M',              -- modified flag
+    '%#StatusLine#',   -- dimmer color
+    '%H',              -- help flag
+    '%R',              -- readonly flag
     lsp(),
-    '%#StatusActive#', -- reset color
     '%=',              -- right align
     search_count(),
-    -- '%S',              -- showcmd
-    filetype(),
+    '%-15.(   %S%)',   -- min filled width 15; showcmd
+    '%-14.(%l,%c%V%)', -- min filled width 14; ruler
     mode_color(),
-    '%l:%c %P  ',
+    ' %P'              -- relative position
   }
 end
 
+function Status.inactive()
+  return table.concat {
+    '%f ', -- buffer name
+    '%M',  -- modified flag
+    '%H',  -- help flag
+    '%R ', -- readonly flag
+    '%<',  -- truncate
+    string.rep('─', vim.api.nvim_win_get_width(0) * 3),
+  }
+end
+
+local status = vim.api.nvim_create_augroup('statusline', { clear = true })
 vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter' }, {
-  group = vim.api.nvim_create_augroup('statusline', { clear = true }),
   pattern = '*',
-  command = 'setlocal statusline=%!v:lua.Status()',
+  group = status,
+  command = 'setlocal statusline=%!v:lua.Status.active()',
+})
+vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave' }, {
+  pattern = '*',
+  group = status,
+  command = 'setlocal statusline=%!v:lua.Status.inactive()',
 })
 

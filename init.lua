@@ -119,8 +119,12 @@ vim.api.nvim_create_user_command('Trim', function()
   vim.fn.winrestview(save)
 end, {})
 
--- print file encoding (utf-8/etc) and format (unix/dos)
+-- print file info
 vim.api.nvim_create_user_command('FF', function()
-  print (vim.bo.fileencoding .. ' | ' .. vim.bo.fileformat)
+  local sep = ' | '
+  local typ = vim.bo.filetype .. sep
+  local enc = vim.bo.fileencoding .. sep
+  local fmt = vim.bo.fileformat
+  print(typ .. enc .. fmt)
 end, {})
 

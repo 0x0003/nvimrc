@@ -23,10 +23,10 @@ local function hl(highlight, fg, bg)
 end
 
 -- status Line
-hl('StatusNormal')
-hl('StatusLineNC', c.base03)
-hl('StatusActive', c.base05)
+hl('StatusNormal', c.base04)
+hl('StatusActive', c.base04)
 hl('StatusLine', c.base03)
+hl('StatusLineNC', c.base02)
 hl('StatusReplace', c.base08)
 hl('StatusInsert', c.base0B)
 hl('StatusCommand', c.base0A)
@@ -63,7 +63,7 @@ hl('CursorLineNr', c.base04, c.base01)
 hl('LineNr', c.base03)
 
 -- misc
-hl('VertSplit', c.base01, nil)
+hl('WinSeparator', c.base01, nil)
 hl('NormalFloat', nil, c.base01)
 hl('FloatBorder', c.base01, c.base01)
 hl('ColorColumn', nil, c.base01)
