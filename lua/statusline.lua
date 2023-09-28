@@ -107,11 +107,12 @@ end
 
 function Status.inactive()
   return table.concat {
-    '%f ', -- buffer name
-    '%M',  -- modified flag
-    '%H',  -- help flag
-    '%R ', -- readonly flag
-    '%<',  -- truncate
+    '%f ',                -- buffer name
+    '%M',                 -- modified flag
+    '%H',                 -- help flag
+    '%R ',                -- readonly flag
+    '%<',                 -- truncate
+    '%#StatusLineNCSep#', -- darker color
     string.rep('─', vim.api.nvim_win_get_width(0) * 3),
   }
 end
