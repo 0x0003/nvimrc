@@ -1,19 +1,22 @@
-local present, indent_blankline = pcall(require, 'indent_blankline')
+local present, ibl = pcall(require, 'ibl')
 
 if not present then
   return
 end
 
-indent_blankline.setup {
-  filetype_exclude = {
-    'help',
-    'terminal',
-    'TelescopePrompt',
-    'TelescopeResults'
+ibl.setup({
+  indent = {
+    char = { '│' },
   },
-  show_current_context = true,
-  show_trailing_blankline_indent = false,
-}
-
-vim.cmd('hi IndentBlanklineContextChar guifg=#555555')
+  exclude = {
+    filetypes = {
+      'oil',
+    },
+  },
+  scope = {
+    enabled = true,
+    show_start = false,
+    show_end = true,
+  },
+})
 

@@ -70,6 +70,10 @@ hl('FloatBorder', c.base01, c.base01)
 hl('ColorColumn', nil, c.base01)
 hl('Search', c.base00, c.base0B) -- hlsearch
 
+-- indent-blankline.nvim
+hl('IblScope', c.base03)
+hl('IblIndent', c.base02)
+
 -- extra
 vim.cmd('hi Comment gui=italic')
 
