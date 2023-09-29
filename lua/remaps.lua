@@ -1,3 +1,5 @@
+local f = vim.fn
+
 -- marks
 kmap('n', '`', '\'')
 kmap('n', '\'', '`')
@@ -59,13 +61,17 @@ kmap('i', '<C-u>', '<C-u>')
 
 -- run macro over visual range
 kmap('x', '@', function()
-  return ':norm @' .. vim.fn.getcharstr() .. '<CR>'
+  return ':norm @' .. f.getcharstr() .. '<CR>'
 end, { expr = true })
 
 -- xdg-open file/URL under the cursor
 kmap('n', 'gx', function()
-  local f = vim.fn
   f.execute('!xdg-open ' .. f.shellescape(f.expand('<cfile>'), 1))
+end, { expr = true })
+
+-- xdg-open file associated with active buffer
+kmap('n', 'gX', function()
+  f.execute('!xdg-open ' .. f.shellescape(f.expand('%:p'), 1))
 end, { expr = true })
 
 -- diagnostics
