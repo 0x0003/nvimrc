@@ -59,7 +59,7 @@ kmap('i', '<C-u>', '<C-u>')
 
 -- run macro over visual range
 kmap('x', '@', function()
-  return ':norm @' .. vim.fn.getcharstr() .. '<cr>'
+  return ':norm @' .. vim.fn.getcharstr() .. '<CR>'
 end, { expr = true })
 
 -- xdg-open file/URL under the cursor
