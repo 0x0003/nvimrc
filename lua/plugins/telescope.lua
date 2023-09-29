@@ -34,19 +34,6 @@ telescope.setup({
   },
 
   extensions = {
-    file_browser = {
-      hijack_netrw = true,
-      disable_devicons = true,
-      previewer = false,
-      layout_strategy = 'horizontal',
-      initial_mode = 'normal',
-      layout_config = {
-        width = 100,
-        height = 50,
-        prompt_position = 'top'
-      },
-    },
-
     ['ui-select'] = {
       layout_strategy = 'cursor',
       initial_mode = 'normal',
