@@ -64,15 +64,12 @@ kmap('x', '@', function()
   return ':norm @' .. f.getcharstr() .. '<CR>'
 end, { expr = true })
 
--- xdg-open file/URL under the cursor
-kmap('n', 'gx', function()
-  f.execute('!xdg-open ' .. f.shellescape(f.expand('<cfile>'), 1))
-end, { expr = true })
-
--- xdg-open file associated with active buffer
-kmap('n', 'gX', function()
-  f.execute('!xdg-open ' .. f.shellescape(f.expand('%:p'), 1))
-end, { expr = true })
+-- xdg-open
+local function xdgo(x)
+  f.execute('!xdg-open ' .. f.shellescape(f.expand(x), 1))
+end
+kmap('n', 'gx', function() xdgo('<cfile>') end, { expr = true })
+kmap('n', 'gX', function() xdgo('%:p') end, { expr = true })
 
 -- diagnostics
 kmap('n', '[d', vim.diagnostic.goto_prev)
