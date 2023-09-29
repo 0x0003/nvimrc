@@ -16,10 +16,10 @@ treesitter.setup {
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = '<C-space>',
-      node_incremental = '<C-space>',
-      scope_incremental = '<C-s>',
-      node_decremental = '<M-space>',
+      init_selection = '<leader>ti',
+      scope_incremental = '<leader>ts',
+      node_incremental = '<leader>tn',
+      node_decremental = '<leader>tN',
     },
   },
   textobjects = {
