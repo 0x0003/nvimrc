@@ -64,7 +64,7 @@ local function lsp()
   if count['info'] ~= 0 then
     info = ' %#DiagnosticInfo#I' .. count['info']
   end
-  return errors .. warnings .. hints .. info .. '%#Normal#'
+  return errors .. warnings .. hints .. info .. '%#StatusActive#'
 end
 
 local search_count = function(args)
