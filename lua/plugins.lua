@@ -47,9 +47,10 @@ require('lazy').setup({
 
   -- automatically close parentheses, brackets, etc
   {
-    'windwp/nvim-autopairs',
-    config = function() require('nvim-autopairs').setup() end,
-    event = 'VeryLazy',
+    'altermo/ultimate-autopair.nvim',
+    config = function() require('plugins.autopair') end,
+    event = { 'InsertEnter', 'CmdlineEnter' },
+    branch = 'v0.6',
   },
 
   -- surround text objects
