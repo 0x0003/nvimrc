@@ -52,12 +52,13 @@ kmap('n', 'う', 'u')
 kmap('n', 'お', 'o')
 kmap('n', 'っｄ', 'dd')
 kmap('n', 'っｙ', 'yy')
+kmap('n', 'ｐ', 'p')
 kmap('n', 'し”', 'ci"')
 kmap('n', 'し’', 'ci\'')
 
 -- don't start new undo sequence (see `:help i_CTRL-G_u`) with C-w/C-u
-kmap('i', '<C-w>', '<C-w>')
-kmap('i', '<C-u>', '<C-u>')
+kmap('i', '<C-w>', '<C-w>', { noremap = false })
+kmap('i', '<C-u>', '<C-u>', { noremap = false })
 
 -- run macro over visual range
 kmap('x', '@', function()
