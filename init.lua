@@ -58,9 +58,9 @@ vim.api.nvim_create_autocmd('BufRead', {
         local ft = vim.bo[opts.buf].filetype
         local last_known_line = vim.api.nvim_buf_get_mark(opts.buf, '"')[1]
         if
-          not (ft:match('commit') and ft:match('rebase'))
-          and last_known_line > 1
-          and last_known_line <= vim.api.nvim_buf_line_count(opts.buf)
+            not (ft:match('commit') and ft:match('rebase'))
+            and last_known_line > 1
+            and last_known_line <= vim.api.nvim_buf_line_count(opts.buf)
         then
           vim.api.nvim_feedkeys([[g`"]], 'nx', false)
         end
@@ -124,7 +124,9 @@ vim.api.nvim_create_user_command('FF', function()
   local sep = ' | '
   local typ = vim.bo.filetype .. sep
   local enc = vim.bo.fileencoding .. sep
-  local fmt = vim.bo.fileformat
-  print(typ .. enc .. fmt)
+  local fmt = vim.bo.fileformat .. sep
+  local lne = vim.fn.line('w$') .. ' lines, '
+  local chr = string.match((vim.fn.execute('!wc -m %')), '%d+') .. ' characters'
+  print(typ .. enc .. fmt .. lne .. chr)
 end, {})
 
