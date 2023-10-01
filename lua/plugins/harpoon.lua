@@ -17,17 +17,12 @@ harpoon.setup({
 local mark = require('harpoon.mark')
 local ui = require('harpoon.ui')
 
-local function nkmap(keys, command, opts)
-  opts = { silent = true }
-  vim.keymap.set('n', keys, command, opts)
-end
+kmap('n', '<leader>a', mark.add_file)
+kmap('n', '<leader>A', ui.toggle_quick_menu)
 
-nkmap('<leader>a', mark.add_file)
-nkmap('<leader>A', ui.toggle_quick_menu)
-
-nkmap('<leader>1', function() ui.nav_file(1) end)
-nkmap('<leader>2', function() ui.nav_file(2) end)
-nkmap('<leader>3', function() ui.nav_file(3) end)
-nkmap('<leader>4', function() ui.nav_file(4) end)
-nkmap('<leader>5', function() ui.nav_file(5) end)
+kmap('n', '<leader>1', function() ui.nav_file(1) end)
+kmap('n', '<leader>2', function() ui.nav_file(2) end)
+kmap('n', '<leader>3', function() ui.nav_file(3) end)
+kmap('n', '<leader>4', function() ui.nav_file(4) end)
+kmap('n', '<leader>5', function() ui.nav_file(5) end)
 
