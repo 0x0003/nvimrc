@@ -42,7 +42,9 @@ require('lazy').setup({
     'norcalli/nvim-colorizer.lua',
     config = function() require('colorizer').setup() end,
     lazy = true,
-    ft = { 'css', 'html', 'javascript', 'typescript', 'lua', 'vim', 'markdown' },
+    ft = {
+      'css', 'html', 'javascript', 'typescript', 'lua', 'vim', 'markdown',
+    },
   },
 
   -- automatically close parentheses, brackets, etc
