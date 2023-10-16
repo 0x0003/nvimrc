@@ -29,7 +29,7 @@ end
 local function file_color()
   local modified = vim.api.nvim_buf_get_option(0, 'modified')
   local color = ''
-  if modified == true then
+  if modified then
     color = '%#StatusCommand#'
   else
     color = '%#StatusLine#'
