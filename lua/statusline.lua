@@ -98,7 +98,7 @@ Status.active = function()
     lsp(),
     '%=',              -- right align
     search_count(),
-    '%-15.(   %S%)',   -- min filled width 15; showcmd
+    '%-15.(%S%)',      -- min filled width 15; showcmd
     '%-14.(%l,%c%V%)', -- min filled width 14; ruler
     mode_color(),
     ' %P'              -- relative position
@@ -108,12 +108,12 @@ end
 function Status.inactive()
   return table.concat {
     '%f ',                -- buffer name
-    '%M',                 -- modified flag
+    '%#StatusCommand#%M', -- modified flag
+    '%#StatusLineNCSep#', -- darker color
     '%H',                 -- help flag
-    '%R ',                -- readonly flag
+    '%R',                 -- readonly flag
     '%<',                 -- truncate
     '%#StatusLineNCSep#', -- darker color
-    string.rep('─', vim.api.nvim_win_get_width(0) * 3),
   }
 end
 

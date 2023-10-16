@@ -1,4 +1,4 @@
-local set = vim.o
+local set = vim.opt
 
 set.langremap = false
 
@@ -24,7 +24,6 @@ set.title = true -- set window title as open file
 set.ttimeoutlen = 0 -- fast keys
 set.nrformats = '' -- increment and subtract in decimal
 set.showcmd = true -- display keypresses/size of the selected area
-set.fillchars = 'vert:│' -- character used to draw vsplit borders
 set.cursorline = true -- highlight a line that has the cursor on it
 -- set.colorcolumn = '80' -- highlight 80th column
 
@@ -34,6 +33,11 @@ set.showmode = false
 set.cmdheight = 0
 set.ruler = false
 set.showcmdloc = 'statusline'
+
+-- characters used to draw:
+set.fillchars:append('vert:│') -- vsplit borders
+set.fillchars:append(',stl: ') -- active statusline fill
+set.fillchars:append(',stlnc:─') -- inactive statusline fill
 
 -- data to keep in session files
 set.sessionoptions = 'blank,buffers,curdir,help,tabpages,winsize,terminal'
@@ -63,7 +67,9 @@ set.softtabstop = 2
 set.shiftwidth = 2
 
 -- list variables
-set.listchars = 'tab:■■,trail:»,nbsp:■'
+set.listchars:append('tab:■■')
+set.listchars:append(',trail:»')
+set.listchars:append(',nbsp:■')
 set.list = true
 
 -- detect if running under wsl and handle clipboard accordingly
