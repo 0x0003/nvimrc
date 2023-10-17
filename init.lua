@@ -50,6 +50,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- jump to last known cursor position when opening a file
 vim.api.nvim_create_autocmd('BufRead', {
+  group = vim.api.nvim_create_augroup('curpos', { clear = true }),
   callback = function(opts)
     vim.api.nvim_create_autocmd('BufWinEnter', {
       once = true,
