@@ -123,11 +123,12 @@ end, {})
 -- print file info
 vim.api.nvim_create_user_command('FF', function()
   local sep = ' | '
+  local pth = vim.fn.expand('%:p') .. ': '
   local typ = vim.bo.filetype .. sep
   local enc = vim.bo.fileencoding .. sep
   local fmt = vim.bo.fileformat .. sep
   local lne = vim.fn.line('w$') .. ' lines, '
   local chr = string.match((vim.fn.execute('!wc -m %')), '%d+') .. ' characters'
-  print(typ .. enc .. fmt .. lne .. chr)
+  print(pth .. typ .. enc .. fmt .. lne .. chr)
 end, {})
 
