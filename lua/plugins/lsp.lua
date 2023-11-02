@@ -1,5 +1,5 @@
 -- extra nvim lua configuration
--- load before lsp to fix Undefined Global 'vim'
+-- load before lsp
 require('neodev').setup()
 
 local buf = vim.lsp.buf
@@ -16,7 +16,7 @@ local on_attach = function()
   kmap('n', 'gI', buf.implementation)
   kmap('n', 'K', buf.hover)
   kmap('n', '<leader>k', buf.signature_help)
-  kmap('n', '<leader>rn', buf.rename)
+  kmap('n', '<leader>cn', buf.rename)
   kmap('n', '<leader>ca', buf.code_action)
   kmap('n', '<leader>cs', tele.lsp_document_symbols)
   kmap('n', '<leader>cS', tele.lsp_dynamic_workspace_symbols)
