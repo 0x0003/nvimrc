@@ -20,7 +20,7 @@ luasnip.config.setup({
   ext_opts = {
     [require('luasnip.util.types').choiceNode] = {
       active = {
-        virt_text = { { '• Choice node', 'Base04' } }
+        virt_text = { { '• Choice node', 'Normal' } }
       }
     }
   }
@@ -30,6 +30,8 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'buffer' },
+    { name = 'path' },
   },
   snippet = {
     expand = function(args)

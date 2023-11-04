@@ -24,8 +24,8 @@ require('lazy').setup({
     'NeogitOrg/neogit',
     config = function() require('plugins.git') end,
     dependencies = {
-      'lewis6991/gitsigns.nvim',
       'nvim-lua/plenary.nvim',
+      'lewis6991/gitsigns.nvim',
       'sindrets/diffview.nvim'
     },
     event = 'VeryLazy',
@@ -95,13 +95,12 @@ require('lazy').setup({
     'hrsh7th/nvim-cmp',
     config = function() require('plugins.cmp') end,
     dependencies = {
-      -- snippet engine and its associated nvim-cmp source
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
-      -- LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
-      -- a number of user-friendly snippets
-      'rafamadriz/friendly-snippets',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'L3MON4D3/LuaSnip', -- snippet engine
+      'saadparwaiz1/cmp_luasnip', -- cmp source for snippet engine
+      'rafamadriz/friendly-snippets', -- collection of premade snippets
     },
   },
 
