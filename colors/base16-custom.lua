@@ -23,7 +23,7 @@ local function hl(highlight, fg, bg)
   vim.cmd('hi ' .. highlight .. ' guifg=' .. fg .. ' guibg=' .. bg)
 end
 
--- status Line
+-- statusline
 hl('StatusNormal', c.base06)
 hl('StatusActive', c.base06)
 hl('StatusLine', c.base03)
@@ -34,6 +34,11 @@ hl('StatusInsert', c.base0B)
 hl('StatusCommand', c.base0A)
 hl('StatusVisual', c.base0D)
 hl('StatusTerminal', c.base0E)
+
+-- tabline
+hl('TabLine', c.base02, c.base00)
+hl('TabLineSel', c.base06, c.base00)
+hl('TabLineFill', c.base00)
 
 -- telescope
 hl('TelescopePromptBorder', c.base01, c.base01)
