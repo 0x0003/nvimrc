@@ -6,12 +6,12 @@ if not present then
   return
 end
 
-local colo_present, c = pcall(require, 'base16-palettes.' .. colorscheme)
+local colo_present, c = pcall(require, 'colors.' .. colorscheme)
 if colo_present then
   base16.setup(c)
 else
   _G.colorscheme = 'main'
-  c = require('base16-palettes.' .. _G.colorscheme)
+  c = require('colors.' .. _G.colorscheme)
   base16.setup(c)
 end
 

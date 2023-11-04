@@ -16,7 +16,7 @@ require('lazy').setup({
   -- colorscheme
   {
     'RRethy/nvim-base16',
-    config = function() vim.cmd('colorscheme base16-custom') end,
+    config = function() require('plugins.base16') end,
   },
 
   -- git
@@ -28,6 +28,7 @@ require('lazy').setup({
       'nvim-lua/plenary.nvim',
       'sindrets/diffview.nvim'
     },
+    event = 'VeryLazy',
   },
 
   -- detect tabstop and shiftwidth automatically
@@ -114,6 +115,7 @@ require('lazy').setup({
   {
     'mbbill/undotree',
     config = function() require('plugins.undotree') end,
+    event = 'VeryLazy'
   },
 
   -- fuzzy finder
@@ -139,7 +141,8 @@ require('lazy').setup({
     config = function() require('plugins.harpoon') end,
     dependencies = {
       'nvim-lua/plenary.nvim'
-    }
+    },
+    event = 'VeryLazy'
   },
 
   -- syntax hl
