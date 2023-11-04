@@ -19,6 +19,12 @@ require('lazy').setup({
     config = function() require('plugins.base16') end,
   },
 
+  -- file browser
+  {
+    'stevearc/oil.nvim',
+    config = function() require('plugins.oil') end,
+  },
+
   -- git
   {
     'NeogitOrg/neogit',
@@ -91,7 +97,7 @@ require('lazy').setup({
       -- extra nvim-specific lua configuration
       'folke/neodev.nvim',
     },
-    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre'  }
+    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' }
   },
 
   -- autocompletion
@@ -102,17 +108,11 @@ require('lazy').setup({
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
-      'L3MON4D3/LuaSnip', -- snippet engine
-      'saadparwaiz1/cmp_luasnip', -- cmp source for snippet engine
+      'L3MON4D3/LuaSnip',             -- snippet engine
+      'saadparwaiz1/cmp_luasnip',     -- cmp source for snippet engine
       'rafamadriz/friendly-snippets', -- collection of premade snippets
     },
     event = 'InsertEnter'
-  },
-
-  -- file browser
-  {
-    'stevearc/oil.nvim',
-    config = function() require('plugins.oil') end,
   },
 
   -- visualise undo history
@@ -129,13 +129,14 @@ require('lazy').setup({
     branch = '0.1.x',
     dependencies = {
       'nvim-telescope/telescope-ui-select.nvim', -- vim.ui.select
-      'nvim-lua/plenary.nvim', {
-      'nvim-telescope/telescope-fzf-native.nvim',
-      build = 'make',
-      cond = function()
-        return vim.fn.executable 'make' == 1
-      end,
-    },
+      'nvim-lua/plenary.nvim',
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = 'make',
+        cond = function()
+          return vim.fn.executable 'make' == 1
+        end,
+      },
     },
     event = 'VeryLazy'
   },
@@ -158,7 +159,7 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
+    event = 'VeryLazy'
   },
-  event = 'VeryLazy'
 })
 
