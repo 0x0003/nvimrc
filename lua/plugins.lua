@@ -32,7 +32,10 @@ require('lazy').setup({
   },
 
   -- detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+  {
+    'tpope/vim-sleuth',
+    event = 'VeryLazy'
+  },
 
   -- indent guides
   {
@@ -56,8 +59,8 @@ require('lazy').setup({
   {
     'altermo/ultimate-autopair.nvim',
     config = function() require('plugins.autopair') end,
-    event = { 'InsertEnter', 'CmdlineEnter' },
     branch = 'v0.6',
+    event = { 'InsertEnter', 'CmdlineEnter' }
   },
 
   -- surround text objects
@@ -88,6 +91,7 @@ require('lazy').setup({
       -- extra nvim-specific lua configuration
       'folke/neodev.nvim',
     },
+    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre'  }
   },
 
   -- autocompletion
@@ -102,6 +106,7 @@ require('lazy').setup({
       'saadparwaiz1/cmp_luasnip', -- cmp source for snippet engine
       'rafamadriz/friendly-snippets', -- collection of premade snippets
     },
+    event = 'InsertEnter'
   },
 
   -- file browser
@@ -132,6 +137,7 @@ require('lazy').setup({
       end,
     },
     },
+    event = 'VeryLazy'
   },
 
   -- effortless file navigation
@@ -153,5 +159,6 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
+  event = 'VeryLazy'
 })
 
