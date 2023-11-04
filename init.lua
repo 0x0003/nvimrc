@@ -111,6 +111,17 @@ vim.api.nvim_create_autocmd('InsertLeave', {
   command = 'set cursorline'
 })
 
+-- spellcheck
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'markdown', 'text', 'org', 'NeogitCommitMessage' },
+  group = vim.api.nvim_create_augroup('splchk', { clear = true }),
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = { 'en_us', 'cjk' }
+    kmap('i', '<C-l>', '<ESC>[s1z=gi', { buffer = 0 })
+  end
+})
+
 -- remove all trailing whitespaces in active buffer
 vim.api.nvim_create_user_command('Trim', function()
   local save = vim.fn.winsaveview()

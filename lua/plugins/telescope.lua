@@ -76,4 +76,5 @@ kmap('n', '<leader>sg', '<cmd>lua FuzzyGrep{}<CR>')
 kmap('n', '<leader>q', function() builtin.diagnostics({ bufnr = 0, initial_mode = 'normal' }) end)
 kmap('n', '<leader>Q', function() builtin.diagnostics({ initial_mode = 'normal' }) end)
 kmap('n', '<leader>m', function() builtin.marks({ initial_mode = 'normal' }) end)
+kmap('n', 'z=', function() builtin.spell_suggest({ initial_mode = 'normal' }) end)
 

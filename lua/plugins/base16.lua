@@ -70,6 +70,12 @@ hl('CursorLine', nil, c.base01)
 hl('CursorLineNr', c.base04, c.base01)
 hl('LineNr', c.base03)
 
+-- spellcheck
+hl('SpellBad', c.base08)
+hl('SpellCap', c.base09)
+hl('SpellRare', c.base0E)
+hl('SpellLocal', c.base0C)
+
 -- misc
 hl('WinSeparator', c.base01, nil)
 hl('NormalFloat', nil, c.base01)
