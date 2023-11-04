@@ -1,4 +1,5 @@
 -- myagko/nymph.nvim
+vim.g.colors_name = 'base16-nymph'
 return {
   base00 = "#121212",
   -- base00 = "#1A2023",

@@ -19,7 +19,6 @@ end
 local modules = {
   'options',
   'plugins',
-  'colors',
   'remaps',
   'statusline',
   'sessions',

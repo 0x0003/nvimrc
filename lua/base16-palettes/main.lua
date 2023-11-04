@@ -1,3 +1,4 @@
+vim.g.colors_name = 'base16-main'
 return {
   base00 = '#121212',
   base01 = '#1f1f1f',

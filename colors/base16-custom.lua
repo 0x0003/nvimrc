@@ -1,17 +1,18 @@
 local colorscheme = _G.colorscheme
+vim.cmd('hi clear')
 
 local present, base16 = pcall(require, 'base16-colorscheme')
 if not present then
   return
 end
 
-local colo_present, c = pcall(require, 'colors.' .. colorscheme)
+local colo_present, c = pcall(require, 'base16-palettes.' .. colorscheme)
 if colo_present then
   base16.setup(c)
 else
   -- default to "main" if set colorscheme doesn't exist
   _G.colorscheme = 'main'
-  c = require('colors.' .. _G.colorscheme)
+  c = require('base16-palettes.' .. _G.colorscheme)
   base16.setup(c)
 end
 
@@ -23,8 +24,8 @@ local function hl(highlight, fg, bg)
 end
 
 -- status Line
-hl('StatusNormal', c.base04)
-hl('StatusActive', c.base04)
+hl('StatusNormal', c.base06)
+hl('StatusActive', c.base06)
 hl('StatusLine', c.base03)
 hl('StatusLineNC', c.base02)
 hl('StatusLineNCSep', c.base01)

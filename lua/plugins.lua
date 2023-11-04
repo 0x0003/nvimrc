@@ -14,7 +14,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   -- colorscheme
-  'RRethy/nvim-base16',
+  {
+    'RRethy/nvim-base16',
+    config = function() vim.cmd('colorscheme base16-custom') end,
+  },
 
   -- git
   {

@@ -1,3 +1,4 @@
+vim.g.colors_name = 'base16-everforest_bright'
 return {
   base00 = "#121212",
   base01 = "#323c41",

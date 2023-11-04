@@ -1,3 +1,4 @@
+vim.g.colors_name = 'base16-everforest_alt'
 return {
   base00 = '#121212',
   base01 = '#374247',
