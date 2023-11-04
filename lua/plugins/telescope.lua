@@ -27,7 +27,7 @@ telescope.setup({
     layout_strategy = 'bottom_pane',
     sorting_strategy = 'ascending', -- display results top -> bottom
     layout_config = {
-      preview_width = 0.6,
+      preview_width = 0.5,
       height = 25,
       prompt_position = 'top'
     },

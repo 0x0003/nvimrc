@@ -10,7 +10,6 @@ local colo_present, c = pcall(require, 'base16-palettes.' .. colorscheme)
 if colo_present then
   base16.setup(c)
 else
-  -- default to "main" if set colorscheme doesn't exist
   _G.colorscheme = 'main'
   c = require('base16-palettes.' .. _G.colorscheme)
   base16.setup(c)
@@ -41,9 +40,11 @@ hl('TabLineSel', c.base06, c.base00)
 hl('TabLineFill', c.base00)
 
 -- telescope
+hl('TelescopePromptTitle', nil, c.base0A)
+hl('TelescopePreviewTitle', nil, nil)
 hl('TelescopePromptBorder', c.base01, c.base01)
-hl('TelescopePromptNormal', nil, c.base01)
-hl('TelescopePromptPrefix', c.base08, c.base01)
+hl('TelescopePromptNormal', c.base04, c.base01)
+hl('TelescopePromptPrefix', c.base04, c.base01)
 hl('TelescopeSelection', nil, c.base01)
 
 -- menu
