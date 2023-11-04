@@ -21,11 +21,12 @@ require('lazy').setup({
 
   -- git
   {
-    'lewis6991/gitsigns.nvim',
+    'NeogitOrg/neogit',
     config = function() require('plugins.git') end,
     dependencies = {
-      'tpope/vim-fugitive',
-      'tpope/vim-rhubarb',
+      'lewis6991/gitsigns.nvim',
+      'nvim-lua/plenary.nvim',
+      'sindrets/diffview.nvim'
     },
   },
 

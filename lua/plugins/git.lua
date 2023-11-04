@@ -1,10 +1,30 @@
-local present, gitsigns = pcall(require, 'gitsigns')
+local present, ng = pcall(require, 'neogit')
 
 if not present then
   return
 end
 
-gitsigns.setup {
+ng.setup({
+  disable_hint = true,
+  mappings = {
+    popup = {
+      ['g?'] = 'HelpPopup',
+    },
+    status = {
+      ['<leader>gs'] = 'Close',
+      ['='] = 'Toggle',
+    }
+  }
+})
+
+kmap('n', '<leader>gs', function() ng.open({ kind = 'replace' }) end)
+
+require('diffview').setup({
+  use_icons = false,
+  show_help_hints = false,
+})
+
+require('gitsigns').setup {
   signs = {
     add = { text = '+' },
     change = { text = '~' },
@@ -18,10 +38,7 @@ gitsigns.setup {
     kmap('n', '[g', gs.prev_hunk, { buffer = bufnr })
     kmap('n', ']g', gs.next_hunk, { buffer = bufnr })
     kmap('n', '<leader>gh', gs.preview_hunk, { buffer = bufnr })
-    kmap('n', '<leader>gs', '<cmd>Git<CR>')
-    kmap('n', '<leader>gd', '<cmd>Gvdiffsplit!<CR>')
-    kmap('n', '<leader>gP', '<cmd>Git! push<CR>')
-    kmap('n', '<leader>gL', '<cmd>Git! pull<CR>')
+    kmap('n', '<leader>gb', gs.blame_line)
   end
 }
 
