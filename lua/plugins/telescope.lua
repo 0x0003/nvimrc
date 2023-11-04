@@ -63,6 +63,7 @@ function FuzzyGrep()
   })
 end
 
+kmap('n', '<leader>.', builtin.resume)
 kmap('n', '<leader>?', builtin.oldfiles)
 kmap('n', '<leader>o', builtin.find_files)
 kmap('n', '<leader>go', builtin.git_files)
