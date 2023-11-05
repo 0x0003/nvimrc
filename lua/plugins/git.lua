@@ -24,7 +24,9 @@ require('diffview').setup({
   show_help_hints = false,
 })
 
-require('gitsigns').setup {
+local gs = require('gitsigns')
+
+gs.setup ({
   signs = {
     add = { text = '+' },
     change = { text = '~' },
@@ -34,11 +36,10 @@ require('gitsigns').setup {
   },
   attach_to_untracked = false,
   on_attach = function(bufnr)
-    local gs = require('gitsigns')
     kmap('n', '[g', gs.prev_hunk, { buffer = bufnr })
     kmap('n', ']g', gs.next_hunk, { buffer = bufnr })
     kmap('n', '<leader>gh', gs.preview_hunk, { buffer = bufnr })
     kmap('n', '<leader>gb', gs.blame_line)
   end
-}
+})
 

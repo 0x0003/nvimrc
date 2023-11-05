@@ -95,7 +95,7 @@ vim.api.nvim_create_autocmd({ 'WinEnter', 'BufWinEnter' }, {
   group = cline,
   command = 'setlocal cursorline',
 })
-vim.api.nvim_create_autocmd({ 'WinLeave' }, {
+vim.api.nvim_create_autocmd('WinLeave', {
   pattern = '*',
   group = cline,
   command = 'setlocal nocursorline',
