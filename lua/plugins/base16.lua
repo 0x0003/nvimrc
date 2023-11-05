@@ -6,21 +6,22 @@ end
 
 vim.cmd('hi clear')
 
-local color_exists, c = pcall(require, 'colors.' .. _G.colorscheme)
+local palette = 'main'
 
-if color_exists then
+local palette_exists, c = pcall(require, 'colors.' .. palette)
+
+if palette_exists then
   base16.setup(c)
 else
-  _G.colorscheme = 'main'
-  c = require('colors.' .. _G.colorscheme)
+  palette = 'main'
+  c = require('colors.' .. palette)
   base16.setup(c)
 end
 
--- highlights
-local function hl(highlight, fg, bg)
+local function hl(group, fg, bg)
   if fg == nil then fg = 'none' end
   if bg == nil then bg = 'none' end
-  vim.cmd('hi ' .. highlight .. ' guifg=' .. fg .. ' guibg=' .. bg)
+  vim.cmd('hi ' .. group .. ' guifg=' .. fg .. ' guibg=' .. bg)
 end
 
 -- statusline
@@ -40,31 +41,11 @@ hl('TabLine', c.base02, c.base00)
 hl('TabLineSel', c.base06, c.base00)
 hl('TabLineFill', c.base00)
 
--- telescope
-hl('TelescopePromptTitle', nil, c.base0A)
-hl('TelescopePreviewTitle', nil, nil)
-hl('TelescopePromptBorder', c.base01, c.base01)
-hl('TelescopePromptNormal', c.base04, c.base01)
-hl('TelescopePromptPrefix', c.base04, c.base01)
-hl('TelescopeSelection', nil, c.base01)
-
--- menu
+-- popup menu
 hl('Pmenu', nil, c.base01)
 hl('PmenuSbar', nil, c.base01)
 hl('PmenuThumb', nil, c.base01)
 hl('PmenuSel', nil, c.base02)
-
--- cmp
-hl('CmpItemAbbrMatch', c.base05)
-hl('CmpItemAbbrMatchFuzzy', c.base05)
-hl('CmpItemAbbr', c.base03)
-hl('CmpItemKind', c.base0E)
-hl('CmpItemMenu', c.base0E)
-hl('CmpItemKindSnippet', c.base0E)
-
--- harpoon
-hl('HarpoonWindow', nil, c.base00)
-hl('HarpoonBorder', c.base00, c.base00)
 
 -- numbers
 hl('CursorLine', nil, c.base01)
@@ -83,6 +64,26 @@ hl('NormalFloat', nil, c.base01)
 hl('FloatBorder', c.base01, c.base01)
 hl('ColorColumn', nil, c.base01)
 hl('Search', c.base00, c.base0B) -- hlsearch
+
+-- telescope
+hl('TelescopePromptTitle', nil, c.base0A)
+hl('TelescopePreviewTitle', nil, nil)
+hl('TelescopePromptBorder', c.base01, c.base01)
+hl('TelescopePromptNormal', c.base04, c.base01)
+hl('TelescopePromptPrefix', c.base04, c.base01)
+hl('TelescopeSelection', nil, c.base01)
+
+-- cmp
+hl('CmpItemAbbrMatch', c.base05)
+hl('CmpItemAbbrMatchFuzzy', c.base05)
+hl('CmpItemAbbr', c.base03)
+hl('CmpItemKind', c.base0E)
+hl('CmpItemMenu', c.base0E)
+hl('CmpItemKindSnippet', c.base0E)
+
+-- harpoon
+hl('HarpoonWindow', nil, c.base00)
+hl('HarpoonBorder', c.base00, c.base00)
 
 -- indent-blankline.nvim
 hl('IblScope', c.base03)

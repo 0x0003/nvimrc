@@ -2,9 +2,6 @@
 -- set leader to spacebar
 vim.g.mapleader = ' '
 
--- colors
-_G.colorscheme = 'main'
-
 -- shorter vim.keymap.set()
 function kmap(mode, keys, command, extra)
   local opts = { noremap = true, silent = true }
