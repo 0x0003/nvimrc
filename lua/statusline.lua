@@ -68,12 +68,15 @@ local function lsp()
 end
 
 local search_count = function(args)
-  local ok, s_count = pcall(vim.fn.searchcount, (args or {}).options or { recompute = true })
+  local ok, s_count = pcall(vim.fn.searchcount,
+    (args or {}).options or { recompute = true })
   if not ok
-    or s_count.current == nil
-    or s_count.total == 0
-    or vim.v.hlsearch == 0
-  then return '' end
+      or s_count.current == nil
+      or s_count.total == 0
+      or vim.v.hlsearch == 0
+  then
+    return ''
+  end
   if s_count.incomplete == 1 then return '?/?' end
   local too_many = ('>%d'):format(s_count.maxcount)
   local current = s_count.current > s_count.maxcount and too_many or s_count.current
