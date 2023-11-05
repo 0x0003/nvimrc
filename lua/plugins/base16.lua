@@ -1,15 +1,14 @@
-local colorscheme = _G.colorscheme
-vim.cmd('hi clear')
-
 local present, base16 = pcall(require, 'base16-colorscheme')
 
 if not present then
   return
 end
 
-local colo_present, c = pcall(require, 'colors.' .. colorscheme)
+vim.cmd('hi clear')
 
-if colo_present then
+local color_exists, c = pcall(require, 'colors.' .. _G.colorscheme)
+
+if color_exists then
   base16.setup(c)
 else
   _G.colorscheme = 'main'
