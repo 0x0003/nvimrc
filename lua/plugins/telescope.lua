@@ -54,15 +54,6 @@ ext('ui-select')
 -- maps
 local builtin = require('telescope.builtin')
 
-function FuzzyGrep()
-  builtin.grep_string({
-    path_display = { 'smart' },
-    only_sort_text = true,
-    word_match = '-w',
-    search = '',
-  })
-end
-
 kmap('n', '<leader>.', builtin.resume)
 kmap('n', '<leader>?', builtin.oldfiles)
 kmap('n', '<leader>o', builtin.find_files)
@@ -73,7 +64,14 @@ kmap('n', '<leader>l', builtin.buffers)
 kmap('n', '<leader>/', builtin.current_buffer_fuzzy_find)
 kmap('n', '<leader>sh', builtin.help_tags)
 kmap('n', '<leader>sw', builtin.grep_string)
-kmap('n', '<leader>sg', '<cmd>lua FuzzyGrep{}<CR>')
+kmap('n', '<leader>sg', function()
+  builtin.grep_string({
+    path_display = { 'smart' },
+    only_sort_text = true,
+    word_match = '-w',
+    search = '',
+  })
+end)
 kmap('n', '<leader>q', function() builtin.diagnostics({ bufnr = 0, initial_mode = 'normal' }) end)
 kmap('n', '<leader>Q', function() builtin.diagnostics({ initial_mode = 'normal' }) end)
 kmap('n', '<leader>m', function() builtin.marks({ initial_mode = 'normal' }) end)
