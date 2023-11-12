@@ -1,8 +1,4 @@
-local present, ng = pcall(require, 'neogit')
-
-if not present then
-  return
-end
+local ng = require('neogit')
 
 ng.setup({
   disable_hint = true,

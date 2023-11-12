@@ -1,8 +1,4 @@
-local present, ibl = pcall(require, 'ibl')
-
-if not present then
-  return
-end
+local ibl = require('ibl')
 
 ibl.setup({
   indent = {

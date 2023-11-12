@@ -1,8 +1,4 @@
-local present, harpoon = pcall(require, 'harpoon')
-
-if not present then
-  return
-end
+local harpoon = require('harpoon')
 
 vim.g.harpoon_log_level = 'fatal'
 

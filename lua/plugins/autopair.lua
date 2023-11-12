@@ -1,8 +1,4 @@
-local present, ua = pcall(require, 'ultimate-autopair')
-
-if not present then
-  return
-end
+local ua = require('ultimate-autopair')
 
 ua.setup({
   bs = {

@@ -1,8 +1,4 @@
-local present, base16 = pcall(require, 'base16-colorscheme')
-
-if not present then
-  return
-end
+local base16 = require('base16-colorscheme')
 
 vim.cmd('hi clear')
 

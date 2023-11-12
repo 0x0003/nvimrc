@@ -1,8 +1,4 @@
-local present, oil = pcall(require, 'oil')
-
-if not present then
-  return
-end
+local oil = require('oil')
 
 oil.setup({
   view_options = {
