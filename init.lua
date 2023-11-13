@@ -16,10 +16,11 @@ end
 local modules = {
   'options',
   'plugins',
+  'autocommands',
   'remaps',
   'statusline',
-  'sessions',
-  'usercommands'
+  'usercommands',
+  'sessions'
 }
 
 for _, a in ipairs(modules) do
