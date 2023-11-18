@@ -35,9 +35,11 @@ set.ruler = false
 set.showcmdloc = 'statusline'
 
 -- characters used to draw:
-set.fillchars:append('vert:│') -- vsplit borders
-set.fillchars:append(',stl: ') -- active statusline fill
-set.fillchars:append(',stlnc:─') -- inactive statusline fill
+set.fillchars = {
+  vert = '│', -- vsplit borders
+  stl = ' ', -- active statusline fill
+  stlnc = '─' -- inactive statusline fill
+}
 
 -- data to keep in session files
 set.sessionoptions = 'blank,buffers,curdir,help,tabpages,winsize,terminal'
@@ -67,10 +69,12 @@ set.softtabstop = 2
 set.shiftwidth = 2
 
 -- list variables
-set.listchars:append('tab:■■')
-set.listchars:append(',trail:»')
-set.listchars:append(',nbsp:■')
 set.list = true
+set.listchars = {
+  tab = '■■',
+  trail = '»',
+  nbsp = '■',
+}
 
 -- detect if running under wsl and handle clipboard accordingly
 local in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
