@@ -59,6 +59,7 @@ require('lazy').setup({
     lazy = true,
     ft = {
       'css', 'html', 'javascript', 'typescript', 'lua', 'vim', 'markdown',
+      'yaml'
     },
   },
 
