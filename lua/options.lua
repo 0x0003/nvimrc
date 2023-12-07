@@ -71,9 +71,9 @@ set.shiftwidth = 2
 -- list variables
 set.list = true
 set.listchars = {
-  tab = '■■',
+  tab = '━━⭾',
   trail = '»',
-  nbsp = '■',
+  nbsp = '⍽',
 }
 
 -- detect if running under wsl and handle clipboard accordingly
