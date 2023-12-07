@@ -17,6 +17,7 @@ require('lazy').setup({
   {
     'RRethy/nvim-base16',
     config = function() require('plugins.base16') end,
+    priority = 1000
   },
 
   -- file browser
