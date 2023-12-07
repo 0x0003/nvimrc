@@ -19,7 +19,6 @@ local snippets, autosnippets = {}, {}
 local group = vim.api.nvim_create_augroup('Lua Snippets', { clear = true })
 local file_pattern = '*.lua'
 
--- haskell start
 --
 -- function application
 local appl = s({ trig = '-', hidden = true }, fmt([[
@@ -98,6 +97,5 @@ local pragma = s('pr', fmt([[
 }))
 table.insert(snippets, pragma)
 
--- module end
 return snippets, autosnippets
 

@@ -19,7 +19,6 @@ local snippets, autosnippets = {}, {}
 local group = vim.api.nvim_create_augroup('Lua Snippets', { clear = true })
 local file_pattern = '*.lua'
 
--- lua start
 --
 -- `important!;`
 local imp = s('!;',
@@ -27,6 +26,5 @@ local imp = s('!;',
 )
 table.insert(autosnippets, imp)
 
--- module end
 return snippets, autosnippets
 
