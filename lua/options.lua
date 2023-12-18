@@ -27,6 +27,11 @@ set.showcmd = true -- display keypresses/size of the selected area
 set.cursorline = true -- highlight a line that has the cursor on it
 -- set.colorcolumn = '80' -- highlight 80th column
 
+-- wrap long lines
+set.wrap = true
+set.linebreak = true
+set.showbreak = '› '
+
 -- statusline setup
 set.laststatus = 2
 set.showmode = false
