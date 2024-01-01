@@ -86,7 +86,7 @@ end
 
 Status = {}
 
-Status.active = function()
+function Status.active()
   return table.concat {
     macro_recording(),
     '%#StatusActive#', -- reset color
