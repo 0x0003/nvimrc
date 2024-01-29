@@ -1,6 +1,9 @@
+local au = vim.api.nvim_create_autocmd
+local aug = vim.api.nvim_create_augroup
+
 -- highlight on yank `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
+local highlight_group = aug('YankHighlight', { clear = true })
+au('TextYankPost', {
   callback = function()
     vim.highlight.on_yank()
   end,
@@ -9,10 +12,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- jump to last known cursor position when opening a file
-vim.api.nvim_create_autocmd('BufRead', {
-  group = vim.api.nvim_create_augroup('curpos', { clear = true }),
+au('BufRead', {
+  group = aug('curpos', { clear = true }),
   callback = function(opts)
-    vim.api.nvim_create_autocmd('BufWinEnter', {
+    au('BufWinEnter', {
       once = true,
       buffer = opts.buf,
       callback = function()
@@ -30,15 +33,15 @@ vim.api.nvim_create_autocmd('BufRead', {
 })
 
 -- keep window position when swtiching buffers
-local bufpos = vim.api.nvim_create_augroup('bufpos', { clear = true })
-vim.api.nvim_create_autocmd({ 'BufLeave' }, {
+local bufpos = aug('bufpos', { clear = true })
+au({ 'BufLeave' }, {
   pattern = '*',
   group = bufpos,
   callback = function()
     vim.b[0].winview = vim.fn.winsaveview()
   end
 })
-vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+au({ 'BufEnter' }, {
   pattern = '*',
   group = bufpos,
   callback = function()
@@ -49,32 +52,32 @@ vim.api.nvim_create_autocmd({ 'BufEnter' }, {
 })
 
 -- disable cursorline in insert mode and in inactive windows
-local cline = vim.api.nvim_create_augroup('cline', { clear = true })
-vim.api.nvim_create_autocmd({ 'WinEnter', 'BufWinEnter' }, {
+local cline = aug('cline', { clear = true })
+au({ 'WinEnter', 'BufWinEnter' }, {
   pattern = '*',
   group = cline,
   command = 'setlocal cursorline',
 })
-vim.api.nvim_create_autocmd('WinLeave', {
+au('WinLeave', {
   pattern = '*',
   group = cline,
   command = 'setlocal nocursorline',
 })
-vim.api.nvim_create_autocmd('InsertEnter', {
+au('InsertEnter', {
   pattern = '*',
   group = cline,
   command = 'set nocursorline'
 })
-vim.api.nvim_create_autocmd('InsertLeave', {
+au('InsertLeave', {
   pattern = '*',
   group = cline,
   command = 'set cursorline'
 })
 
 -- spellcheck
-vim.api.nvim_create_autocmd('FileType', {
+au('FileType', {
   pattern = { 'markdown', 'text', 'org', 'NeogitCommitMessage' },
-  group = vim.api.nvim_create_augroup('splchk', { clear = true }),
+  group = aug('splchk', { clear = true }),
   callback = function()
     vim.opt_local.spell = true
     vim.opt_local.spelllang = { 'en_us', 'cjk' }
