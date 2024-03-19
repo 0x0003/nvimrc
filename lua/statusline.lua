@@ -121,14 +121,23 @@ function Status.inactive()
 end
 
 local status = vim.api.nvim_create_augroup('statusline', { clear = true })
-vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter' }, {
+vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter', 'WinClosed' }, {
   pattern = '*',
   group = status,
-  command = 'setlocal statusline=%!v:lua.Status.active()',
+  callback = function()
+    vim.opt_local.statusline = '%!v:lua.Status.active()'
+    if #(vim.api.nvim_tabpage_list_wins(0)) > 1 then
+      vim.opt_local.fillchars:append { stl = '─' }
+    else
+      vim.opt_local.fillchars:append { stl = ' ' }
+    end
+  end
 })
-vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave' }, {
+vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave'}, {
   pattern = '*',
   group = status,
-  command = 'setlocal statusline=%!v:lua.Status.inactive()',
+  callback = function()
+    vim.opt_local.statusline = '%!v:lua.Status.inactive()'
+  end
 })
 
