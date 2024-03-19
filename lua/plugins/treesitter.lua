@@ -4,7 +4,7 @@ local treesitter = require('nvim-treesitter.configs')
 treesitter.setup {
   ensure_installed = {
     'c', 'haskell', 'lua', 'python', 'bash', 'fish', 'javascript', 'typescript',
-    'vimdoc', 'vim', 'css', 'html'
+    'vimdoc', 'vim', 'css', 'html', 'yaml', 'toml'
   },
   auto_install = false,
   highlight = { enable = true },
