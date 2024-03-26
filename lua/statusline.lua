@@ -133,7 +133,7 @@ vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter', 'WinLeave' }, {
     end
   end
 })
-vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave'}, {
+vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave' }, {
   pattern = '*',
   group = status,
   callback = function()
