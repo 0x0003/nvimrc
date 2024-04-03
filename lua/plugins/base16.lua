@@ -81,10 +81,6 @@ hl('CmpItemKindSnippet', c.base0E)
 hl('HarpoonWindow', nil, c.base00)
 hl('HarpoonBorder', c.base00, c.base00)
 
--- indent-blankline.nvim
-hl('IblScope', c.base03)
-hl('IblIndent', c.base02)
-
 -- extra
 vim.cmd('hi Comment gui=italic')
 
