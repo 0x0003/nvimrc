@@ -2,15 +2,15 @@ local base16 = require('base16-colorscheme')
 
 vim.cmd('hi clear')
 
-local palette = 'main'
+Palette = 'main'
 
-local palette_exists, c = pcall(require, 'colors.' .. palette)
+local palette_exists, c = pcall(require, 'colors.' .. Palette)
 
 if palette_exists then
   base16.setup(c)
 else
-  palette = 'main'
-  c = require('colors.' .. palette)
+  Palette = 'main'
+  c = require('colors.' .. Palette)
   base16.setup(c)
 end
 
