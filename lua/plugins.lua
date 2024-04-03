@@ -46,9 +46,10 @@ require('lazy').setup({
 
   -- indent guides
   {
-    'shellRaining/hlchunk.nvim',
-    config = function() require('plugins.hlchunk') end,
-    event = 'UIEnter',
+    'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
+    config = function() require('plugins.indent_blankline') end,
+    event = 'VeryLazy',
   },
 
   -- visualise rgb and hex values
