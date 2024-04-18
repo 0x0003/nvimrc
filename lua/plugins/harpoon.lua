@@ -7,7 +7,7 @@ harpoon:setup({
   border_chars = { " ", " ", " ", " ", " ", " ", " ", " " },
 })
 
-kmap('n', '<leader>a', function() harpoon:list():append() end)
+kmap('n', '<leader>a', function() harpoon:list():add() end)
 kmap('n', '<leader>A', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
 kmap('n', '<leader>1', function() harpoon:list():select(1) end)
