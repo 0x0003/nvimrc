@@ -27,7 +27,7 @@ local function mode_color()
 end
 
 local function file_color()
-  local modified = vim.api.nvim_buf_get_option(0, 'modified')
+  local modified = vim.api.nvim_get_option_value('modified', { buf = 0 })
   local color = ''
   if modified then
     color = '%#StatusCommand#'
@@ -40,10 +40,10 @@ end
 local function lsp()
   local count = {}
   local levels = {
-    errors = 'Error',
-    warnings = 'Warn',
-    info = 'Info',
-    hints = 'Hint',
+    errors = vim.diagnostic.severity.ERROR,
+    warnings = vim.diagnostic.severity.WARN,
+    info = vim.diagnostic.severity.INFO,
+    hints = vim.diagnostic.severity.HINT
   }
   for k, level in pairs(levels) do
     count[k] = vim.tbl_count(vim.diagnostic.get(0, { severity = level }))
