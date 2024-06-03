@@ -1,4 +1,4 @@
 ## Prerequisites
-- neovim **0.9+**
+- neovim **0.10+**
 - make
 - gcc

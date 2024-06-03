@@ -1,7 +1,3 @@
--- extra nvim lua configuration
--- load before lsp
-require('neodev').setup()
-
 local buf = vim.lsp.buf
 local tele = require('telescope.builtin')
 

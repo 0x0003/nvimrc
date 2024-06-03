@@ -1,6 +1,6 @@
 -- bootstrap
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
     'git',
     'clone',
@@ -95,9 +95,7 @@ require('lazy').setup({
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
       -- status
-      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
-      -- extra nvim-specific lua configuration
-      'folke/neodev.nvim',
+      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
     },
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' }
   },
@@ -113,6 +111,14 @@ require('lazy').setup({
       'L3MON4D3/LuaSnip',             -- snippet engine
       'saadparwaiz1/cmp_luasnip',     -- cmp source for snippet engine
       'rafamadriz/friendly-snippets', -- collection of premade snippets
+      {
+        'folke/lazydev.nvim',         -- nvim-specific lua config
+        config = function() require('plugins.lazydev') end,
+        ft = 'lua',
+        dependencies = {
+          { 'Bilal2453/luvit-meta', lazy = true }
+        }
+      },
     },
     event = 'InsertEnter'
   },
