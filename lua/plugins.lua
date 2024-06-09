@@ -95,7 +95,7 @@ require('lazy').setup({
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
       -- status
-      { 'j-hui/fidget.nvim', opts = {} },
+      'linrongbin16/lsp-progress.nvim',
     },
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' }
   },

@@ -1,5 +1,6 @@
 local buf = vim.lsp.buf
 local tele = require('telescope.builtin')
+local status = require('lsp-progress')
 
 -- run on attach
 local on_attach = function()
@@ -44,7 +45,7 @@ local servers = {
     Lua = {
       workspace = {
         checkThirdParty = false,
-        library = vim.api.nvim_get_runtime_file("", true),
+        library = vim.api.nvim_get_runtime_file('', true),
       },
       telemetry = { enable = false },
     },
@@ -80,4 +81,15 @@ mason_lsp.setup_handlers {
     }
   end
 }
+
+-- display LSP progress in statusline
+status.setup({
+  max_size = 70,
+  format = function(client_messages)
+    if #client_messages > 0 then
+      return ' ' .. table.concat(client_messages, ' ')
+    end
+    return ''
+  end,
+})
 

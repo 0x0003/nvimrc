@@ -89,22 +89,25 @@ Status = {}
 function Status.active()
   return table.concat {
     macro_recording(),
-    '%#StatusActive#', -- reset color
+    '%#StatusActive#',   -- reset color
     mode_color(),
-    '%<',              -- truncate
-    '%f ',             -- buffer name
+    '%<',                -- truncate
+    '%f',                -- buffer name
     file_color(),
-    '%M',              -- modified flag
-    '%#StatusLine#',   -- dimmer color
-    '%H',              -- help flag
-    '%R',              -- readonly flag
+    '%M',                -- modified flag
+    '%#StatusLine#',     -- dimmer color
+    '%H',                -- help flag
+    '%R',                -- readonly flag
     lsp(),
-    '%=',              -- right align
+    '%#StatusCommand#',     -- dimmer color
+    require('lsp-progress').progress(),
+    '%#StatusLine#',     -- dimmer color
+    '%=',                -- right align
     search_count(),
-    '%-15.(%S%)',      -- min filled width 15; showcmd
-    '%-14.(%l,%c%V%)', -- min filled width 14; ruler
+    '%-15.(%S%)',        -- min filled width 15; showcmd
+    '%-14.(%l,%c%V%)',   -- min filled width 14; ruler
     mode_color(),
-    ' %P'              -- relative position
+    ' %P'                -- relative position
   }
 end
 
@@ -121,11 +124,19 @@ function Status.inactive()
 end
 
 local status = vim.api.nvim_create_augroup('statusline', { clear = true })
-vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter', 'WinLeave' }, {
+
+vim.api.nvim_create_autocmd( { 'User' }, {
+  pattern = 'LspProgressStatusUpdated',
+  group = status,
+  callback = function ()
+    vim.cmd('redrawstatus')
+  end
+})
+
+vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter', 'WinLeave', 'ModeChanged' }, {
   pattern = '*',
   group = status,
   callback = function()
-    vim.opt_local.statusline = '%!v:lua.Status.active()'
     if #(vim.api.nvim_tabpage_list_wins(0)) > 1 then
       vim.opt_local.fillchars:append { stl = '─' }
     else
@@ -133,6 +144,15 @@ vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter', 'WinLeave' }, {
     end
   end
 })
+
+vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter', 'WinLeave' }, {
+  pattern = '*',
+  group = status,
+  callback = function()
+    vim.opt_local.statusline = '%!v:lua.Status.active()'
+  end
+})
+
 vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave' }, {
   pattern = '*',
   group = status,
