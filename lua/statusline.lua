@@ -145,9 +145,9 @@ local status = vim.api.nvim_create_augroup('statusline', { clear = true })
 vim.api.nvim_create_autocmd({ 'User' }, {
   pattern = 'LspProgressStatusUpdated',
   group = status,
-  callback = function()
+  callback = vim.schedule_wrap(function()
     vim.cmd('redrawstatus')
-  end
+  end)
 })
 
 vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter' }, {
