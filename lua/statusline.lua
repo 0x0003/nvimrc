@@ -64,7 +64,7 @@ local function lsp()
   if count['info'] ~= 0 then
     info = ' %#DiagnosticInfo#I' .. count['info']
   end
-  return errors .. warnings .. hints .. info .. '%#StatusActive#'
+  return errors .. warnings .. hints .. info
 end
 
 local function lspProgress()
@@ -110,7 +110,7 @@ function Status.active()
     lsp(),
     '%#Normal#',       -- accent color
     lspProgress(),
-    '%#StatusLine#',   -- dimmer color
+    '%#StatusActive#', -- reset color
     '%=',              -- right align
     search_count(),
     '%-15.(%S%)',      -- min filled width 15; showcmd
