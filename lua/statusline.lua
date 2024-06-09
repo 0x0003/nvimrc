@@ -67,7 +67,7 @@ local function lsp()
   return errors .. warnings .. hints .. info
 end
 
-local function lspProgress()
+local function lsp_progress()
   local present, progress = pcall(require, 'lsp-progress')
   if not present then
     return ''
@@ -109,7 +109,7 @@ function Status.active()
     '%R',              -- readonly flag
     lsp(),
     '%#Normal#',       -- accent color
-    lspProgress(),
+    lsp_progress(),
     '%#StatusActive#', -- reset color
     '%=',              -- right align
     search_count(),
