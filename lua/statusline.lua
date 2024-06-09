@@ -89,25 +89,25 @@ Status = {}
 function Status.active()
   return table.concat {
     macro_recording(),
-    '%#StatusActive#',   -- reset color
+    '%#StatusActive#', -- reset color
     mode_color(),
-    '%<',                -- truncate
-    '%f',                -- buffer name
+    '%<',              -- truncate
+    '%f',              -- buffer name
     file_color(),
-    '%M',                -- modified flag
-    '%#StatusLine#',     -- dimmer color
-    '%H',                -- help flag
-    '%R',                -- readonly flag
+    '%M',              -- modified flag
+    '%#StatusLine#',   -- dimmer color
+    '%H',              -- help flag
+    '%R',              -- readonly flag
     lsp(),
-    '%#StatusCommand#',     -- dimmer color
+    '%#Normal#',       -- accent color
     require('lsp-progress').progress(),
-    '%#StatusLine#',     -- dimmer color
-    '%=',                -- right align
+    '%#StatusLine#',   -- dimmer color
+    '%=',              -- right align
     search_count(),
-    '%-15.(%S%)',        -- min filled width 15; showcmd
-    '%-14.(%l,%c%V%)',   -- min filled width 14; ruler
+    '%-15.(%S%)',      -- min filled width 15; showcmd
+    '%-14.(%l,%c%V%)', -- min filled width 14; ruler
     mode_color(),
-    ' %P'                -- relative position
+    ' %P'              -- relative position
   }
 end
 
