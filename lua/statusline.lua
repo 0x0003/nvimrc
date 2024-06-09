@@ -141,12 +141,6 @@ vim.api.nvim_create_autocmd({ 'User' }, {
   end
 })
 
-vim.api.nvim_create_autocmd({ 'ModeChanged', 'WinClosed' }, {
-  pattern = '*',
-  group = status,
-  callback = function() statusfill() end
-})
-
 vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter' }, {
   pattern = '*',
   group = status,
