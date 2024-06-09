@@ -67,6 +67,15 @@ local function lsp()
   return errors .. warnings .. hints .. info .. '%#StatusActive#'
 end
 
+local function lspProgress()
+  local present, progress = pcall(require, 'lsp-progress')
+  if not present then
+    return ''
+  else
+    return progress.progress()
+  end
+end
+
 local search_count = function(args)
   local ok, s_count = pcall(vim.fn.searchcount,
     (args or {}).options or { recompute = true })
@@ -100,7 +109,7 @@ function Status.active()
     '%R',              -- readonly flag
     lsp(),
     '%#Normal#',       -- accent color
-    require('lsp-progress').progress(),
+    lspProgress(),
     '%#StatusLine#',   -- dimmer color
     '%=',              -- right align
     search_count(),
