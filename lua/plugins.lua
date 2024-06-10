@@ -74,7 +74,7 @@ require('lazy').setup({
   -- surround text objects
   {
     'kylechui/nvim-surround',
-    config = function() require('nvim-surround').setup() end,
+    config = function() require('plugins.nvim_surround') end,
     version = '*',
     event = 'VeryLazy',
   },
