@@ -170,7 +170,6 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
-    event = 'VeryLazy'
   },
 })
 
