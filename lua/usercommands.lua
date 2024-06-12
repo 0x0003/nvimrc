@@ -15,7 +15,7 @@ command('FF', function()
   local typ = vim.bo.filetype .. sep
   local enc = vim.bo.fileencoding .. sep
   local fmt = vim.bo.fileformat .. sep
-  local lne = vim.fn.line('w$') .. ' lines, '
+  local lne = vim.fn.line('$') .. ' lines, '
   local chr = string.match((vim.fn.execute('!wc -m %')), '%d+') .. ' characters'
   print(pth .. typ .. enc .. fmt .. lne .. chr)
 end, {})
