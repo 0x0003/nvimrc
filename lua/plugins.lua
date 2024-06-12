@@ -24,8 +24,6 @@ require('lazy').setup({
   {
     'stevearc/oil.nvim',
     config = function() require('plugins.oil') end,
-    branch = 'master',
-    commit = '18272ab'
   },
 
   -- git
