@@ -1,6 +1,7 @@
 local buf = vim.lsp.buf
 local tele = require('telescope.builtin')
-local status = require('lsp-progress')
+local mason_lsp = require('mason-lspconfig')
+local mason = require('mason')
 
 -- run on attach
 local on_attach = function()
@@ -45,8 +46,6 @@ local servers = {
 }
 
 -- autoinstall servers
-local mason = require('mason')
-
 mason.setup {
   ui = {
     icons = {
@@ -56,8 +55,6 @@ mason.setup {
     }
   }
 }
-
-local mason_lsp = require('mason-lspconfig')
 
 mason_lsp.setup {
   ensure_installed = vim.tbl_keys(servers),
@@ -75,7 +72,7 @@ mason_lsp.setup_handlers {
 }
 
 -- display LSP progress in statusline
-status.setup({
+require('lsp-progress').setup({
   max_size = 70,
   format = function(client_messages)
     if #client_messages > 0 then

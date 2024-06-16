@@ -1,4 +1,5 @@
 local ng = require('neogit')
+local gs = require('gitsigns')
 
 ng.setup({
   disable_hint = true,
@@ -14,13 +15,6 @@ ng.setup({
 })
 
 kmap('n', '<leader>r', function() ng.open({ kind = 'replace' }) end)
-
-require('diffview').setup({
-  use_icons = false,
-  show_help_hints = false,
-})
-
-local gs = require('gitsigns')
 
 gs.setup ({
   signs = {
@@ -53,5 +47,10 @@ gs.setup ({
     kmap('n', '[g', gs.prev_hunk, { buffer = bufnr })
     kmap('n', ']g', gs.next_hunk, { buffer = bufnr })
   end
+})
+
+require('diffview').setup({
+  use_icons = false,
+  show_help_hints = false,
 })
 

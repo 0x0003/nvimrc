@@ -1,6 +1,4 @@
-local ns = require('nvim-surround')
-
-ns.setup({
+require('nvim-surround').setup({
   keymaps = {
     normal = 'sa',
     normal_cur = 'saa',

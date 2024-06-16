@@ -4,7 +4,7 @@ harpoon:setup({
   settings = {
     save_on_toggle = true,
   },
-  border_chars = { " ", " ", " ", " ", " ", " ", " ", " " },
+  border_chars = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
 })
 
 kmap('n', '<leader>a', function() harpoon:list():add() end)

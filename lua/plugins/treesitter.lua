@@ -1,7 +1,5 @@
 ---@diagnostic disable: missing-fields
-local treesitter = require('nvim-treesitter.configs')
-
-treesitter.setup {
+require('nvim-treesitter.configs').setup {
   ensure_installed = {
     'c', 'haskell', 'lua', 'python', 'bash', 'fish', 'javascript', 'typescript',
     'vimdoc', 'vim', 'css', 'html', 'yaml', 'toml'

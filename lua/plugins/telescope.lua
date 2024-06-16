@@ -1,6 +1,7 @@
-local telescope = require('telescope')
+local builtin = require('telescope.builtin')
+local ext = (require 'telescope').load_extension
 
-telescope.setup({
+require('telescope').setup({
   defaults = {
     mappings = {
       i = {
@@ -43,13 +44,10 @@ telescope.setup({
 })
 
 -- load extensions
-local ext = (require 'telescope').load_extension
 ext('fzf')
 ext('ui-select')
 
 -- maps
-local builtin = require('telescope.builtin')
-
 kmap('n', '<leader>.', builtin.resume)
 kmap('n', '<leader>?', builtin.oldfiles)
 kmap('n', '<leader>o', builtin.find_files)
