@@ -113,11 +113,8 @@ require('lazy').setup({
       'rafamadriz/friendly-snippets', -- collection of premade snippets
       {
         'folke/lazydev.nvim',         -- nvim-specific lua config
-        config = function() require('plugins.lazydev') end,
-        ft = 'lua',
-        dependencies = {
-          { 'Bilal2453/luvit-meta', lazy = true }
-        }
+        config = function() require('lazydev').setup() end,
+        ft = 'lua'
       },
     },
     event = 'InsertEnter'
