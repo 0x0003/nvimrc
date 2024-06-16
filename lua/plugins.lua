@@ -35,7 +35,7 @@ require('lazy').setup({
       'lewis6991/gitsigns.nvim',
       'sindrets/diffview.nvim'
     },
-    event = 'VeryLazy',
+    event = 'VeryLazy'
   },
 
   -- detect tabstop and shiftwidth automatically
@@ -49,7 +49,7 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
     config = function() require('plugins.indent_blankline') end,
-    event = 'VeryLazy',
+    event = 'VeryLazy'
   },
 
   -- visualise rgb and hex values
@@ -60,7 +60,7 @@ require('lazy').setup({
     ft = {
       'css', 'html', 'javascript', 'typescript', 'lua', 'vim', 'markdown',
       'yaml', 'toml'
-    },
+    }
   },
 
   -- automatically close parentheses, brackets, etc
@@ -76,14 +76,14 @@ require('lazy').setup({
     'kylechui/nvim-surround',
     config = function() require('plugins.nvim_surround') end,
     version = '*',
-    event = 'VeryLazy',
+    event = 'VeryLazy'
   },
 
   -- `gc` to comment visual regions/lines
   {
     'numToStr/Comment.nvim',
     config = function() require('Comment').setup() end,
-    event = 'VeryLazy',
+    event = 'VeryLazy'
   },
 
   -- LSP
@@ -167,7 +167,7 @@ require('lazy').setup({
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
-    build = ':TSUpdate',
+    build = ':TSUpdate'
   },
 })
 
