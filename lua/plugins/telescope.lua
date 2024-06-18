@@ -1,16 +1,22 @@
 local builtin = require('telescope.builtin')
+local actions = require('telescope.actions')
 local ext = (require 'telescope').load_extension
 
 require('telescope').setup({
   defaults = {
     mappings = {
       i = {
+        ['<C-e>'] = actions.preview_scrolling_down,
+        ['<C-y>'] = actions.preview_scrolling_up,
+        ['<C-x>'] = actions.edit_command_line,
         ['<C-u>'] = false,
-        ['<C-r>'] = require('telescope.actions').delete_buffer,
+        ['<C-r>'] = actions.delete_buffer,
+        ['<Esc>'] = actions.close,
+        ['<C-c>'] = false,
       },
       n = {
-        ['<C-h>'] = 'which_key',
-        ['<C-r>'] = require('telescope.actions').delete_buffer,
+        ['g?']    = actions.which_key,
+        ['<C-r>'] = actions.delete_buffer,
       },
     },
     file_ignore_patterns = {
