@@ -85,6 +85,9 @@ hl('HarpoonBorder', c.base00, c.base00)
 hl('IblScope', c.base03)
 hl('IblIndent', c.base02)
 
+-- treesitter
+vim.api.nvim_set_hl(0, '@markup.strikethrough.markdown_inline', { link = 'htmlStrike' })
+
 -- extra
 vim.cmd('hi Comment gui=italic')
 
