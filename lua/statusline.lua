@@ -27,10 +27,11 @@ local function mode_color()
 end
 
 local function file_color()
-  local modified = vim.api.nvim_get_option_value('modified', { buf = 0 })
+  local bufnr = vim.fn.winbufnr(vim.g.statusline_winid)
+  local modified = vim.api.nvim_get_option_value('modified', { buf = bufnr })
   local color = ''
   if modified then
-    color = '%#StatusCommand#'
+    color = '%#StatusFile#'
   else
     color = '%#StatusLine#'
   end
@@ -123,7 +124,8 @@ end
 function Status.inactive()
   return table.concat {
     '%f ',                -- buffer name
-    '%#StatusCommand#%M', -- modified flag
+    file_color(),
+    '%M',                 -- modified flag
     '%#StatusLineNCSep#', -- darker color
     '%H',                 -- help flag
     '%R',                 -- readonly flag

@@ -31,6 +31,7 @@ hl('StatusInsert', c.base0B)
 hl('StatusCommand', c.base0A)
 hl('StatusVisual', c.base0D)
 hl('StatusTerminal', c.base0E)
+hl('StatusFile', c.base0A)
 
 -- tabline
 hl('TabLine', c.base02, c.base00)
