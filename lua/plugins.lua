@@ -24,6 +24,9 @@ require('lazy').setup({
   {
     'stevearc/oil.nvim',
     config = function() require('plugins.oil') end,
+    dependencies = {
+      'nvim-tree/nvim-web-devicons'
+    }
   },
 
   -- git
@@ -33,7 +36,10 @@ require('lazy').setup({
     dependencies = {
       'nvim-lua/plenary.nvim',
       'lewis6991/gitsigns.nvim',
-      'sindrets/diffview.nvim'
+      {
+        'sindrets/diffview.nvim',
+        dependencies = 'nvim-tree/nvim-web-devicons'
+      }
     },
     event = 'VeryLazy'
   },

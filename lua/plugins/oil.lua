@@ -7,7 +7,7 @@ require('oil').setup({
   },
   default_file_explorer = true,
   columns = {
-    -- 'icon',
+    'icon',
     -- 'permissions',
     -- {'mtime', highlight = 'StatusCommand'},
     { 'size', highlight = 'Special' },

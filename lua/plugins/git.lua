@@ -50,7 +50,7 @@ gs.setup ({
 })
 
 require('diffview').setup({
-  use_icons = false,
+  use_icons = true,
   show_help_hints = false,
 })
 

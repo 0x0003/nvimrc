@@ -7,21 +7,25 @@ local function macro_recording()
   end
 end
 
-local function mode_color()
+local function mode_indicator()
   local mode = vim.api.nvim_get_mode().mode
   local color = ''
   if mode == 'n' then
-    color = '%#StatusNormal#'
+    color = '%#Normal# '
   elseif mode == 'i' or mode == 'ic' then
-    color = '%#StatusInsert#'
-  elseif mode == 'v' or mode == 'V' or mode == '' then
-    color = '%#StatusVisual#'
+    color = '%#StatusInsert#󰏫 '
+  elseif mode == 'v' then
+    color = '%#StatusVisual#󰒉 '
+  elseif mode == 'V' then
+    color = '%#StatusVisual#󰾂 '
+  elseif mode == '' then
+    color = '%#StatusVisual#󰫙 '
   elseif mode == 'R' then
-    color = '%#StatusReplace#'
+    color = '%#StatusReplace# '
   elseif mode == 'c' then
-    color = '%#StatusCommand#'
+    color = '%#StatusCommand# '
   elseif mode == 't' then
-    color = '%#StatusTerminal#'
+    color = '%#StatusTerminal# '
   end
   return color
 end
@@ -38,7 +42,7 @@ local function file_color()
   return color
 end
 
-local function lsp()
+local function lsp_diag()
   local count = {}
   local levels = {
     errors = vim.diagnostic.severity.ERROR,
@@ -98,9 +102,9 @@ Status = {}
 
 function Status.active()
   return table.concat {
+    mode_indicator(),
     macro_recording(),
     '%#StatusActive#', -- reset color
-    mode_color(),
     '%<',              -- truncate
     '%f ',             -- buffer name
     file_color(),
@@ -108,7 +112,7 @@ function Status.active()
     '%#StatusLine#',   -- dimmer color
     '%H',              -- help flag
     '%R',              -- readonly flag
-    lsp(),
+    lsp_diag(),
     '%#Normal#',       -- accent color
     lsp_progress(),
     '%#StatusActive#', -- reset color
@@ -116,7 +120,6 @@ function Status.active()
     search_count(),
     '%-15.(%S%)',      -- min filled width 15; showcmd
     '%-14.(%l,%c%V%)', -- min filled width 14; ruler
-    mode_color(),
     ' %P'              -- relative position
   }
 end
