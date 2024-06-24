@@ -1,9 +1,6 @@
-local au = vim.api.nvim_create_autocmd
-local aug = vim.api.nvim_create_augroup
-
 -- highlight on yank `:help vim.highlight.on_yank()`
-local highlight_group = aug('YankHighlight', { clear = true })
-au('TextYankPost', {
+local highlight_group = Aug('YankHighlight', { clear = true })
+Auc('TextYankPost', {
   callback = function()
     vim.highlight.on_yank()
   end,
@@ -12,10 +9,10 @@ au('TextYankPost', {
 })
 
 -- jump to last known cursor position when opening a file
-au('BufRead', {
-  group = aug('curpos', { clear = true }),
+Auc('BufRead', {
+  group = Aug('curpos', { clear = true }),
   callback = function(opts)
-    au('BufWinEnter', {
+    Auc('BufWinEnter', {
       once = true,
       buffer = opts.buf,
       callback = function()
@@ -33,15 +30,15 @@ au('BufRead', {
 })
 
 -- keep window position when swtiching buffers
-local bufpos = aug('bufpos', { clear = true })
-au({ 'BufLeave' }, {
+local bufpos = Aug('bufpos', { clear = true })
+Auc({ 'BufLeave' }, {
   pattern = '*',
   group = bufpos,
   callback = function()
     vim.b[0].winview = vim.fn.winsaveview()
   end
 })
-au({ 'BufEnter' }, {
+Auc({ 'BufEnter' }, {
   pattern = '*',
   group = bufpos,
   callback = function()
@@ -52,36 +49,36 @@ au({ 'BufEnter' }, {
 })
 
 -- disable cursorline in insert mode and in inactive windows
-local cline = aug('cline', { clear = true })
-au({ 'WinEnter', 'BufWinEnter' }, {
+local cline = Aug('cline', { clear = true })
+Auc({ 'WinEnter', 'BufWinEnter' }, {
   pattern = '*',
   group = cline,
   command = 'setlocal cursorline',
 })
-au('WinLeave', {
+Auc('WinLeave', {
   pattern = '*',
   group = cline,
   command = 'setlocal nocursorline',
 })
-au('InsertEnter', {
+Auc('InsertEnter', {
   pattern = '*',
   group = cline,
   command = 'set nocursorline'
 })
-au('InsertLeave', {
+Auc('InsertLeave', {
   pattern = '*',
   group = cline,
   command = 'set cursorline'
 })
 
 -- spellcheck
-au('FileType', {
+Auc('FileType', {
   pattern = { 'markdown', 'text', 'org', 'NeogitCommitMessage' },
-  group = aug('splchk', { clear = true }),
+  group = Aug('splchk', { clear = true }),
   callback = function()
     vim.opt_local.spell = true
     vim.opt_local.spelllang = { 'en_us', 'cjk' }
-    kmap('i', '<C-l>', '<ESC>[s1z=gi', { buffer = 0 })
+    Kmap('i', '<C-l>', '<ESC>[s1z=gi', { buffer = 0 })
   end
 })
 

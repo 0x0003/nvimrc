@@ -16,9 +16,9 @@ function SessionLoad()
   end
 end
 
-local sess = vim.api.nvim_create_augroup('sess', { clear = true })
+local sess = Aug('sess', { clear = true })
 -- automatically load session if launched without arguments
-vim.api.nvim_create_autocmd({ 'VimEnter' }, {
+Auc({ 'VimEnter' }, {
   pattern = '*',
   group = sess,
   nested = true,
@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd({ 'VimEnter' }, {
   end
 })
 -- automatically create session on exit
-vim.api.nvim_create_autocmd({ 'VimLeave' }, {
+Auc({ 'VimLeave' }, {
   pattern = '*',
   group = sess,
   callback = function()

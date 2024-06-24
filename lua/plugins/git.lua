@@ -14,7 +14,7 @@ ng.setup({
   }
 })
 
-kmap('n', '<leader>r', function() ng.open({ kind = 'replace' }) end)
+Kmap('n', '<leader>r', function() ng.open({ kind = 'replace' }) end)
 
 gs.setup ({
   signs = {
@@ -34,18 +34,18 @@ gs.setup ({
   },
   attach_to_untracked = false,
   on_attach = function(bufnr)
-    kmap('n', '<leader>gs', gs.stage_hunk)
-    kmap('n', '<leader>gu', gs.undo_stage_hunk)
-    kmap('n', '<leader>gr', gs.reset_hunk)
-    kmap('n', '<leader>gS', gs.stage_buffer)
-    kmap('n', '<leader>gR', gs.reset_buffer)
-    kmap('n', '<leader>gh', gs.preview_hunk, { buffer = bufnr })
-    kmap('n', '<leader>gb', function() gs.blame_line { full = true } end)
-    kmap('n', '<leader>gB', gs.toggle_current_line_blame)
-    kmap('n', '<leader>gd', gs.diffthis)
-    kmap('n', '<leader>gD', function() gs.diffthis('~') end)
-    kmap('n', '[g', gs.prev_hunk, { buffer = bufnr })
-    kmap('n', ']g', gs.next_hunk, { buffer = bufnr })
+    Kmap('n', '<leader>gs', gs.stage_hunk)
+    Kmap('n', '<leader>gu', gs.undo_stage_hunk)
+    Kmap('n', '<leader>gr', gs.reset_hunk)
+    Kmap('n', '<leader>gS', gs.stage_buffer)
+    Kmap('n', '<leader>gR', gs.reset_buffer)
+    Kmap('n', '<leader>gh', gs.preview_hunk, { buffer = bufnr })
+    Kmap('n', '<leader>gb', function() gs.blame_line { full = true } end)
+    Kmap('n', '<leader>gB', gs.toggle_current_line_blame)
+    Kmap('n', '<leader>gd', gs.diffthis)
+    Kmap('n', '<leader>gD', function() gs.diffthis('~') end)
+    Kmap('n', '[g', gs.prev_hunk, { buffer = bufnr })
+    Kmap('n', ']g', gs.next_hunk, { buffer = bufnr })
   end
 })
 

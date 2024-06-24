@@ -1,19 +1,5 @@
----@diagnostic disable: lowercase-global
--- set leader to spacebar
-vim.g.mapleader = ' '
-
--- shorter vim.keymap.set()
-function kmap(mode, keys, command, extra)
-  local opts = { noremap = true, silent = true }
-  if extra ~= nil then
-    for x, y in pairs(extra) do
-      opts[x] = y
-    end
-  end
-  vim.keymap.set(mode, keys, command, opts)
-end
-
 local modules = {
+  'helpers',
   'options',
   'plugins',
   'autocommands',

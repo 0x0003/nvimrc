@@ -1,7 +1,5 @@
-local command = vim.api.nvim_create_user_command
-
 -- remove all trailing whitespaces in active buffer
-command('Trim', function()
+Com('Trim', function()
   local save = vim.fn.winsaveview()
   vim.cmd([[%s/\s\+$//ge]])
   vim.cmd.nohlsearch()
@@ -9,7 +7,7 @@ command('Trim', function()
 end, {})
 
 -- print file info
-command('FF', function()
+Com('FF', function()
   local sep = ' | '
   local pth = vim.fn.expand('%:p') .. ': '
   local typ = vim.bo.filetype .. sep
@@ -21,7 +19,7 @@ command('FF', function()
 end, {})
 
 -- set sw and sts to 2
-command('Swdefault', function()
+Com('Swdefault', function()
   vim.opt_local.shiftwidth = 2
   vim.opt_local.softtabstop = 2
 end, {})

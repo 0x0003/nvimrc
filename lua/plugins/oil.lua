@@ -23,5 +23,5 @@ require('oil').setup({
   },
 })
 
-kmap('n', '<leader>e', '<CMD>Oil<CR>')
+Kmap('n', '<leader>e', '<CMD>Oil<CR>')
 

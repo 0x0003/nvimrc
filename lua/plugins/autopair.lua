@@ -7,7 +7,7 @@ ua.setup({
   },
 })
 
-vim.api.nvim_create_user_command('AutopairToggle', function()
+Com('AutopairToggle', function()
   ua.toggle()
 end, {})
 

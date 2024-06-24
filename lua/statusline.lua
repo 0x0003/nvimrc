@@ -145,9 +145,9 @@ local function statusfill()
   end
 end
 
-local status = vim.api.nvim_create_augroup('statusline', { clear = true })
+local status = Aug('statusline', { clear = true })
 
-vim.api.nvim_create_autocmd({ 'User' }, {
+Auc({ 'User' }, {
   pattern = 'LspProgressStatusUpdated',
   group = status,
   callback = vim.schedule_wrap(function()
@@ -155,7 +155,7 @@ vim.api.nvim_create_autocmd({ 'User' }, {
   end)
 })
 
-vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter' }, {
+Auc({ 'WinEnter', 'BufEnter' }, {
   pattern = '*',
   group = status,
   callback = function()
@@ -164,7 +164,7 @@ vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter' }, {
   end
 })
 
-vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave' }, {
+Auc({ 'WinLeave', 'BufLeave' }, {
   pattern = '*',
   group = status,
   callback = function()
