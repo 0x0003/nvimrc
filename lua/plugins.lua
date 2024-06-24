@@ -85,13 +85,6 @@ require('lazy').setup({
     event = 'VeryLazy'
   },
 
-  -- `gc` to comment visual regions/lines
-  {
-    'numToStr/Comment.nvim',
-    config = function() require('Comment').setup() end,
-    event = 'VeryLazy'
-  },
-
   -- LSP
   {
     'neovim/nvim-lspconfig',
