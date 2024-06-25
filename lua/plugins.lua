@@ -93,8 +93,6 @@ require('lazy').setup({
       -- automatically install servers
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
-      -- status
-      'linrongbin16/lsp-progress.nvim',
     },
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' }
   },

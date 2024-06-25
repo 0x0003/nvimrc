@@ -3,6 +3,8 @@ local tele = require('telescope.builtin')
 local mason_lsp = require('mason-lspconfig')
 local mason = require('mason')
 
+require('plugins.lsp_status')
+
 -- run on attach
 local on_attach = function()
   -- LSP
@@ -71,15 +73,4 @@ mason_lsp.setup_handlers {
     }
   end
 }
-
--- display LSP progress in statusline
-require('lsp-progress').setup({
-  max_size = 70,
-  format = function(client_messages)
-    if #client_messages > 0 then
-      return ' ' .. table.concat(client_messages, ' ')
-    end
-    return ''
-  end,
-})
 

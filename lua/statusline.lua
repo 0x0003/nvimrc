@@ -72,15 +72,6 @@ local function lsp_diag()
   return errors .. warnings .. hints .. info
 end
 
-local function lsp_progress()
-  local present, progress = pcall(require, 'lsp-progress')
-  if not present then
-    return ''
-  else
-    return progress.progress()
-  end
-end
-
 local search_count = function(args)
   local ok, s_count = pcall(vim.fn.searchcount,
     (args or {}).options or { recompute = true })
@@ -113,8 +104,6 @@ function Status.active()
     '%H',              -- help flag
     '%R',              -- readonly flag
     lsp_diag(),
-    '%#Normal#',       -- accent color
-    lsp_progress(),
     '%#StatusActive#', -- reset color
     '%=',              -- right align
     search_count(),
@@ -158,14 +147,6 @@ local function statusfill()
 end
 
 local status = Aug('statusline', { clear = true })
-
-Auc({ 'User' }, {
-  pattern = 'LspProgressStatusUpdated',
-  group = status,
-  callback = vim.schedule_wrap(function()
-    vim.cmd('redrawstatus')
-  end)
-})
 
 Auc({ 'WinEnter', 'BufEnter' }, {
   pattern = '*',
