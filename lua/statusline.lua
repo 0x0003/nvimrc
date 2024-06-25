@@ -138,7 +138,19 @@ function Status.inactive()
 end
 
 local function statusfill()
-  if #(vim.api.nvim_tabpage_list_wins(0)) > 1 then
+  local function splits_present()
+    local splits = 0
+    for _, id in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+      if vim.api.nvim_win_get_config(id).relative == '' then
+        splits = splits + 1
+      end
+    end
+    if splits > 1 then
+      return true
+    end
+  end
+
+  if splits_present() then
     vim.opt_local.fillchars:append { stl = '─' }
   else
     vim.opt_local.fillchars:append { stl = ' ' }
