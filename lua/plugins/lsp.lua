@@ -46,6 +46,8 @@ local servers = {
   tsserver = {},
 
   lua_ls = {},
+
+  nil_ls = {},
 }
 
 -- autoinstall servers

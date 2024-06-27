@@ -6,4 +6,5 @@
 ### Optional mason.nvim dependencies
 - `ghcup` for hls
 - `npm` for tsserver and html
+- `cargo` for nil
 
