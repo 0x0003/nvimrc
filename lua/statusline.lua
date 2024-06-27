@@ -134,9 +134,7 @@ local function statusfill()
         splits = splits + 1
       end
     end
-    if splits > 1 then
-      return true
-    end
+    return splits > 1 and true
   end
 
   if splits_present() then
