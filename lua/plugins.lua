@@ -69,14 +69,6 @@ require('lazy').setup({
     }
   },
 
-  -- automatically close parentheses, brackets, etc
-  {
-    'altermo/ultimate-autopair.nvim',
-    config = function() require('plugins.autopair') end,
-    branch = 'v0.6',
-    event = { 'InsertEnter', 'CmdlineEnter' }
-  },
-
   -- surround text objects
   {
     'kylechui/nvim-surround',
