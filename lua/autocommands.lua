@@ -82,3 +82,12 @@ Auc('FileType', {
   end
 })
 
+-- pandoc-flavored markdown syntax highlighting
+Auc('BufReadPost', {
+  pattern = '*.md',
+  group = Aug('mdpandoc', { clear = true }),
+  callback = function()
+    vim.opt_local.syntax = 'markdown.pandoc'
+  end
+})
+
