@@ -7,6 +7,7 @@
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "friendly-snippets": { "branch": "main", "commit": "682157939e57bd6a2c86277dfd4d6fbfce63dbac" },
   "gitsigns.nvim": { "branch": "main", "commit": "17e8fd66182c9ad79dc129451ad015af3d27529c" },
+  "gitsigns.nvim": { "branch": "main", "commit": "6b1a14eabcebbcca1b9e9163a26b2f8371364cb7" },
   "harpoon": { "branch": "harpoon2", "commit": "0378a6c428a0bed6a2781d459d7943843f374bce" },
   "indent-blankline.nvim": { "branch": "master", "commit": "4036c8ae9cc29faf8e6443fa5b23e679db055d24" },
   "lazy.nvim": { "branch": "main", "commit": "dea1f687fe6e15eb3098557a69d44231ebcb6cf5" },
