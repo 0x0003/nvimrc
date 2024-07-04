@@ -86,9 +86,20 @@ hl('HarpoonBorder', c.base00, c.base00)
 hl('IblScope', c.base03)
 hl('IblIndent', c.base02)
 
+-- mini.icons
+hl('MiniIconsAzure', c.extra0D)
+hl('MiniIconsBlue', c.base0D)
+hl('MiniIconsCyan', c.base0C)
+hl('MiniIconsGreen', c.base0B)
+hl('MiniIconsGrey', c.extra04)
+hl('MiniIconsOrange', c.extra09)
+hl('MiniIconsPurple', c.base0E)
+hl('MiniIconsRed', c.base08)
+hl('MiniIconsYellow', c.base0A)
+
 -- treesitter
 vim.api.nvim_set_hl(0, '@markup.strikethrough.markdown_inline', { link = 'htmlStrike' })
 
--- extra
+-- generic comments
 vim.cmd('hi Comment gui=italic')
 

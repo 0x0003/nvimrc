@@ -20,13 +20,17 @@ require('lazy').setup({
     priority = 1000
   },
 
+  -- nerdfont icons
+  {
+    'echasnovski/mini.icons',
+    version = false,
+    config = function () require('plugins.mini-icons') end
+  },
+
   -- file browser
   {
     'stevearc/oil.nvim',
     config = function() require('plugins.oil') end,
-    dependencies = {
-      'nvim-tree/nvim-web-devicons'
-    }
   },
 
   -- git
@@ -36,10 +40,7 @@ require('lazy').setup({
     dependencies = {
       'nvim-lua/plenary.nvim',
       'lewis6991/gitsigns.nvim',
-      {
-        'sindrets/diffview.nvim',
-        dependencies = 'nvim-tree/nvim-web-devicons'
-      }
+      'sindrets/diffview.nvim',
     },
     event = 'VeryLazy'
   },

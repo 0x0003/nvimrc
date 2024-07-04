@@ -17,4 +17,7 @@ return {
   base0D = '#8da3b9',
   base0E = '#a988b0',
   base0F = '#747272',
+  extra04 = '#b8b3b3',
+  extra09 = '#c29448',
+  extra0D = '#5d7a97'
 }
