@@ -7,7 +7,7 @@ Kmap('n', '\'', '`')
 -- buffers
 Kmap('n', '<leader>n', vim.cmd.bn)
 Kmap('n', '<leader>p', vim.cmd.bp)
-Kmap('n', '<BS>', '<C-^>')
+Kmap('n', '<BS>', function() vim.cmd.e('#') end)
 
 -- windows
 Kmap('n', '<leader>w', '<C-w>')

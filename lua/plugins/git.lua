@@ -8,7 +8,8 @@ ng.setup({
       ['g?'] = 'HelpPopup',
     },
     status = {
-      ['<leader>r'] = 'Close',
+      ['<leader>r'] = function() vim.cmd.e('#') end,
+      ['q'] = function() vim.cmd.e('#') end,
       ['='] = 'Toggle',
     }
   }
