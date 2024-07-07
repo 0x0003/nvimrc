@@ -78,7 +78,9 @@ Auc('FileType', {
   callback = function()
     vim.opt_local.spell = true
     vim.opt_local.spelllang = { 'en_us', 'cjk' }
-    Kmap('i', '<C-l>', '<ESC>[s1z=gi', { buffer = 0 })
+    Kmap('i', '<C-l>', '<ESC>[s1z=gi',
+      'Apply 1st suggestion on the 1st misspelled word before the cursor',
+      { buffer = 0 })
   end
 })
 

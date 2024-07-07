@@ -65,33 +65,47 @@ ext('fzf')
 ext('ui-select')
 
 -- maps
-Kmap('n', '<leader>.', builtin.resume)
-Kmap('n', '<leader>?', builtin.oldfiles)
-Kmap('n', '<leader>o', builtin.find_files)
-Kmap('n', '<leader>go', builtin.git_files)
-Kmap('n', '<leader>gc', builtin.git_status)
-Kmap('n', '<leader><space>', builtin.buffers)
-Kmap('n', '<leader>l', builtin.buffers)
-Kmap('n', '<leader>/', builtin.current_buffer_fuzzy_find)
-Kmap('n', '<leader>sh', builtin.help_tags)
-Kmap('n', '<leader>sw', builtin.grep_string)
+Kmap('n', '<leader>.', builtin.resume,
+  'Telescope: resume previous search')
+Kmap('n', '<leader>?', builtin.oldfiles,
+  'Telescope: previously opened files')
+Kmap('n', '<leader>o', builtin.find_files,
+  'Telescope: find files')
+Kmap('n', '<leader>go', builtin.git_files,
+  'Telescope: git files')
+Kmap('n', '<leader>gc', builtin.git_status,
+  'Telescope: git status')
+Kmap('n', '<leader>l', builtin.buffers,
+  'Telescope: buffers')
+Kmap('n', '<leader>/', builtin.current_buffer_fuzzy_find,
+  'Telescope: fuzzy search current buffer')
+Kmap('n', '<leader>sh', builtin.help_tags,
+  'Telescope: help tags')
+Kmap('n', '<leader>sw', builtin.grep_string,
+  'Telescope: grep string under cursor')
 Kmap('n', '<leader>sg', function()
-  builtin.grep_string({
-    path_display = { 'smart' },
-    only_sort_text = true,
-    word_match = '-w',
-    search = '',
-  })
-end)
+    builtin.grep_string({
+      path_display = { 'smart' },
+      only_sort_text = true,
+      word_match = '-w',
+      search = '',
+    })
+  end,
+  'Telescope: fuzzy search in all files')
 Kmap('n', '<leader>q', function()
-  builtin.diagnostics({ bufnr = 0, initial_mode = 'normal' })
-end)
+    builtin.diagnostics({ bufnr = 0, initial_mode = 'normal' })
+  end,
+  'Telescope: diagnostics in current buffer')
 Kmap('n', '<leader>Q', function()
-  builtin.diagnostics({ initial_mode = 'normal' })
-end)
+    builtin.diagnostics({ initial_mode = 'normal' })
+  end,
+  'Telescope: diagnostics in workspace')
 Kmap('n', '<leader>m', function()
-  builtin.marks({ initial_mode = 'normal' })
-end)
+    builtin.marks({ initial_mode = 'normal' })
+  end,
+  'Telescope: marks')
 Kmap('n', 'z=', function()
-  builtin.spell_suggest({ initial_mode = 'normal' })
-end)
+    builtin.spell_suggest({ initial_mode = 'normal' })
+  end,
+  'Telescope: spelling suggestions')
+

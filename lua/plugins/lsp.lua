@@ -9,27 +9,42 @@ require('plugins.lsp_status')
 local on_attach = function()
   -- LSP
   Kmap('n', 'gd', function()
-    tele.lsp_definitions({ initial_mode = 'normal' })
-  end)
-  Kmap('n', 'gD', buf.declaration)
-  Kmap('n', 'gr', tele.lsp_references)
-  Kmap('n', 'gI', buf.implementation)
-  Kmap('n', 'K', buf.hover)
-  Kmap('n', '<leader>k', buf.signature_help)
-  Kmap('i', '<C-l>', buf.signature_help)
-  Kmap('n', '<leader>cn', buf.rename)
-  Kmap('n', '<leader>ca', buf.code_action)
-  Kmap('n', '<leader>cs', tele.lsp_document_symbols)
-  Kmap('n', '<leader>cS', tele.lsp_dynamic_workspace_symbols)
-  Kmap('n', '<leader>cA', buf.add_workspace_folder)
-  Kmap('n', '<leader>cR', buf.remove_workspace_folder)
+      tele.lsp_definitions({ initial_mode = 'normal' })
+    end,
+    'LSP: goto definition')
+  Kmap('n', 'gD', buf.declaration,
+    'LSP: goto declaration')
+  Kmap('n', 'gr', tele.lsp_references,
+    'LSP: references')
+  Kmap('n', 'gI', buf.implementation,
+    'LSP: goto implementation')
+  Kmap('n', 'K', buf.hover, nil, { desc = 'hi' })
+  Kmap('n', '<leader>k', buf.signature_help,
+    'LSP: signature help')
+  Kmap('i', '<C-l>', buf.signature_help,
+    'LSP: signature help in insert mode')
+  Kmap('n', '<leader>cn', buf.rename,
+    'LSP: rename variable under cursor')
+  Kmap('n', '<leader>ca', buf.code_action,
+    'LSP: code actions')
+  Kmap('n', '<leader>cs', tele.lsp_document_symbols,
+    'LSP: document symbols')
+  Kmap('n', '<leader>cS', tele.lsp_dynamic_workspace_symbols,
+    'LSP: workspace symbols')
+  Kmap('n', '<leader>cA', buf.add_workspace_folder,
+    'LSP: add workspace folder')
+  Kmap('n', '<leader>cR', buf.remove_workspace_folder,
+    'LSP: remove workspace folder')
   Kmap('n', '<leader>cl', function()
-    print(vim.inspect(buf.list_workspace_folders()))
-  end)
+      print(vim.inspect(buf.list_workspace_folders()))
+    end,
+    'LSP: list workspace folders')
   Kmap('n', '<leader>cd', function()
-    tele.lsp_type_definitions({ initial_mode = 'normal' })
-  end)
-  Kmap('n', '<leader>cf', buf.format)
+      tele.lsp_type_definitions({ initial_mode = 'normal' })
+    end,
+    'LSP: type definitions')
+  Kmap('n', '<leader>cf', buf.format,
+    'LSP: format buffer')
 end
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers

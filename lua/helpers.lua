@@ -1,9 +1,14 @@
 -- set leader to spacebar
 vim.g.mapleader = ' '
 
--- shorter vim.keymap.set()
-function Kmap(mode, keys, command, extra)
-  local opts = { noremap = true, silent = true }
+---shorter vim.keymap.set()
+---@param mode string|string[]
+---@param keys string
+---@param command string|function
+---@param description string
+---@param extra? table
+function Kmap(mode, keys, command, description, extra)
+  local opts = { desc = description, noremap = true, silent = true }
   if extra ~= nil then
     for x, y in pairs(extra) do
       opts[x] = y

@@ -1,2 +1,3 @@
-Kmap ('n', '<leader>u', '<cmd>UndotreeToggle<CR>')
+Kmap ('n', '<leader>u', '<cmd>UndotreeToggle<CR>',
+  'Undotree: toggle')
 

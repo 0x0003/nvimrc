@@ -1,80 +1,129 @@
 local f = vim.fn
 
 -- marks
-Kmap('n', '`', '\'')
-Kmap('n', '\'', '`')
+Kmap('n', '`', '\'',
+  'Mark: jump to \'')
+Kmap('n', '\'', '`',
+  'Mark: jump to `')
 
 -- buffers
-Kmap('n', '<leader>n', vim.cmd.bn)
-Kmap('n', '<leader>p', vim.cmd.bp)
-Kmap('n', '<BS>', function() vim.cmd.e('#') end)
+Kmap('n', '<leader>n', vim.cmd.bn,
+  'Buffer: next')
+Kmap('n', '<leader>p', vim.cmd.bp,
+  'Buffer: prev')
+Kmap('n', '<BS>', function() vim.cmd.e('#') end,
+  'Buffer: alternate')
 
 -- windows
-Kmap('n', '<leader>w', '<C-w>')
-Kmap('n', '<leader>wd', '<C-w>c')
-Kmap('n', '<leader>f', vim.cmd.close)
-Kmap('n', '<C-h>', '<C-w>h')
-Kmap('n', '<C-j>', '<C-w>j')
-Kmap('n', '<C-k>', '<C-w>k')
-Kmap('n', '<C-l>', '<C-w>l')
-Kmap('n', '<Right>', '<cmd>vertical resize +3<CR>')
-Kmap('n', '<Left>', '<cmd>vertical resize -3<CR>')
-Kmap('n', '<Down>', '<cmd>resize +3<CR>')
-Kmap('n', '<Up>', '<cmd>resize -3<CR>')
+Kmap('n', '<leader>w', '<C-w>',
+  'Window: wincmd')
+Kmap('n', '<leader>wd', '<C-w>c',
+  'Window: close')
+Kmap('n', '<leader>f', vim.cmd.close,
+  'Window: close')
+Kmap('n', '<C-h>', '<C-w>h',
+  'Window: focus left')
+Kmap('n', '<C-j>', '<C-w>j',
+  'Window: focus down')
+Kmap('n', '<C-k>', '<C-w>k',
+  'Window: focus up')
+Kmap('n', '<C-l>', '<C-w>l',
+  'Window: focus right')
+Kmap('n', '<Right>', '<cmd>vertical resize +3<CR>',
+  'Window: +resize horizontal')
+Kmap('n', '<Left>', '<cmd>vertical resize -3<CR>',
+  'Window: -resize horizontal')
+Kmap('n', '<Down>', '<cmd>resize +3<CR>',
+  'Window: +resize vertical')
+Kmap('n', '<Up>', '<cmd>resize -3<CR>',
+  'Window: -resize vertical')
 
 -- clear hlsearch
-Kmap('n', '<leader>\\', vim.cmd.noh)
+Kmap('n', '<leader>\\', vim.cmd.noh,
+  'Clear hlsearch')
 
 -- system clipboard copy/paste
-Kmap('n', '<leader>y', '"+y')
-Kmap('n', '<leader>Y', '"+Y')
-Kmap('x', '<leader>y', '"+y')
-Kmap('n', '<leader>P', '<cmd>set paste<CR>"+p<cmd>set nopaste<CR>')
+Kmap({ 'n', 'x' }, '<leader>y', '"+y',
+  'Copy to system clipboard')
+Kmap('n', '<leader>Y', '"+Y',
+  'Copy line to system clipboard')
+Kmap('n', '<leader>P', '<cmd>set paste<CR>"+p<cmd>set nopaste<CR>',
+  'Paste from system clipboard')
 
 -- emacs-style command-line editing
-Kmap('c', '<C-a>', '<Home>', { silent = false })
-Kmap('c', '<C-e>', '<End>', { silent = false })
-Kmap('c', '<C-b>', '<Left>', { silent = false })
-Kmap('c', '<C-f>', '<Right>', { silent = false })
-Kmap('c', '<C-x>', '<C-f>', { silent = false })
-Kmap('c', '<C-d>', '<Del>', { silent = false })
-Kmap('c', '<C-n>', '<Down>', { silent = false })
-Kmap('c', '<C-p>', '<Up>', { silent = false })
+Kmap('c', '<C-a>', '<Home>',
+  'Command-line: home', { silent = false })
+Kmap('c', '<C-e>', '<End>',
+  'Command-line: end', { silent = false })
+Kmap('c', '<C-b>', '<Left>',
+  'Command-line: left', { silent = false })
+Kmap('c', '<C-f>', '<Right>',
+  'Command-line: right', { silent = false })
+Kmap('c', '<C-x>', '<C-f>',
+  'Command-line: edit in buffer', { silent = false })
+Kmap('c', '<C-d>', '<Del>',
+  'Command-line: del', { silent = false })
+Kmap('c', '<C-n>', '<Down>',
+  'Command-line: history next', { silent = false })
+Kmap('c', '<C-p>', '<Up>',
+  'Command-line: history prev', { silent = false })
 
 -- japanese IME
-Kmap('n', 'ｈ', 'h')
-Kmap('n', 'ｊ', 'j')
-Kmap('n', 'ｋ', 'k')
-Kmap('n', 'ｌ', 'l')
-Kmap('n', 'ｒ', 'r')
-Kmap('n', 'あ', 'a')
-Kmap('n', 'い', 'i')
-Kmap('n', 'う', 'u')
-Kmap('n', 'お', 'o')
-Kmap('n', 'っｄ', 'dd')
-Kmap('n', 'っｙ', 'yy')
-Kmap('n', 'ｐ', 'p')
-Kmap('n', 'し”', 'ci"')
-Kmap('n', 'し’', 'ci\'')
+Kmap('n', 'ｈ', 'h',
+  'IME: h')
+Kmap('n', 'ｊ', 'j',
+  'IME: j')
+Kmap('n', 'ｋ', 'k',
+  'IME: k')
+Kmap('n', 'ｌ', 'l',
+  'IME: l')
+Kmap('n', 'ｒ', 'r',
+  'IME: r')
+Kmap('n', 'あ', 'a',
+  'IME: a')
+Kmap('n', 'い', 'i',
+  'IME: i')
+Kmap('n', 'う', 'u',
+  'IME: u')
+Kmap('n', 'お', 'o',
+  'IME: o')
+Kmap('n', 'っｄ', 'dd',
+  'IME: dd')
+Kmap('n', 'っｙ', 'yy',
+  'IME: yy')
+Kmap('n', 'ｐ', 'p',
+  'IME: p')
+Kmap('n', 'し”', 'ci"',
+  'IME: ci"')
+Kmap('n', 'し’', 'ci\'',
+  'IME: ci\'')
 
 -- don't start new undo sequence (see `:help i_CTRL-G_u`) with C-w/C-u
-Kmap('i', '<C-w>', '<C-w>', { noremap = false })
-Kmap('i', '<C-u>', '<C-u>', { noremap = false })
+Kmap('i', '<C-w>', '<C-w>',
+  'Delete the word before the cursor', { noremap = false })
+Kmap('i', '<C-u>', '<C-u>',
+  'Delete all characters before the cursor', { noremap = false })
 
 -- run macro over visual range
 Kmap('x', '@', function()
-  return ':norm @' .. f.getcharstr() .. '<CR>'
-end, { expr = true })
+    return ':norm @' .. f.getcharstr() .. '<CR>'
+  end,
+  'Run macro over visual range', { expr = true })
 
 -- xdg-open
 local function xdgo(x)
   f.execute('!xdg-open ' .. f.shellescape(f.expand(x), 1))
 end
-Kmap('n', 'gx', function() xdgo('<cfile>') end, { expr = true })
-Kmap('n', 'gX', function() xdgo('%:p') end, { expr = true })
+Kmap('n', 'gx', function() xdgo('<cfile>') end,
+  'Open filepath or url under the cursor with xdg-open', { expr = true })
+Kmap('n', 'gX', function() xdgo('%:p') end,
+  'Open current buffer with xdg-open', { expr = true })
 
 -- diagnostics
-Kmap('n', '[d', vim.diagnostic.goto_prev)
-Kmap('n', ']d', vim.diagnostic.goto_next)
-Kmap('n', '<leader>sd', vim.diagnostic.open_float)
+Kmap('n', '[d', vim.diagnostic.goto_prev,
+  'Diagnostic: prev')
+Kmap('n', ']d', vim.diagnostic.goto_next,
+  'Diagnostic: next')
+Kmap('n', '<leader>sd', vim.diagnostic.open_float,
+  'Diagnostic: open float')
 

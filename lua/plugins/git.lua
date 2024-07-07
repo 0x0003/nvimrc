@@ -15,9 +15,10 @@ ng.setup({
   }
 })
 
-Kmap('n', '<leader>r', function() ng.open({ kind = 'replace' }) end)
+Kmap('n', '<leader>r', function() ng.open({ kind = 'replace' }) end,
+  'Git: toggle neogit status')
 
-gs.setup ({
+gs.setup({
   signs = {
     add = { text = '+' },
     change = { text = '~' },
@@ -35,18 +36,30 @@ gs.setup ({
   },
   attach_to_untracked = false,
   on_attach = function(bufnr)
-    Kmap('n', '<leader>gs', gs.stage_hunk)
-    Kmap('n', '<leader>gu', gs.undo_stage_hunk)
-    Kmap('n', '<leader>gr', gs.reset_hunk)
-    Kmap('n', '<leader>gS', gs.stage_buffer)
-    Kmap('n', '<leader>gR', gs.reset_buffer)
-    Kmap('n', '<leader>gh', gs.preview_hunk, { buffer = bufnr })
-    Kmap('n', '<leader>gb', function() gs.blame_line { full = true } end)
-    Kmap('n', '<leader>gB', gs.toggle_current_line_blame)
-    Kmap('n', '<leader>gd', gs.diffthis)
-    Kmap('n', '<leader>gD', function() gs.diffthis('~') end)
-    Kmap('n', '[g', gs.prev_hunk, { buffer = bufnr })
-    Kmap('n', ']g', gs.next_hunk, { buffer = bufnr })
+    Kmap('n', '<leader>gs', gs.stage_hunk,
+      'Git: stage hunk')
+    Kmap('n', '<leader>gu', gs.undo_stage_hunk,
+      'Git: undo staged hunk')
+    Kmap('n', '<leader>gr', gs.reset_hunk,
+      'Git: reset hunk')
+    Kmap('n', '<leader>gS', gs.stage_buffer,
+      'Git: stage buffer')
+    Kmap('n', '<leader>gR', gs.reset_buffer,
+      'Git: reset buffer')
+    Kmap('n', '<leader>gh', gs.preview_hunk,
+      'Git: popup preview hunk', { buffer = bufnr })
+    Kmap('n', '<leader>gb', function() gs.blame_line { full = true } end,
+      'Git: blame popup')
+    Kmap('n', '<leader>gB', gs.toggle_current_line_blame,
+      'Git: blame toggle virtual text')
+    Kmap('n', '<leader>gd', gs.diffthis,
+      'Git: diffthis')
+    Kmap('n', '<leader>gD', function() gs.diffthis('~') end,
+      'Git: diffthis ~')
+    Kmap('n', '[g', gs.prev_hunk,
+      'Git: hunk prev', { buffer = bufnr })
+    Kmap('n', ']g', gs.next_hunk,
+      'Git: hunk next', { buffer = bufnr })
   end
 })
 
