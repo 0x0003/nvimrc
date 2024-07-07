@@ -2,6 +2,21 @@ local builtin = require('telescope.builtin')
 local actions = require('telescope.actions')
 local ext = (require 'telescope').load_extension
 
+-- use same ignore rules as `:set wildignore`
+-- NOTE: directories are not included
+local function ignored_patterns()
+  local t = vim.opt.wildignore:get()
+  for x, y in ipairs(t) do
+    if string.find(y, '/') ~= nil then
+      -- t[x] = '^' .. string.gsub(y, '*', '')
+      t[x] = nil
+    else
+      t[x] = string.gsub(y, '*', '%%')
+    end
+  end
+  return t
+end
+
 require('telescope').setup({
   defaults = {
     mappings = {
@@ -19,11 +34,7 @@ require('telescope').setup({
         ['<C-r>'] = actions.delete_buffer,
       },
     },
-    file_ignore_patterns = {
-      '%.jpg',
-      '%.jpeg',
-      '%.png',
-    },
+    file_ignore_patterns = ignored_patterns(),
     prompt_prefix = '  ',
     selection_caret = '  ',
     entry_prefix = '  ',
@@ -84,4 +95,3 @@ end)
 Kmap('n', 'z=', function()
   builtin.spell_suggest({ initial_mode = 'normal' })
 end)
-

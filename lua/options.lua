@@ -63,10 +63,14 @@ set.backup = false
 -- wildmenu
 set.wildmenu = true
 set.wildignorecase = true
-set.wildignore = [[*.bmp,*.gif,*.jpg,*.png,*.ico,*.bak,*.mkv,
-  *.ogg,*.webm,*.mp4,*.m4v,*.flac,*.alac,*.m4a,*.mp3,*.ape,
-  *.wav,*.pdf,*.psd,*.zip,*.7z,*.tar,*.gz,*.exe,*.swp,
-  node_modules/*,bower_components/*]]
+set.wildignore = {
+  '*.bmp', '*.gif', '*.jpg', '*.jpeg', '*.png', '*.ico',
+  '*.bak', '*.mkv', '*.ogg', '*.webm', '*.mp4', '*.m4v',
+  '*.flac', '*.alac', '*.m4a', '*.mp3', '*.ape', '*.wav',
+  '*.pdf', '*.psd', '*.zip', '*.7z', '*.tar', '*.gz',
+  '*.exe', '*.swp',
+  'node_modules/*', 'bower_components/*'
+}
 
 -- tabs/spaces
 set.expandtab = true
