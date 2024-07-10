@@ -92,6 +92,8 @@ Kmap('n', '<leader>sg', function()
     })
   end,
   'Telescope: fuzzy search in all files')
+Kmap('n', '<leader>sG', builtin.live_grep,
+  'Telescope: live grep')
 Kmap('n', '<leader>q', function()
     builtin.diagnostics({ bufnr = 0, initial_mode = 'normal' })
   end,

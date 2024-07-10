@@ -18,7 +18,8 @@ local on_attach = function()
     'LSP: references')
   Kmap('n', 'gI', buf.implementation,
     'LSP: goto implementation')
-  Kmap('n', 'K', buf.hover, nil, { desc = 'hi' })
+  Kmap('n', 'K', buf.hover,
+    'LSP: popup symbol info')
   Kmap('n', '<leader>k', buf.signature_help,
     'LSP: signature help')
   Kmap('i', '<C-l>', buf.signature_help,
