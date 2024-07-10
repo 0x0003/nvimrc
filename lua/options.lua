@@ -69,7 +69,8 @@ set.wildignore = {
   '*.flac', '*.alac', '*.m4a', '*.mp3', '*.ape', '*.wav',
   '*.pdf', '*.psd', '*.zip', '*.7z', '*.tar', '*.gz',
   '*.exe', '*.swp',
-  'node_modules/*', 'bower_components/*'
+  'node_modules/*', 'bower_components/*', '.direnv/*',
+  '.git/*'
 }
 
 -- tabs/spaces
