@@ -17,12 +17,18 @@ local extension = {
     glyph = '󰗀',
     hl = 'MiniIconsYellow'
   },
+  org = {
+    glyph = '',
+    hl = 'MiniIconsCyan'
+  },
   -- shell scripts
   fish = {
     glyph = '󰈺',
-    hl = 'MiniIconsGreen'
   },
   sh = {
+    glyph = '󱆃',
+  },
+  zsh = {
     glyph = '󱆃',
   },
   -- misc
@@ -40,8 +46,8 @@ end
 
 local file = {
   ['.ghci'] = {
-    glyph = '󰅩',
-    hl = 'MiniIconsPurple'
+    glyph = '󰲒',
+    hl = 'MiniIconsYellow'
   },
   ['.envrc'] = {
     glyph = '',
@@ -52,6 +58,12 @@ local file = {
   },
   ['fish_variables'] = {
     glyph = '󰻳',
+  },
+  ['README'] = {
+    glyph = '󰈙'
+  },
+  ['README.md'] = {
+    glyph = '󰈙'
   },
 }
 
