@@ -1,5 +1,5 @@
 local buf = vim.lsp.buf
-local tele = require('telescope.builtin')
+local fzf = require('fzf-lua')
 local mason_lsp = require('mason-lspconfig')
 local mason = require('mason')
 
@@ -9,12 +9,12 @@ require('plugins.lsp_status')
 local on_attach = function()
   -- LSP
   Kmap('n', 'gd', function()
-      tele.lsp_definitions({ initial_mode = 'normal' })
+      fzf.lsp_definitions({ jump_to_single_result = true })
     end,
     'LSP: goto definition')
   Kmap('n', 'gD', buf.declaration,
     'LSP: goto declaration')
-  Kmap('n', 'gr', tele.lsp_references,
+  Kmap('n', 'gr', fzf.lsp_references,
     'LSP: references')
   Kmap('n', 'gI', buf.implementation,
     'LSP: goto implementation')
@@ -26,11 +26,13 @@ local on_attach = function()
     'LSP: signature help in insert mode')
   Kmap('n', '<leader>cn', buf.rename,
     'LSP: rename variable under cursor')
-  Kmap('n', '<leader>ca', buf.code_action,
+  Kmap('n', '<leader>ca', fzf.lsp_code_actions,
     'LSP: code actions')
-  Kmap('n', '<leader>cs', tele.lsp_document_symbols,
+  Kmap('n', '<leader>cs', fzf.lsp_document_symbols,
     'LSP: document symbols')
-  Kmap('n', '<leader>cS', tele.lsp_dynamic_workspace_symbols,
+  Kmap('n', '<leader>cS', function()
+      fzf.lsp_workspace_symbols({ fzf_cli_args = '--nth 2..' })
+    end,
     'LSP: workspace symbols')
   Kmap('n', '<leader>cA', buf.add_workspace_folder,
     'LSP: add workspace folder')
@@ -40,9 +42,7 @@ local on_attach = function()
       print(vim.inspect(buf.list_workspace_folders()))
     end,
     'LSP: list workspace folders')
-  Kmap('n', '<leader>cd', function()
-      tele.lsp_type_definitions({ initial_mode = 'normal' })
-    end,
+  Kmap('n', '<leader>cd', fzf.lsp_typedefs,
     'LSP: type definitions')
   Kmap('n', '<leader>cf', buf.format,
     'LSP: format buffer')

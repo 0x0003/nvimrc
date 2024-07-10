@@ -119,20 +119,8 @@ require('lazy').setup({
 
   -- fuzzy finder
   {
-    'nvim-telescope/telescope.nvim',
-    config = function() require('plugins.telescope') end,
-    branch = '0.1.x',
-    dependencies = {
-      'nvim-telescope/telescope-ui-select.nvim', -- vim.ui.select
-      'nvim-lua/plenary.nvim',
-      {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'make',
-        cond = function()
-          return vim.fn.executable 'make' == 1
-        end,
-      },
-    },
+    'ibhagwan/fzf-lua',
+    config = function() require('plugins.fzf') end,
     event = 'VeryLazy'
   },
 

@@ -62,13 +62,21 @@ hl('FloatBorder', c.base01, c.base01)
 hl('ColorColumn', nil, c.base01)
 hl('Search', c.base00, c.base0B) -- hlsearch
 
--- telescope
-hl('TelescopePromptTitle', nil, c.base0A)
-hl('TelescopePreviewTitle', nil, nil)
-hl('TelescopePromptBorder', c.base01, c.base01)
-hl('TelescopePromptNormal', c.base04, c.base01)
-hl('TelescopePromptPrefix', c.base04, c.base01)
-hl('TelescopeSelection', nil, c.base01)
+-- fzf-lua
+hl('FzfLuaHeaderBind', c.base09)
+hl('FzfLuaHeaderText', c.base08)
+hl('FzfLuaPathColNr', c.base0D)
+hl('FzfLuaPathLineNr', c.base0B)
+hl('FzfLuaBufName', c.base0E)
+hl('FzfLuaBufNr', c.base09)
+hl('FzfLuaBufFlagCur', c.base08)
+hl('FzfLuaBufFlagAlt', c.base0D)
+hl('FzfLuaTabTitle', c.base0C)
+hl('FzfLuaTabMarker', c.base09)
+hl('FzfLuaLiveSym', c.base08)
+hl('FzfLuaBorder', c.base01)
+hl('FzfLuaDirPart', c.base06)
+hl('FzfLuaPreviewTitle', c.base03)
 
 -- cmp
 hl('CmpItemAbbrMatch', c.base05)

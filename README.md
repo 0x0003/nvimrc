@@ -1,6 +1,6 @@
 ## Prerequisites
 - neovim **0.10+**
-- make
+- gnumake
 - gcc
 
 ### Optional mason.nvim dependencies

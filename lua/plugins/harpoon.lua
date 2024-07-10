@@ -10,7 +10,7 @@ harpoon:setup({
 Kmap('n', '<leader>a', function() harpoon:list():add() end,
   'Harpoon: add')
 Kmap('n', '<leader>A', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
-  'Harpoon: toggle popup')
+  'Harpoon: popup toggle')
 
 Kmap('n', '<leader>1', function() harpoon:list():select(1) end,
   'Harpoon: switch to list item 1')

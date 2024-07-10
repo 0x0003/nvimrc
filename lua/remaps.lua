@@ -7,9 +7,9 @@ Kmap('n', '\'', '`',
   'Mark: jump to `')
 
 -- buffers
-Kmap('n', '<leader>n', vim.cmd.bn,
+Kmap('n', '<leader>bn', vim.cmd.bn,
   'Buffer: next')
-Kmap('n', '<leader>p', vim.cmd.bp,
+Kmap('n', '<leader>bp', vim.cmd.bp,
   'Buffer: prev')
 Kmap('n', '<BS>', function() vim.cmd.e('#') end,
   'Buffer: alternate')
@@ -104,12 +104,6 @@ Kmap('i', '<C-w>', '<C-w>',
 Kmap('i', '<C-u>', '<C-u>',
   'Delete all characters before the cursor', { noremap = false })
 
--- run macro over visual range
-Kmap('x', '@', function()
-    return ':norm @' .. f.getcharstr() .. '<CR>'
-  end,
-  'Run macro over visual range', { expr = true })
-
 -- xdg-open
 local function xdgo(x)
   f.execute('!xdg-open ' .. f.shellescape(f.expand(x), 1))
@@ -126,4 +120,14 @@ Kmap('n', ']d', vim.diagnostic.goto_next,
   'Diagnostic: next')
 Kmap('n', '<leader>sd', vim.diagnostic.open_float,
   'Diagnostic: open float')
+
+Kmap('x', '@', function()
+    return ':norm @' .. f.getcharstr() .. '<CR>'
+  end,
+  'Run macro over visual range',
+  { expr = true })
+
+Kmap('n', '<leader>`', function() vim.cmd.cd('%:h') end,
+  'Set working directory to that of the current file',
+  { silent = false })
 

@@ -68,9 +68,9 @@ set.wildignore = {
   '*.bak', '*.mkv', '*.ogg', '*.webm', '*.mp4', '*.m4v',
   '*.flac', '*.alac', '*.m4a', '*.mp3', '*.ape', '*.wav',
   '*.pdf', '*.psd', '*.zip', '*.7z', '*.tar', '*.gz',
-  '*.exe', '*.swp',
+  '*.exe', '*.swp', '*.svg',
   'node_modules/*', 'bower_components/*', '.direnv/*',
-  '.git/*'
+  '.git/*', 'cache/*'
 }
 
 -- tabs/spaces
