@@ -31,19 +31,28 @@ Auc('BufRead', {
 
 -- keep window position when swtiching buffers
 local bufpos = Aug('bufpos', { clear = true })
+local winview = {}
 Auc({ 'BufLeave' }, {
   pattern = '*',
   group = bufpos,
   callback = function()
-    vim.b[0].winview = vim.fn.winsaveview()
+    local bufnr = vim.api.nvim_get_current_buf()
+    if not winview[bufnr] then
+      winview[bufnr] = {}
+    end
+    winview[bufnr] = vim.fn.winsaveview()
   end
 })
 Auc({ 'BufEnter' }, {
   pattern = '*',
   group = bufpos,
   callback = function()
-    if vim.b[0].winview ~= nil then
-      vim.fn.winrestview(vim.b[0].winview)
+    local bufnr = vim.api.nvim_get_current_buf()
+    if winview[bufnr]
+        and not vim.api.nvim_get_option_value('diff', {})
+    then
+      vim.fn.winrestview(winview[bufnr])
+      winview[bufnr] = nil
     end
   end
 })
