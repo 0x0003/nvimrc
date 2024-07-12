@@ -118,8 +118,13 @@ Kmap('n', '[d', vim.diagnostic.goto_prev,
   'Diagnostic: prev')
 Kmap('n', ']d', vim.diagnostic.goto_next,
   'Diagnostic: next')
-Kmap('n', '<leader>sd', vim.diagnostic.open_float,
+Kmap('n', '<leader>dp', vim.diagnostic.open_float,
   'Diagnostic: open float')
+Kmap('n', '<leader>q', function()
+  vim.diagnostic.setqflist()
+  vim.cmd('doautocmd <nomodeline> statusline BufEnter')
+end,
+  'Diagnostic: send to quickfix')
 
 Kmap('x', '@', function()
     return ':norm @' .. f.getcharstr() .. '<CR>'

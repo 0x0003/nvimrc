@@ -224,11 +224,11 @@ Kmap('n', '<leader>sg', function()
   'FZF: fuzzy grep')
 Kmap('n', '<leader>sf', fzf.live_grep_native,
   'FZF: live grep')
-Kmap('n', '<leader>q', function()
+Kmap('n', '<leader>sd', function()
     fzf.diagnostics_document({ fzf_cli_args = '--nth 2..' })
   end,
   'FZF: diagnostics in current buffer')
-Kmap('n', '<leader>Q', fzf.diagnostics_workspace,
+Kmap('n', '<leader>sD', fzf.diagnostics_workspace,
   'FZF: diagnostics in workspace')
 Kmap('n', '<leader>m', fzf.marks,
   'FZF: marks')
@@ -236,7 +236,7 @@ Kmap('n', '<leader>r', fzf.registers,
   'FZF: registers')
 Kmap('n', 'z=', fzf.spell_suggest,
   'FZF: spelling suggestions')
-Kmap('n', '<leader>se', fzf.quickfix,
+Kmap('n', '<leader>sq', fzf.quickfix,
   'FZF: quickfix list')
 Kmap('n', '<leader>sK', fzf.keymaps,
   'FZF: keymaps')
