@@ -193,6 +193,8 @@ fzf.setup({
   }
 })
 
+fzf.register_ui_select()
+
 -- maps
 Kmap('n', '<leader>.', fzf.resume,
   'FZF: resume previous search')

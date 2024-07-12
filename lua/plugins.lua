@@ -82,11 +82,6 @@ require('lazy').setup({
   {
     'neovim/nvim-lspconfig',
     config = function() require('plugins.lsp') end,
-    dependencies = {
-      -- automatically install servers
-      { 'williamboman/mason.nvim', config = true },
-      'williamboman/mason-lspconfig.nvim',
-    },
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' }
   },
 

@@ -1,11 +1,8 @@
 local buf = vim.lsp.buf
 local fzf = require('fzf-lua')
-local mason_lsp = require('mason-lspconfig')
-local mason = require('mason')
 
 require('plugins.lsp_status')
 
--- run on attach
 local on_attach = function()
   -- LSP
   Kmap('n', 'gd', function()
@@ -51,44 +48,42 @@ end
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+capabilities.workspace = {
+  didChangeWatchedFiles = {
+    dynamicRegistration = true,
+  },
+}
 
+-- servers to setup
+-- `:h lspconfig-server-configurations`
 local servers = {
   hls = {},
-
+  nil_ls = {},
+  lua_ls = {
+    -- Lua = {
+    --   runtime = { version = 'LuaJIT' },
+    --   workspace = {
+    --     checkThirdParty = false,
+    --     -- BUG?: no definitions are provided if a plugin is located
+    --     -- in `.../plugin_name/lua/HERE`
+    --     library = vim.api.nvim_get_runtime_file('', true),
+    --   },
+    -- },
+  },
   html = {
     filetypes = { 'html', 'twig', 'hbs' }
   },
-
+  cssls = {},
+  jsonls = {},
   tsserver = {},
-
-  lua_ls = {},
-
-  nil_ls = {},
 }
 
--- autoinstall servers
-mason.setup {
-  ui = {
-    icons = {
-      package_installed = 'o',
-      package_pending = '~',
-      package_uninstalled = 'x',
-    }
+for server_name, _ in pairs(servers) do
+  require('lspconfig')[server_name].setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = servers[server_name],
+    filetypes = (servers[server_name] or {}).filetypes,
   }
-}
-
-mason_lsp.setup {
-  ensure_installed = vim.tbl_keys(servers),
-}
-
-mason_lsp.setup_handlers {
-  function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-      filetypes = (servers[server_name] or {}).filetypes,
-    }
-  end
-}
+end
 

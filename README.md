@@ -3,8 +3,12 @@
 - gnumake
 - gcc
 
-### Optional mason.nvim dependencies
-- `ghcup` for hls
-- `npm` for tsserver and html
-- `cargo` for nil
+### Configured LSPs
+| server        | ad-hoc install                                             |
+| ------------- | ---------------------------------------------------------- |
+| hls           | `ghcup install hls recommended`                            |
+| nil           | `nix profile install nixpkgs#nil`                          |
+| lua_ls        | `nix profile install nixpkgs#lua-language-server`          |
+| html,css,json | `nix profile install nixpkgs#vscode-langservers-extracted` |
+| tsserver      | `npm install -g typescript-language-server typescript`     |
 

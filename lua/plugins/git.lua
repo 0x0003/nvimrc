@@ -62,9 +62,9 @@ gs.setup({
       'Git: diffthis ~')
     Kmap('n', '<leader>gc', function() ng.open({ 'commit' }) end,
       'Git: commit')
-    Kmap('n', '<leader>gp', function() ng.open({ 'push' }) end,
+    Kmap('n', '<leader>gP', function() ng.open({ 'push' }) end,
       'Git: push')
-    Kmap('n', '<leader>gP', function() ng.open({ 'pull' }) end,
+    Kmap('n', '<leader>gp', function() ng.open({ 'pull' }) end,
       'Git: pull')
     Kmap('n', '[g', gs.prev_hunk,
       'Git: hunk prev', { buffer = bufnr })
