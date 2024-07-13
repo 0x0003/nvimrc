@@ -1,4 +1,4 @@
--- remove all trailing whitespaces in active buffer
+-- remove all trailing whitespaces in current buffer
 Com('Trim', function()
   local save = vim.fn.winsaveview()
   vim.cmd([[%s/\s\+$//ge]])

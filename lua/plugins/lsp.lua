@@ -64,8 +64,8 @@ local servers = {
     --   runtime = { version = 'LuaJIT' },
     --   workspace = {
     --     checkThirdParty = false,
-    --     -- BUG?: no definitions are provided if a plugin is located
-    --     -- in `.../plugin_name/lua/HERE`
+    --     -- BUG?: no definitions are provided if plugin files are
+    --     -- located in `.../plugin_root/lua/plugin/HERE`
     --     library = vim.api.nvim_get_runtime_file('', true),
     --   },
     -- },
