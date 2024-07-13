@@ -25,7 +25,7 @@ require('lazy').setup({
   {
     'echasnovski/mini.icons',
     version = false,
-    config = function () require('plugins.mini-icons') end
+    config = function() require('plugins.mini-icons') end
   },
 
   -- file browser
@@ -83,6 +83,11 @@ require('lazy').setup({
     config = function() require('plugins.lsp') end,
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' }
   },
+  {
+    'folke/lazydev.nvim',
+    config = function() require('lazydev').setup() end,
+    ft = 'lua'
+  },
 
   -- autocompletion
   {
@@ -95,11 +100,6 @@ require('lazy').setup({
       'L3MON4D3/LuaSnip',             -- snippet engine
       'saadparwaiz1/cmp_luasnip',     -- cmp source for snippet engine
       'rafamadriz/friendly-snippets', -- collection of premade snippets
-      {
-        'folke/lazydev.nvim',         -- nvim-specific lua config
-        config = function() require('lazydev').setup() end,
-        ft = 'lua'
-      },
     },
     event = 'InsertEnter'
   },
