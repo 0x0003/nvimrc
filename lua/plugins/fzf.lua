@@ -86,7 +86,7 @@ fzf.setup({
       actions = {
         ['ctrl-j'] = { fn = actions.git_stage, reload = true },
         ['ctrl-k'] = { fn = actions.git_unstage, reload = true },
-        ['ctrl-x'] = false,
+        ['ctrl-x'] = { fn = actions.git_reset, reload = true },
         ['right']  = false,
         ['left']   = false,
       },

@@ -1,24 +1,9 @@
-local ng = require('neogit')
 local gs = require('gitsigns')
 
-ng.setup({
-  disable_hint = true,
-  mappings = {
-    popup = {
-      ['g?'] = 'HelpPopup',
-    },
-    status = {
-      ['<leader>gi'] = function() vim.cmd.e('#') end,
-      ['q'] = function() vim.cmd.e('#') end,
-      ['='] = 'Toggle',
-    }
-  }
-})
-
-Kmap('n', '<leader>gi', function() ng.open({ kind = 'replace' }) end,
-  'Git: interactive status')
-
 gs.setup({
+  signs_staged_enable = false,
+  attach_to_untracked = false,
+
   signs = {
     add = { text = '+' },
     change = { text = '~' },
@@ -26,7 +11,7 @@ gs.setup({
     topdelete = { text = '^' },
     changedelete = { text = '~' },
   },
-  signs_staged_enable = true,
+
   signs_staged = {
     add = { text = '+' },
     change = { text = '~' },
@@ -34,7 +19,7 @@ gs.setup({
     topdelete = { text = '^' },
     changedelete = { text = '~' },
   },
-  attach_to_untracked = false,
+
   on_attach = function(bufnr)
     Kmap({ 'n', 'x' }, '<leader>hs', function()
         if vim.api.nvim_get_mode().mode == 'n' then
@@ -60,21 +45,27 @@ gs.setup({
       'Git: diffthis')
     Kmap('n', '<leader>gD', function() gs.diffthis('~') end,
       'Git: diffthis ~')
-    Kmap('n', '<leader>gc', function() ng.open({ 'commit' }) end,
-      'Git: commit')
-    Kmap('n', '<leader>gP', function() ng.open({ 'push' }) end,
-      'Git: push')
-    Kmap('n', '<leader>gp', function() ng.open({ 'pull' }) end,
-      'Git: pull')
     Kmap('n', '[g', gs.prev_hunk,
       'Git: hunk prev', { buffer = bufnr })
     Kmap('n', ']g', gs.next_hunk,
       'Git: hunk next', { buffer = bufnr })
-  end
-})
 
-require('diffview').setup({
-  use_icons = true,
-  show_help_hints = false,
+    -- fugitive
+    Kmap('n', '<leader>gi', function()
+        local name = 'fugitive://'
+        if vim.fn.buflisted(vim.fn.bufname(name)) == 0 then
+          vim.cmd('tab Git')
+        else
+          vim.cmd.bd(name)
+        end
+      end,
+      'Git: interactive status')
+    Kmap('n', '<leader>gc', function() vim.cmd('Git commit') end,
+      'Git: commit')
+    Kmap('n', '<leader>gP', function() vim.cmd('Git push') end,
+      'Git: push', { silent = false })
+    Kmap('n', '<leader>gp', function() vim.cmd('Git pull') end,
+      'Git: pull', { silent = false })
+  end
 })
 

@@ -82,7 +82,7 @@ Auc('InsertLeave', {
 
 -- spellcheck
 Auc('FileType', {
-  pattern = { 'markdown', 'text', 'org', 'NeogitCommitMessage' },
+  pattern = { 'markdown', 'text', 'gitcommit' },
   group = Aug('splchk', { clear = true }),
   callback = function()
     vim.opt_local.spell = true
