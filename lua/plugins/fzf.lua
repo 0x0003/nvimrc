@@ -219,6 +219,8 @@ Kmap('n', '<leader>gb', fzf.git_branches,
   'FZF: git branches')
 Kmap('n', '<leader>gs', fzf.git_status,
   'FZF: git status')
+Kmap('n', '<leader>gC', fzf.git_commits,
+  'FZF: git commits')
 Kmap('n', '<leader>l', fzf.buffers,
   'FZF: buffers')
 Kmap('n', '<leader>/', fzf.blines,

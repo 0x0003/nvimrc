@@ -11,24 +11,33 @@ g.setup({
   }
 })
 
----@param f function
 ---@return string|nil
-local function input(f)
+local function input()
   local char = vim.fn.getcharstr()
   if char == '' then
     return
   else
-    return f({ name = char })
+    return char
   end
 end
 
 Kmap('n', '<leader>m', function()
-    input(g.tag)
+    if vim.bo.filetype == 'oil' then
+      local oil = require('oil')
+      local dir = oil.get_current_dir()
+      local file = oil.get_cursor_entry().name
+      g.tag({
+        name = input(),
+        path = require('grapple.path').join(dir, file)
+      })
+    else
+      g.tag({ name = input() })
+    end
   end,
   'Grapple: tag current file')
 
 Kmap('n', '<leader>j', function()
-    input(g.select)
+    g.select({ name = input() })
   end,
   'Grapple: jump to tag by name')
 
@@ -50,4 +59,3 @@ Kmap('n', '<leader>n', function()
     g.cycle_tags('next', { scope = 'cwd' })
   end,
   'Grapple: next')
-
