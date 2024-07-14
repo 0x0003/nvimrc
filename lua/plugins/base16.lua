@@ -22,8 +22,8 @@ end
 
 -- statusline
 hl('StatusNormal', c.base06)
-hl('StatusActive', c.base06)
-hl('StatusLine', c.base03)
+hl('StatusActive', c.base03)
+hl('StatusLine', c.base02)
 hl('StatusLineNC', c.base02)
 hl('StatusLineNCSep', c.base01)
 hl('StatusReplace', c.base08)
@@ -85,10 +85,6 @@ hl('CmpItemAbbr', c.base03)
 hl('CmpItemKind', c.base0E)
 hl('CmpItemMenu', c.base0E)
 hl('CmpItemKindSnippet', c.base0E)
-
--- harpoon
-hl('HarpoonWindow', nil, c.base00)
-hl('HarpoonBorder', c.base00, c.base00)
 
 -- indent-blankline.nvim
 hl('IblScope', c.base03)

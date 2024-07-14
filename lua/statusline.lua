@@ -11,7 +11,7 @@ local function mode_indicator()
   local mode = vim.api.nvim_get_mode().mode
   local color = ''
   if mode == 'n' then
-    color = '%#Normal# '
+    color = '%#StatusNormal# '
   elseif mode == 'i' or mode == 'ic' then
     color = '%#StatusInsert#󰏫 '
   elseif mode == 'v' then
