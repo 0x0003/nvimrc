@@ -70,3 +70,12 @@ gs.setup({
   end
 })
 
+-- spellcheck
+Auc('FileType', {
+  pattern = 'fugitive',
+  group = Aug('fugitivesize', { clear = true }),
+  callback = function()
+    vim.opt_local.winfixheight = true
+  end
+})
+
