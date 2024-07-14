@@ -54,7 +54,8 @@ gs.setup({
     Kmap('n', '<leader>gi', function()
         local name = 'fugitive://'
         if vim.fn.buflisted(vim.fn.bufname(name)) == 0 then
-          vim.cmd('tab Git')
+          vim.cmd('Git')
+          vim.cmd('20wincmd_')
         else
           vim.cmd.bd(name)
         end

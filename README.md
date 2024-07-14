@@ -3,7 +3,7 @@
 - gnumake
 - gcc
 
-### Configured LSPs
+### Configured language servers
 | server        | ad-hoc install                                             |
 | ------------- | ---------------------------------------------------------- |
 | hls           | `ghcup install hls recommended`                            |

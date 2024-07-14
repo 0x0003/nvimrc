@@ -97,7 +97,7 @@ function Status.active()
     macro_recording(),
     '%#StatusActive#', -- reset color
     '%<',              -- truncate
-    '%f ',             -- buffer name
+    '%f',             -- buffer name
     file_color(),
     '%M',              -- modified flag
     '%#StatusLine#',   -- dimmer color

@@ -94,7 +94,14 @@ fzf.setup({
     },
 
     files = {
+      previewer = 'cat',
       git_icons = true,
+      winopts = {
+        preview = {
+          layout = 'horizontal',
+          delay = 100,
+        },
+      },
     },
 
     branches = {
@@ -107,6 +114,19 @@ fzf.setup({
           reload = true
         },
       }
+    }
+  },
+
+  lsp = {
+    formatter = 'path.filename_first',
+    winopts = win_large(0.75),
+
+    symbols = {
+      winopts = win_large(0.75, 'horizontal')
+    },
+
+    code_actions = {
+      winopts = win_large(0.75, 'vertical', nil, 65),
     }
   },
 
@@ -158,14 +178,6 @@ fzf.setup({
     winopts = win_large(0.75, 'vertical')
   },
 
-  lsp = {
-    formatter = 'path.filename_first',
-    winopts = win_large(0.75),
-    symbols = {
-      winopts = win_large(0.75, 'horizontal')
-    },
-  },
-
   diagnostics = {
     winopts = win_large(nil, 'horizontal'),
   },
@@ -189,7 +201,6 @@ fzf.setup({
 
   registers = {
     prompt = ':reg ',
-    preview_opts = 'hidden'
   }
 })
 
@@ -230,7 +241,7 @@ Kmap('n', '<leader>sd', function()
   'FZF: diagnostics in current buffer')
 Kmap('n', '<leader>sD', fzf.diagnostics_workspace,
   'FZF: diagnostics in workspace')
-Kmap('n', '<leader>m', fzf.marks,
+Kmap('n', '<leader>sm', fzf.marks,
   'FZF: marks')
 Kmap('n', '<leader>r', fzf.registers,
   'FZF: registers')
