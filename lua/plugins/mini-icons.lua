@@ -72,5 +72,5 @@ require('mini.icons').setup({
   file = file,
 })
 
-MiniIcons.mock_nvim_web_devicons()
+require('mini.icons').mock_nvim_web_devicons()
 

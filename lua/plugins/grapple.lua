@@ -11,6 +11,7 @@ g.setup({
   }
 })
 
+---@param f function
 ---@param extra? table
 ---@return string|nil
 local function input(f, extra)
@@ -33,9 +34,7 @@ Kmap('n', '<leader>m', function()
       local oil = require('oil')
       local dir = oil.get_current_dir()
       local file = oil.get_cursor_entry().name
-      input(g.tag,
-        { path = require('grapple.path').join(dir, file) }
-      )
+      input(g.tag, { path = require('grapple.path').join(dir, file) })
     else
       input(g.tag)
     end
@@ -65,4 +64,3 @@ Kmap('n', '<leader>n', function()
     g.cycle_tags('next', { scope = 'cwd' })
   end,
   'Grapple: next')
-
