@@ -55,6 +55,12 @@ hl('SpellCap', c.base09)
 hl('SpellRare', c.base0E)
 hl('SpellLocal', c.base0C)
 
+-- diff
+hl('DiffAdd', c.base0B, c.diff0B)
+hl('DiffDelete', c.base08, c.diff08)
+hl('DiffChange', c.base0F, c.diff0D)
+hl('DiffText', c.base0D, c.diff0D)
+
 -- misc
 hl('WinSeparator', c.base01, nil)
 hl('NormalFloat', nil, c.base01)
@@ -100,11 +106,6 @@ hl('MiniIconsOrange', c.extra09)
 hl('MiniIconsPurple', c.base0E)
 hl('MiniIconsRed', c.base08)
 hl('MiniIconsYellow', c.base0A)
-
--- grapple
-hl('GrappleNormal', nil, c.base00)
-hl('GrappleBorder', c.base01, c.base00)
-hl('GrappleTitle', c.base03, c.base00)
 
 -- treesitter
 vim.api.nvim_set_hl(0, '@markup.strikethrough.markdown_inline', { link = 'htmlStrike' })

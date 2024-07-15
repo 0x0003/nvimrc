@@ -19,5 +19,8 @@ return {
   base0F = '#747272',
   extra04 = '#b8b3b3',
   extra09 = '#c29448',
-  extra0D = '#5d7a97'
+  extra0D = '#5d7a97',
+  diff08 = '#512c2d',
+  diff0B = '#4a5142',
+  diff0D = '#3e4851'
 }
