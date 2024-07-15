@@ -19,6 +19,11 @@ Kmap('n', '<leader>w', '<C-w>',
   'Window: wincmd')
 Kmap('n', '<leader>wd', '<C-w>c',
   'Window: close')
+Kmap('n', '<leader>wo', function()
+  vim.cmd.wincmd('o')
+  vim.cmd('doautocmd <nomodeline> statusline BufEnter')
+end,
+  'Window: make current window the only one on the screen')
 Kmap('n', '<leader>f', vim.cmd.close,
   'Window: close')
 Kmap('n', '<C-h>', '<C-w>h',

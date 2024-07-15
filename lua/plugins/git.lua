@@ -58,9 +58,10 @@ gs.setup({
           vim.cmd('20wincmd_')
         else
           vim.cmd.bd(name)
+          vim.cmd('doautocmd <nomodeline> statusline BufEnter')
         end
       end,
-      'Git: interactive status')
+      'Git: interactive status toggle')
     Kmap('n', '<leader>gc', function() vim.cmd('Git commit') end,
       'Git: commit')
     Kmap('n', '<leader>gP', function() vim.cmd('Git push') end,
@@ -70,7 +71,6 @@ gs.setup({
   end
 })
 
--- spellcheck
 Auc('FileType', {
   pattern = 'fugitive',
   group = Aug('fugitivesize', { clear = true }),

@@ -24,5 +24,5 @@ require('oil').setup({
 })
 
 Kmap('n', '<leader>e', '<CMD>Oil<CR>',
-  'Oil: toggle file explorer')
+  'Oil: file explorer toggle')
 

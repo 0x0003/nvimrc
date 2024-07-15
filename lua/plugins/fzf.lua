@@ -14,7 +14,7 @@ local function ignored_patterns()
   return t
 end
 
----@param height? integer # default 0.55
+---@param height? decimal|integer # default 0.55
 ---@param layout? string # horizontal|vertical|flex; default flex
 ---@param preview_h? integer # default 60%
 ---@param preview_v? integer # default 50%
