@@ -115,7 +115,7 @@ end
 
 function Status.inactive()
   return table.concat {
-    '%f ',                -- buffer name
+    '%f',                -- buffer name
     file_color(),
     '%M',                 -- modified flag
     '%#StatusLineNCSep#', -- darker color

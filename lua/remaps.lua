@@ -38,17 +38,13 @@ Kmap('n', '<Down>', '<cmd>resize +3<CR>',
 Kmap('n', '<Up>', '<cmd>resize -3<CR>',
   'Window: -resize vertical')
 
--- clear hlsearch
-Kmap('n', '<leader>\\', vim.cmd.noh,
-  'Clear hlsearch')
-
 -- system clipboard copy/paste
 Kmap({ 'n', 'x' }, '<leader>y', '"+y',
-  'Copy to system clipboard')
+  'System clipboard: copy')
 Kmap('n', '<leader>Y', '"+Y',
-  'Copy line to system clipboard')
+  'System clipboard: copy line')
 Kmap('n', '<leader>P', '<cmd>set paste<CR>"+p<cmd>set nopaste<CR>',
-  'Paste from system clipboard')
+  'System clipboard: paste')
 
 -- emacs-style command-line editing
 Kmap('c', '<C-a>', '<Home>',
@@ -135,4 +131,7 @@ Kmap('x', '@', function()
 Kmap('n', '<leader>`', function() vim.cmd.cd('%:h') end,
   'Set working directory to that of the current file',
   { silent = false })
+
+Kmap('n', '<leader>\\', vim.cmd.noh,
+  'Clear hlsearch')
 
