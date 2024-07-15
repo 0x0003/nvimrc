@@ -38,7 +38,6 @@ fzf.setup({
     git_icons = false,
     no_action_zz = true,
     actions = {
-      ['ctrl-q'] = actions.file_sel_to_qf,
       ['ctrl-u'] = false,
       ['ctrl-d'] = false,
       ['ctrl-y'] = false,
@@ -159,6 +158,11 @@ fzf.setup({
   },
 
   grep = {
+    actions = {
+      ['ctrl-q'] = {
+        fn = actions.file_edit_or_qf, prefix = 'select-all+'
+      },
+    },
     prompt = ':Rg ',
     winopts = win_large(0.75, 'vertical')
   },
