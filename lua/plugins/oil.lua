@@ -21,7 +21,6 @@ oil.setup({
     ['<C-j>'] = 'actions.select_split',
     ['<C-t>'] = 'actions.select_tab',
     ['<C-p>'] = 'actions.preview',
-    ['<leader>e'] = 'actions.close',
   },
 })
 
