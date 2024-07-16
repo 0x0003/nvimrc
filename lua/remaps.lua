@@ -20,9 +20,9 @@ Kmap('n', '<leader>w', '<C-w>',
 Kmap('n', '<leader>wd', '<C-w>c',
   'Window: close')
 Kmap('n', '<leader>wo', function()
-  vim.cmd.wincmd('o')
-  vim.cmd('doautocmd <nomodeline> statusline BufEnter')
-end,
+    vim.cmd.wincmd('o')
+    vim.cmd('doautocmd <nomodeline> statusline BufEnter')
+  end,
   'Window: make current window the only one on the screen')
 Kmap('n', '<leader>f', vim.cmd.close,
   'Window: close')
@@ -122,9 +122,9 @@ Kmap('n', ']d', vim.diagnostic.goto_next,
 Kmap('n', '<leader>dp', vim.diagnostic.open_float,
   'Diagnostic: open float')
 Kmap('n', '<leader>q', function()
-  vim.diagnostic.setqflist()
-  vim.cmd('doautocmd <nomodeline> statusline BufEnter')
-end,
+    vim.diagnostic.setqflist()
+    vim.cmd('doautocmd <nomodeline> statusline BufEnter')
+  end,
   'Diagnostic: send to quickfix')
 
 Kmap('x', '@', function()

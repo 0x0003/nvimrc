@@ -1,4 +1,6 @@
-require('oil').setup({
+local oil = require('oil')
+
+oil.setup({
   view_options = {
     show_hidden = true,
     is_always_hidden = function(name)
@@ -23,6 +25,8 @@ require('oil').setup({
   },
 })
 
-Kmap('n', '<leader>e', '<CMD>Oil<CR>',
+Kmap('n', '<leader>e', function()
+  return (vim.bo.ft ~= 'oil' and {oil.open()} or {oil.close()})[1]
+end,
   'Oil: file explorer toggle')
 

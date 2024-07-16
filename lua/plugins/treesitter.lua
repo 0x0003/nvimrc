@@ -1,13 +1,15 @@
 ---@diagnostic disable: missing-fields
 require('nvim-treesitter.configs').setup {
   ensure_installed = {
-    'c', 'haskell', 'lua', 'python', 'bash', 'fish', 'javascript', 'typescript',
-    'vimdoc', 'vim', 'css', 'html', 'yaml', 'toml', 'markdown', 'markdown_inline',
-    'regex'
+    'c', 'haskell', 'nix', 'lua', 'python', 'bash', 'fish',
+    'javascript', 'typescript', 'vimdoc', 'vim', 'css', 'html',
+    'yaml', 'toml', 'markdown', 'markdown_inline', 'regex'
   },
+
   auto_install = false,
   highlight = { enable = true },
   indent = { enable = true },
+
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -17,6 +19,7 @@ require('nvim-treesitter.configs').setup {
       node_decremental = '<leader>tN',
     },
   },
+
   textobjects = {
     select = {
       enable = true,
@@ -31,6 +34,7 @@ require('nvim-treesitter.configs').setup {
         ['ic'] = '@class.inner',
       },
     },
+
     move = {
       enable = true,
       set_jumps = true, -- add jumps to jumplist
@@ -51,6 +55,7 @@ require('nvim-treesitter.configs').setup {
         ['[]'] = '@class.outer',
       },
     },
+
     swap = {
       enable = true,
       swap_next = {
