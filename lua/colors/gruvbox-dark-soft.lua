@@ -18,5 +18,8 @@ return {
   base0F = '#998c71',
   extra04 = '#928374',
   extra09 = '#e1bb7e',
-  extra0D = '#9dc2ba'
+  extra0D = '#9dc2ba',
+  diff08 = '#4f2321',
+  diff0B = '#494f2b',
+  diff0D = '#354c47'
 }
