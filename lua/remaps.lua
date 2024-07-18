@@ -137,6 +137,6 @@ Kmap('n', '<leader>`', function() vim.cmd.cd('%:h') end,
   'Set working directory to that of the current file',
   { silent = false })
 
-Kmap('n', '<leader>\\', vim.cmd.noh,
+Kmap('n', '<Esc>', vim.cmd.noh,
   'Clear hlsearch')
 
