@@ -16,7 +16,7 @@ for _, a in ipairs(modules) do
   end
 end
 
--- set POSIX compatible shell if using fish
+-- set POSIX compliant shell if using fish
 local os_shell = os.getenv('SHELL')
 if os_shell ~= nil and string.match(os_shell, 'fish') == 'fish' then
   vim.o.shell = 'sh'

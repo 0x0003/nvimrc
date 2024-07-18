@@ -58,7 +58,7 @@ local handlers = {
   ["textDocument/hover"] = vim.lsp.with(
     vim.lsp.handlers.hover, { border = 'solid' }
   ),
-  ["textDocument/signature=elp"] = vim.lsp.with(
+  ["textDocument/signatureHelp"] = vim.lsp.with(
     vim.lsp.handlers.signature_help, { border = 'solid' }
   ),
 }
