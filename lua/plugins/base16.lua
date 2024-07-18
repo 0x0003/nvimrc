@@ -14,6 +14,9 @@ else
   base16.setup(c)
 end
 
+---@param group string
+---@param fg string|nil
+---@param bg? string|nil
 local function hl(group, fg, bg)
   if fg == nil then fg = 'none' end
   if bg == nil then bg = 'none' end
