@@ -61,10 +61,12 @@ hl('DiffDelete', c.base08, c.diff08)
 hl('DiffChange', c.base0F, c.diff0D)
 hl('DiffText', c.base0D, c.diff0D)
 
+-- floating windows
+hl('NormalFloat', nil, c.popup00)
+hl('FloatBorder', c.base06, c.popup00)
+
 -- misc
 hl('WinSeparator', c.base01, nil)
-hl('NormalFloat', nil, c.base01)
-hl('FloatBorder', c.base01, c.base01)
 hl('ColorColumn', nil, c.base01)
 hl('Search', c.base00, c.base0B) -- hlsearch
 

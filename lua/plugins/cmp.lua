@@ -29,6 +29,18 @@ cmp.setup {
     { name = 'path' },
     { name = 'lazydev', group_index = 0 }
   },
+
+  window = {
+    completion = {
+      border = 'solid',
+      winhighlight = 'Normal:NormalFloat'
+    },
+    documentation = {
+      border = 'solid',
+      winhighlight = 'Normal:NormalFloat'
+    },
+  },
+
   snippet = {
     expand = function(args)
       if not luasnip then
@@ -37,6 +49,7 @@ cmp.setup {
       luasnip.lsp_expand(args.body)
     end,
   },
+
   mapping = cmp.mapping.preset.insert {
     ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-p>'] = cmp.mapping.select_prev_item(),

@@ -54,6 +54,15 @@ capabilities.workspace = {
   },
 }
 
+local handlers = {
+  ["textDocument/hover"] = vim.lsp.with(
+    vim.lsp.handlers.hover, { border = 'solid' }
+  ),
+  ["textDocument/signature=elp"] = vim.lsp.with(
+    vim.lsp.handlers.signature_help, { border = 'solid' }
+  ),
+}
+
 -- servers to setup
 -- `:h lspconfig-server-configurations`
 local servers = {
@@ -82,6 +91,7 @@ for server_name, _ in pairs(servers) do
   require('lspconfig')[server_name].setup {
     capabilities = capabilities,
     on_attach = on_attach,
+    handlers = handlers,
     settings = servers[server_name],
     filetypes = (servers[server_name] or {}).filetypes,
   }

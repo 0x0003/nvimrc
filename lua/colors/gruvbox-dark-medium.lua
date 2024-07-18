@@ -21,5 +21,6 @@ return {
   extra0D = '#9dc2ba',
   diff08 = '#4f2321',
   diff0B = '#494f2b',
-  diff0D = '#354c47'
+  diff0D = '#354c47',
+  popup00 = '#1d2021',
 }
