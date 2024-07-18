@@ -81,7 +81,7 @@ set.shiftwidth = 2
 -- list variables
 set.list = true
 set.listchars = {
-  tab = '━━⭾',
+  tab = '⭾━━',
   trail = '»',
   nbsp = '⍽',
 }
