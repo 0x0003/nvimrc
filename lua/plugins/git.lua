@@ -1,7 +1,6 @@
 local gs = require('gitsigns')
 
 gs.setup({
-  signs_staged_enable = false,
   attach_to_untracked = false,
 
   signs = {
@@ -12,12 +11,17 @@ gs.setup({
     changedelete = { text = '~' },
   },
 
+  signs_staged_enable = false,
   signs_staged = {
     add = { text = '+' },
     change = { text = '~' },
     delete = { text = '-' },
     topdelete = { text = '^' },
     changedelete = { text = '~' },
+  },
+
+  preview_config = {
+    border = 'solid'
   },
 
   on_attach = function(bufnr)

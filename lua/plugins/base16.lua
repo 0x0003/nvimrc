@@ -73,6 +73,14 @@ hl('WinSeparator', c.base01, nil)
 hl('ColorColumn', nil, c.base01)
 hl('Search', c.base00, c.base0B) -- hlsearch
 
+-- gitsigns
+hl('GitSignsAddInline', c.base0D)
+hl('GitSignsAddLnInline', c.base0D)
+hl('GitSignsChangeInline', c.base0D)
+hl('GitSignsChangeLnInline', c.base0D)
+hl('GitSignsDeleteInline', c.base0D)
+hl('GitSignsDeleteLnInline', c.base0D)
+
 -- fzf-lua
 hl('FzfLuaHeaderBind', c.base09)
 hl('FzfLuaHeaderText', c.base08)
