@@ -61,7 +61,7 @@ fzf.setup({
     col = 0.50,
     height = 0.45,
     width = 1,
-    border = { '─', '─', '─', '', '', '', '', '' },
+    border = { ' ', ' ', ' ', '', '', '', '', '' },
     preview = {
       border = 'noborder',
       vertical = 'down:50%',
