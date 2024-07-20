@@ -2,6 +2,9 @@
 - neovim **0.10+**
 - gnumake
 - gcc
+- fzf
+- fd
+- rg
 
 ### Configured language servers
 | server        | ad-hoc install                                             |
