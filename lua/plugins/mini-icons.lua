@@ -21,6 +21,9 @@ local extension = {
     glyph = '',
     hl = 'MiniIconsCyan'
   },
+  lua = {
+    hl = 'MiniIconsBlue'
+  },
   -- shell scripts
   fish = {
     glyph = '󰈺',
