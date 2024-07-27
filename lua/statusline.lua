@@ -9,25 +9,25 @@ end
 
 local function mode_indicator()
   local mode = vim.api.nvim_get_mode().mode
-  local color = ''
+  local indicator = ''
   if mode == 'n' then
-    color = '%#StatusNormal# '
+    indicator = '%#StatusNormal#'
   elseif mode == 'i' or mode == 'ic' then
-    color = '%#StatusInsert#󰏫 '
+    indicator = '%#StatusInsert#INSERT 󰏫 '
   elseif mode == 'v' then
-    color = '%#StatusVisual#󰒉 '
+    indicator = '%#StatusVisual#VISUAL 󰒉 '
   elseif mode == 'V' then
-    color = '%#StatusVisual#󰾂 '
+    indicator = '%#StatusVisual#VISUAL LINE 󰾂 '
   elseif mode == '' then
-    color = '%#StatusVisual#󰫙 '
+    indicator = '%#StatusVisual#VISUAL BLOCK 󰫙 '
   elseif mode == 'R' then
-    color = '%#StatusReplace# '
+    indicator = '%#StatusReplace#REPLACE  '
   elseif mode == 'c' then
-    color = '%#StatusCommand# '
+    indicator = '%#StatusCommand#COMMAND  '
   elseif mode == 't' then
-    color = '%#StatusTerminal# '
+    indicator = '%#StatusTerminal#TERMINAL  '
   end
-  return color
+  return indicator
 end
 
 local function file_color()

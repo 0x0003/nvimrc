@@ -21,7 +21,7 @@ local file_pattern = '*.lua'
 
 --
 -- generic latex expression
-local texgeneric = s('lex', fmt([[
+local texgeneric = s('$', fmt([[
 ${{{}}}$
 ]], {
   i(1, 'text'),
