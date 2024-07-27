@@ -68,9 +68,10 @@ set.wildignore = {
   '*.bak', '*.mkv', '*.ogg', '*.webm', '*.mp4', '*.m4v',
   '*.flac', '*.alac', '*.m4a', '*.mp3', '*.ape', '*.wav',
   '*.pdf', '*.psd', '*.zip', '*.7z', '*.tar', '*.gz',
-  '*.exe', '*.swp', '*.svg',
+  '*.exe', '*.swp', '*.svg', '*.bin', '*.dmp', '*.db',
+  '*.sqlite', '*.sqlite-shm', '*.sqlite-wal',
   'node_modules/*', 'bower_components/*', '.direnv/*',
-  '.git/*', 'cache/*'
+  '.git/*', 'cache/*', 'shader-cache/*'
 }
 
 -- tabs/spaces
