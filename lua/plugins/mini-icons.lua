@@ -28,12 +28,6 @@ local extension = {
   fish = {
     glyph = '󰈺',
   },
-  sh = {
-    glyph = '󱆃',
-  },
-  zsh = {
-    glyph = '󱆃',
-  },
   -- misc
   lock = {
     glyph = '󰌾',
@@ -57,6 +51,9 @@ local file = {
     hl = 'MiniIconsGreen'
   },
   makefile = {
+    hl = 'MiniIconsGreen'
+  },
+  Makefile = {
     hl = 'MiniIconsGreen'
   },
   ['fish_variables'] = {
