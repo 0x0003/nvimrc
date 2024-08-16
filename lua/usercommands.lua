@@ -13,9 +13,8 @@ Com('FF', function()
   local typ = vim.bo.filetype .. sep
   local enc = vim.bo.fileencoding .. sep
   local fmt = vim.bo.fileformat .. sep
-  local lne = vim.fn.line('$') .. ' lines, '
-  local chr = string.match((vim.fn.execute('!wc -m %')), '%d+') .. ' characters'
-  print(pth .. typ .. enc .. fmt .. lne .. chr)
+  local lne = vim.fn.line('$') .. ' lines'
+  print(pth .. typ .. enc .. fmt .. lne)
 end, {})
 
 -- set sw and sts to 2
