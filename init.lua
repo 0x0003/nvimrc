@@ -1,9 +1,9 @@
 local modules = {
   'helpers',
   'options',
+  'remaps',
   'plugins',
   'autocommands',
-  'remaps',
   'statusline',
   'usercommands',
   'sessions'
