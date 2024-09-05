@@ -84,7 +84,7 @@ local servers = {
   },
   cssls = {},
   jsonls = {},
-  tsserver = {},
+  ts_ls = {},
 }
 
 for server_name, _ in pairs(servers) do

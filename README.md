@@ -13,5 +13,5 @@
 | nil           | `nix profile install nixpkgs#nil`                          |
 | lua_ls        | `nix profile install nixpkgs#lua-language-server`          |
 | html,css,json | `nix profile install nixpkgs#vscode-langservers-extracted` |
-| tsserver      | `npm install -g typescript-language-server typescript`     |
+| ts_ls         | `npm install -g typescript-language-server typescript`     |
 
