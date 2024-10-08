@@ -258,4 +258,6 @@ Kmap('n', '<leader>sq', fzf.quickfix,
   'FZF: quickfix list')
 Kmap('n', '<leader>sK', fzf.keymaps,
   'FZF: keymaps')
+Kmap('n', '<leader>:', fzf.commands,
+  'FZF: commands')
 
