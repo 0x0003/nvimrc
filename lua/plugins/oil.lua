@@ -18,12 +18,14 @@ oil.setup({
   },
 
   keymaps = {
+    ['<C-h>'] = false,
+    ['<C-j>'] = false,
+    ['<C-k>'] = false,
+    ['<C-l>'] = false,
     ['<BS>'] = 'actions.parent',
-    ['<C-k>'] = 'actions.refresh',
-    ['<C-l>'] = 'actions.select_vsplit',
-    ['<C-j>'] = 'actions.select_split',
     ['<C-t>'] = 'actions.select_tab',
     ['<C-p>'] = 'actions.preview',
+    ['<C-n>'] = 'actions.refresh',
   },
 
   float = { border = 'solid' },
