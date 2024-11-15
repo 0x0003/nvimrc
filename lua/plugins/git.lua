@@ -49,9 +49,13 @@ gs.setup({
       'Git: diffthis')
     Kmap('n', '<leader>gD', function() gs.diffthis('~') end,
       'Git: diffthis ~')
-    Kmap('n', '[g', gs.prev_hunk,
+    Kmap('n', '[g', function()
+        gs.nav_hunk('prev')
+      end,
       'Git: hunk prev', { buffer = bufnr })
-    Kmap('n', ']g', gs.next_hunk,
+    Kmap('n', ']g', function()
+        gs.nav_hunk('next')
+      end,
       'Git: hunk next', { buffer = bufnr })
 
     -- fugitive
