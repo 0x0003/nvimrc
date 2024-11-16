@@ -1,6 +1,5 @@
 ## Prerequisites
 - neovim **0.10+**
-- gnumake
 - gcc
 - fzf
 - fd
