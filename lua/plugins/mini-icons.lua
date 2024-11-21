@@ -72,3 +72,7 @@ require('mini.icons').setup({
   file = file,
 })
 
+-- plugins currently relying on the mock function:
+-- grapple.nvim
+MiniIcons.mock_nvim_web_devicons()
+

@@ -89,6 +89,16 @@ local search_count = function(args)
   return ('[%s/%s]'):format(current, total)
 end
 
+local function grapple_tag_indicator()
+  local g = require('grapple')
+  local bufnr = vim.fn.winbufnr(vim.g.statusline_winid)
+  if g.exists({ buffer = bufnr }) then
+    return ',' .. g.name_or_index({ buffer = bufnr })
+  else
+    return ''
+  end
+end
+
 Status = {}
 
 function Status.active()
@@ -97,12 +107,13 @@ function Status.active()
     macro_recording(),
     '%#StatusActive#', -- reset color
     '%<',              -- truncate
-    '%f',             -- buffer name
+    '%f',              -- buffer name
     file_color(),
     '%M',              -- modified flag
     '%#StatusLine#',   -- dimmer color
     '%H',              -- help flag
     '%R',              -- readonly flag
+    grapple_tag_indicator(),
     lsp_diag(),
     '%#StatusActive#', -- reset color
     '%=',              -- right align
@@ -115,12 +126,13 @@ end
 
 function Status.inactive()
   return table.concat {
-    '%f',                -- buffer name
+    '%f', -- buffer name
     file_color(),
     '%M',                 -- modified flag
     '%#StatusLineNCSep#', -- darker color
     '%H',                 -- help flag
     '%R',                 -- readonly flag
+    grapple_tag_indicator(),
     '%<',                 -- truncate
     '%#StatusLineNCSep#', -- darker color
   }

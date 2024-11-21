@@ -34,6 +34,13 @@ require('lazy').setup({
     config = function() require('plugins.oil') end,
   },
 
+  -- file navigation through custom marks
+  {
+    'cbochs/grapple.nvim',
+    config = function() require('plugins.grapple') end,
+    event = { 'BufReadPost', 'BufNewFile' },
+  },
+
   -- git
   {
     'tpope/vim-fugitive',

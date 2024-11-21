@@ -120,6 +120,11 @@ hl('MiniIconsPurple', c.base0E)
 hl('MiniIconsRed', c.base08)
 hl('MiniIconsYellow', c.base0A)
 
+-- grapple
+hl('GrappleNormal', nil, c.base00)
+hl('GrappleBorder', c.base01, c.base00)
+hl('GrappleTitle', c.base03, c.base00)
+
 -- treesitter
 vim.api.nvim_set_hl(0, '@markup.strikethrough.markdown_inline', { link = 'htmlStrike' })
 
