@@ -1,5 +1,6 @@
 local g = require('grapple')
 
+---@diagnostic disable-next-line: missing-fields
 g.setup({
   scope = 'cwd',
   win_opts = {
