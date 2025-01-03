@@ -21,6 +21,10 @@ local extension = {
     glyph = '',
     hl = 'MiniIconsCyan'
   },
+  norg = {
+    glyph = '',
+    hl = 'MiniIconsGreen'
+  },
   lua = {
     hl = 'MiniIconsBlue'
   },
