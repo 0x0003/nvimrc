@@ -65,7 +65,7 @@ require('lazy').setup({
     event = 'VeryLazy'
   },
 
-  -- visualise rgb and hex values
+  -- visualize rgb and hex values
   {
     'norcalli/nvim-colorizer.lua',
     config = function() require('colorizer').setup() end,
@@ -111,7 +111,7 @@ require('lazy').setup({
     event = 'InsertEnter'
   },
 
-  -- visualise undo history
+  -- visualize undo history
   {
     'mbbill/undotree',
     config = function() require('plugins.undotree') end,
