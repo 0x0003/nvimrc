@@ -33,6 +33,7 @@ local function win_large(height, layout, preview_h, preview_v)
 end
 
 fzf.setup({
+  'default',
   defaults = {
     file_icon_padding = '',
     file_icons = true,
