@@ -99,7 +99,7 @@ Kmap('n', 'し”', 'ci"',
 Kmap('n', 'し’', 'ci\'',
   'IME: ci\'')
 
--- don't start new undo sequence (see `:help i_CTRL-G_u`) with C-w/C-u
+-- don't start new undo sequence with C-w/C-u `:help i_CTRL-G_u`
 Kmap('i', '<C-w>', '<C-w>',
   'Delete the word before the cursor', { noremap = false })
 Kmap('i', '<C-u>', '<C-u>',

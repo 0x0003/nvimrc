@@ -72,7 +72,7 @@ local function lsp_diag()
   return errors .. warnings .. hints .. info
 end
 
-local search_count = function(args)
+local function search_count(args)
   local ok, s_count = pcall(vim.fn.searchcount,
     (args or {}).options or { recompute = true })
   if not ok

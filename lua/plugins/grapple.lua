@@ -16,7 +16,7 @@ g.setup({
 ---@param extra? table
 local function input(f, extra)
   local char = vim.fn.getcharstr()
-  -- literal escape character (see `:help i_CTRL-V`)
+  -- literal escape character `:help i_CTRL-V`
   if char == '' then
     return
   else
