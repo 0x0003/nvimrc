@@ -33,7 +33,7 @@ local function win_large(height, layout, preview_h, preview_v)
 end
 
 fzf.setup({
-  'default',
+  'default-prompt',
   defaults = {
     file_icon_padding = '',
     file_icons = true,
@@ -91,9 +91,8 @@ fzf.setup({
         ['right']  = false,
         ['left']   = false,
       },
-      winopts = win_large(0.75, 'horizontal')
+      winopts = win_large(0.74, 'horizontal')
     },
-
     files = {
       previewer = 'cat',
       git_icons = true,
@@ -104,7 +103,6 @@ fzf.setup({
         },
       },
     },
-
     branches = {
       actions = {
         ['ctrl-r'] = { fn = actions.git_branch_del, reload = true },
@@ -121,11 +119,9 @@ fzf.setup({
   lsp = {
     formatter = 'path.filename_first',
     winopts = win_large(0.75),
-
     symbols = {
       winopts = win_large(0.75, 'horizontal')
     },
-
     code_actions = {
       winopts = win_large(0.75, 'vertical', nil, 65),
     }
