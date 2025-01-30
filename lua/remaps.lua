@@ -120,7 +120,7 @@ Kmap('n', '[d', vim.diagnostic.goto_prev,
 Kmap('n', ']d', vim.diagnostic.goto_next,
   'Diagnostic: next')
 Kmap('n', '<leader>dp', vim.diagnostic.open_float,
-  'Diagnostic: open float')
+  'Diagnostic: popup')
 Kmap('n', '<leader>q', function()
     vim.diagnostic.setqflist()
     vim.cmd('doautocmd <nomodeline> statusline BufEnter')

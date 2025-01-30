@@ -11,7 +11,7 @@ gs.setup({
     changedelete = { text = '~' },
   },
 
-  signs_staged_enable = false,
+  signs_staged_enable = true,
   signs_staged = {
     add = { text = '+' },
     change = { text = '~' },
@@ -33,8 +33,6 @@ gs.setup({
         end
       end,
       'Git: hunk stage toggle')
-    Kmap({ 'n', 'x' }, '<leader>hu', gs.undo_stage_hunk,
-      'Git: hunk unstage')
     Kmap('n', '<leader>hr', gs.reset_hunk,
       'Git: hunk reset')
     Kmap('n', '<leader>gS', gs.stage_buffer,

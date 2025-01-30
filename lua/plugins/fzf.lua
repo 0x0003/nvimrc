@@ -253,7 +253,7 @@ Kmap('n', 'z=', fzf.spell_suggest,
   'FZF: spelling suggestions')
 Kmap('n', '<leader>sq', fzf.quickfix,
   'FZF: quickfix list')
-Kmap('n', '<leader>sK', fzf.keymaps,
+Kmap('n', '<leader>sk', fzf.keymaps,
   'FZF: keymaps')
 Kmap('n', '<leader>:', fzf.commands,
   'FZF: commands')
