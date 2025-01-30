@@ -17,7 +17,7 @@ local rep = require('luasnip.extras').rep
 local snippets, autosnippets = {}, {}
 
 local group = Aug('Lua Snippets', { clear = true })
-local file_pattern = '*.lua'
+local file_pattern = '*.hs'
 
 --
 -- function application
