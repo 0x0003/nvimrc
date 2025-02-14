@@ -6,7 +6,7 @@ require('plugins.lsp_status')
 local on_attach = function()
   -- LSP
   Kmap('n', 'gd', function()
-      fzf.lsp_definitions({ jump_to_single_result = true })
+      fzf.lsp_definitions({ jump1 = true })
     end,
     'LSP: goto definition')
   Kmap('n', 'gD', buf.declaration,
