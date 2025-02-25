@@ -72,21 +72,16 @@ local function lsp_diag()
   return errors .. warnings .. hints .. info
 end
 
-local function search_count(args)
+local function search_count()
   local ok, s_count = pcall(vim.fn.searchcount,
-    (args or {}).options or { recompute = true })
+    { recompute = true, maxcount = 0 })
   if not ok
       or s_count.current == nil
       or s_count.total == 0
       or vim.v.hlsearch == 0
-  then
-    return ''
-  end
-  if s_count.incomplete == 1 then return '?/?' end
-  local too_many = ('>%d'):format(s_count.maxcount)
-  local current = s_count.current > s_count.maxcount and too_many or s_count.current
-  local total = s_count.total > s_count.maxcount and too_many or s_count.total
-  return ('[%s/%s]'):format(current, total)
+  then return '' end
+  if s_count.incomplete > 0 then return '?/?' end
+  return ('[%s/%s]'):format(s_count.current, s_count.total)
 end
 
 local function grapple_tag_indicator()
