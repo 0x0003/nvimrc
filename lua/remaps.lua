@@ -107,7 +107,7 @@ Kmap('i', '<C-u>', '<C-u>',
 
 -- xdg-open
 local function xdgo(x)
-  f.execute('!xdg-open ' .. f.shellescape(f.expand(x), 1))
+  f.execute('!xdg-open ' .. f.shellescape(f.expand(x), true))
 end
 Kmap('n', 'gx', function() xdgo('<cfile>') end,
   'Open filepath or url under the cursor with xdg-open', { expr = true })
@@ -115,9 +115,13 @@ Kmap('n', 'gX', function() xdgo('%:p') end,
   'Open current buffer with xdg-open', { expr = true })
 
 -- diagnostics
-Kmap('n', '[d', vim.diagnostic.goto_prev,
+Kmap('n', '[d', function()
+    vim.diagnostic.jump({ count = 1, float = true })
+  end,
   'Diagnostic: prev')
-Kmap('n', ']d', vim.diagnostic.goto_next,
+Kmap('n', ']d', function()
+    vim.diagnostic.jump({ count = -1, float = true })
+  end,
   'Diagnostic: next')
 Kmap('n', '<leader>dp', vim.diagnostic.open_float,
   'Diagnostic: popup')

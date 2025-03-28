@@ -19,8 +19,8 @@ local on_attach = function()
     'LSP: popup symbol info')
   Kmap('n', '<leader>k', buf.signature_help,
     'LSP: signature help')
-  Kmap('i', '<C-l>', buf.signature_help,
-    'LSP: signature help in insert mode')
+  Kmap({'i', 'x'}, '<C-l>', buf.signature_help,
+    'LSP: signature help in insert and visual modes')
   Kmap('n', '<leader>cn', buf.rename,
     'LSP: rename variable under cursor')
   Kmap('n', '<leader>ca', buf.code_action,
@@ -45,6 +45,11 @@ local on_attach = function()
     'LSP: format buffer')
 end
 
+-- diagnostic options
+vim.diagnostic.config({
+  virtual_text = true,
+})
+
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
@@ -52,15 +57,6 @@ capabilities.workspace = {
   didChangeWatchedFiles = {
     dynamicRegistration = true,
   },
-}
-
-local handlers = {
-  ["textDocument/hover"] = vim.lsp.with(
-    vim.lsp.handlers.hover, { border = 'solid' }
-  ),
-  ["textDocument/signatureHelp"] = vim.lsp.with(
-    vim.lsp.handlers.signature_help, { border = 'solid' }
-  ),
 }
 
 -- servers to setup
@@ -91,7 +87,7 @@ for server_name, _ in pairs(servers) do
   require('lspconfig')[server_name].setup {
     capabilities = capabilities,
     on_attach = on_attach,
-    handlers = handlers,
+    -- handlers = handlers,
     settings = servers[server_name],
     filetypes = (servers[server_name] or {}).filetypes,
   }

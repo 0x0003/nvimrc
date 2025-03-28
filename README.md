@@ -1,5 +1,5 @@
 ## Prerequisites
-- neovim **0.10+**
+- neovim **0.11+**
 - gcc
 - fzf
 - fd

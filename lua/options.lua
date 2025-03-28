@@ -87,6 +87,18 @@ set.listchars = {
   nbsp = '⍽',
 }
 
+-- cursor appearance
+set.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,t:ver25-TermCursor"
+
+-- globally override floating preview border
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+---@diagnostic disable-next-line: duplicate-set-field
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or 'solid'
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
 -- detect if running under wsl and handle clipboard accordingly
 local in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
 if in_wsl then
