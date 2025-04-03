@@ -7,10 +7,6 @@ Kmap('n', '\'', '`',
   'Mark: jump to `')
 
 -- buffers
-Kmap('n', '<leader>bn', vim.cmd.bn,
-  'Buffer: next')
-Kmap('n', '<leader>bp', vim.cmd.bp,
-  'Buffer: prev')
 Kmap('n', '<BS>', function() vim.cmd.e('#') end,
   'Buffer: alternate')
 
