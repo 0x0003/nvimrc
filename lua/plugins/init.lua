@@ -129,6 +129,8 @@ require('lazy').setup({
   {
     'nvim-treesitter/nvim-treesitter',
     config = function() require('plugins.treesitter') end,
+    branch = 'master',
+    lazy = false,
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
