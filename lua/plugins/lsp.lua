@@ -62,7 +62,7 @@ capabilities.workspace = {
 -- servers to setup
 -- `:h lspconfig-server-configurations`
 local servers = {
-  hls = {},
+  -- hls = {},
   nil_ls = {},
   lua_ls = {
     -- Lua = {
