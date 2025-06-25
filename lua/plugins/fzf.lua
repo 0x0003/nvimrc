@@ -233,12 +233,12 @@ Kmap('n', '<leader>sh', fzf.helptags,
   'FZF: help tags')
 Kmap('n', '<leader>sw', fzf.grep_cword,
   'FZF: grep string under cursor')
-Kmap('n', '<leader>sg', function()
+Kmap('n', '<leader>sg', fzf.live_grep_native,
+  'FZF: live grep')
+Kmap('n', '<leader>sf', function()
     fzf.grep({ search = '' })
   end,
-  'FZF: fuzzy grep')
-Kmap('n', '<leader>sf', fzf.live_grep_native,
-  'FZF: live grep')
+  'FZF: fuzzy live grep')
 Kmap('n', '<leader>sd', function()
     fzf.diagnostics_document({ fzf_cli_args = '--nth 2..' })
   end,
