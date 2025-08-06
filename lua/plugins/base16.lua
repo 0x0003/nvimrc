@@ -47,7 +47,7 @@ hl('PmenuSbar', nil, c.base01)
 hl('PmenuThumb', nil, c.base01)
 hl('PmenuSel', nil, c.base02)
 
--- numbers
+-- line numbers
 hl('CursorLine', nil, c.base01)
 hl('CursorLineNr', c.base04, c.base01)
 hl('LineNr', c.base03)
