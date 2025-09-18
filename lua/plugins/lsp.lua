@@ -83,13 +83,16 @@ local servers = {
   ts_ls = {},
 }
 
-for server_name, _ in pairs(servers) do
-  require('lspconfig')[server_name].setup {
+for name, _ in pairs(servers) do
+  vim.lsp.config (name, {
     capabilities = capabilities,
     on_attach = on_attach,
     -- handlers = handlers,
-    settings = servers[server_name],
-    filetypes = (servers[server_name] or {}).filetypes,
-  }
+    settings = servers[name],
+    filetypes = (servers[name] or {}).filetypes,
+    root_markers = (servers[name] or {}).root_markers,
+    root_dir = (servers[name] or {}).root_dir,
+  })
+  vim.lsp.enable(name)
 end
 

@@ -88,7 +88,7 @@ require('lazy').setup({
   {
     'neovim/nvim-lspconfig',
     config = function() require('plugins.lsp') end,
-    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' }
+    event = 'VeryLazy'
   },
   {
     'folke/lazydev.nvim',
