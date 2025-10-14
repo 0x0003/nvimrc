@@ -23,7 +23,7 @@ require('lazy').setup({
 
   -- nerdfont icons
   {
-    'echasnovski/mini.icons',
+    'nvim-mini/mini.icons',
     version = false,
     config = function() require('plugins.mini-icons') end
   },
