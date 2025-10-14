@@ -72,9 +72,15 @@ local function lsp_diag()
   return errors .. warnings .. hints .. info
 end
 
+-- NOTE: complex regex searches will cause lag in large files,
+-- even if the search results aren't actively highlighted;
+-- i.e. just having said complex query as the most recent
+-- entry in the search history will lag the editor.
+--
+-- also see `:h maxmempattern`
 local function search_count()
   local ok, s_count = pcall(vim.fn.searchcount,
-    { recompute = true, maxcount = 0 })
+    { recompute = true, maxcount = 999 })
   if not ok
       or s_count.current == nil
       or s_count.total == 0
