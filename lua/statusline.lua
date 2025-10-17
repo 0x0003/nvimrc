@@ -80,14 +80,14 @@ local function search_count()
   if vim.v.hlsearch == 0 then
     return ''
   end
-  local ok, s_count = pcall(vim.fn.searchcount,
+  local ok, count = pcall(vim.fn.searchcount,
     { recompute = true, maxcount = 999 })
   if not ok
-      or s_count.current == nil
-      or s_count.total == 0
+      or count.current == nil
+      or count.total == 0
   then return '' end
-  if s_count.incomplete > 0 then return '?/?' end
-  return ('[%s/%s]'):format(s_count.current, s_count.total)
+  if count.incomplete > 0 then return '?/?' end
+  return ('[%s/%s]'):format(count.current, count.total)
 end
 
 local function grapple_tag_indicator()

@@ -112,11 +112,11 @@ Kmap('n', 'gX', function() xdgo('%:p') end,
 
 -- diagnostics
 Kmap('n', '[d', function()
-    vim.diagnostic.jump({ count = 1, float = true })
+    vim.diagnostic.jump({ count = -1, float = true })
   end,
   'Diagnostic: prev')
 Kmap('n', ']d', function()
-    vim.diagnostic.jump({ count = -1, float = true })
+    vim.diagnostic.jump({ count = 1, float = true })
   end,
   'Diagnostic: next')
 Kmap('n', '<leader>dp', vim.diagnostic.open_float,
