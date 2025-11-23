@@ -41,20 +41,20 @@ gs.setup({
       'Git: reset buffer')
     Kmap('n', '<leader>hp', gs.preview_hunk,
       'Git: hunk popup preview', { buffer = bufnr })
+    Kmap('n', '[h', function()
+        gs.nav_hunk('prev')
+      end,
+      'Git: hunk prev', { buffer = bufnr })
+    Kmap('n', ']h', function()
+        gs.nav_hunk('next')
+      end,
+      'Git: hunk next', { buffer = bufnr })
     Kmap('n', '<leader>gB', function() gs.blame_line { full = true } end,
       'Git: blame popup')
     Kmap('n', '<leader>gd', gs.diffthis,
       'Git: diffthis')
     Kmap('n', '<leader>gD', function() gs.diffthis('~') end,
       'Git: diffthis ~')
-    Kmap('n', '[g', function()
-        gs.nav_hunk('prev')
-      end,
-      'Git: hunk prev', { buffer = bufnr })
-    Kmap('n', ']g', function()
-        gs.nav_hunk('next')
-      end,
-      'Git: hunk next', { buffer = bufnr })
 
     -- fugitive
     Kmap('n', '<leader>gi', function()
