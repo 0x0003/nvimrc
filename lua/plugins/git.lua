@@ -55,6 +55,8 @@ gs.setup({
       'Git: diffthis')
     Kmap('n', '<leader>gD', function() gs.diffthis('~') end,
       'Git: diffthis ~')
+    Kmap('n', '<leader>gg', function() gs.detach_all() gs.attach() end,
+      'Git: refresh gitsigns')
 
     -- fugitive
     Kmap('n', '<leader>gi', function()
