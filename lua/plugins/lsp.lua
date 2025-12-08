@@ -11,7 +11,7 @@ local on_attach = function()
     'LSP: goto definition')
   Kmap('n', 'gD', buf.declaration,
     'LSP: goto declaration')
-  Kmap('n', 'gr', fzf.lsp_references,
+  Kmap('n', 'gre', fzf.lsp_references,
     'LSP: references')
   Kmap('n', 'gI', buf.implementation,
     'LSP: goto implementation')
