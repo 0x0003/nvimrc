@@ -72,8 +72,8 @@ local function lsp_diag()
   return errors .. warnings .. hints .. info
 end
 
--- NOTE: complex regex searches will cause lag in large files
--- while this element is visible on the statusline
+-- NOTE: complex regex searches will cause the editor to lag
+-- in large files while this element is visible
 --
 -- also see `:h maxmempattern`
 local function search_count()
