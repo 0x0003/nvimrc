@@ -129,10 +129,11 @@ require('lazy').setup({
   {
     'nvim-treesitter/nvim-treesitter',
     config = function() require('plugins.treesitter') end,
-    branch = 'master',
+    branch = 'main',
     lazy = false,
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      branch = 'main'
     },
     build = ':TSUpdate'
   },
