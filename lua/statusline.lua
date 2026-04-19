@@ -18,7 +18,7 @@ local function mode_indicator()
     indicator = '%#StatusVisual#VISUAL 󰒉 '
   elseif mode == 'V' then
     indicator = '%#StatusVisual#VISUAL LINE 󰾂 '
-  elseif mode == '' then
+  elseif mode == '' then -- special char, `^k ^v ^v`, appears empty in git webui
     indicator = '%#StatusVisual#VISUAL BLOCK 󰫙 '
   elseif mode == 'R' then
     indicator = '%#StatusReplace#REPLACE  '
