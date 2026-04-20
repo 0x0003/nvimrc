@@ -11,10 +11,10 @@ oil.setup({
   },
 
   columns = {
-    'icon',
     -- 'permissions',
-    -- {'mtime', highlight = 'StatusCommand'},
+    { 'mtime', highlight = 'StatusActive', format = '%Y-%m-%d %H:%M' },
     { 'size', highlight = 'Special' },
+    { 'icon', add_padding = false },
   },
 
   keymaps = {
