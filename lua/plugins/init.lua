@@ -67,7 +67,7 @@ require('lazy').setup({
 
   -- visualize rgb and hex values
   {
-    'norcalli/nvim-colorizer.lua',
+    'catgoose/nvim-colorizer.lua',
     config = function() require('colorizer').setup() end,
     lazy = true,
     ft = {
