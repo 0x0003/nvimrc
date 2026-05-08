@@ -1,0 +1,28 @@
+-- https://github.com/gabiuz/kape
+vim.g.colors_name = 'base16-main'
+return {
+  base00 = '#181616',
+  base01 = '#1f1f1f',
+  base02 = '#282828',
+  base03 = '#555555',
+  -- base03 = '#3b3b3b',
+  base04 = '#c2c2c2',
+  base05 = '#c2c2c2',
+  base06 = '#787373',
+  base07 = '#c2c2c2',
+  base08 = '#b53535',
+  base09 = '#e7bb5c',
+  base0A = '#e7bb5c',
+  base0B = '#b4c76e',
+  base0C = '#689d8a',
+  base0D = '#7b8fd4',
+  base0E = '#b06880',
+  base0F = '#747272',
+  extra04 = '#b8b3b3',
+  extra09 = '#c87941',
+  extra0D = '#5d7a97',
+  diff08 = '#512c2d',
+  diff0B = '#4a5142',
+  diff0D = '#3e4851',
+  popup00 = '#0C0C0C',
+}
