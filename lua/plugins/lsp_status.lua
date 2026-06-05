@@ -2,7 +2,7 @@
 
 local icons = {
   spinner = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
-  done = ' '
+  done = ''
 }
 
 local clients = {}
