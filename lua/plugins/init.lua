@@ -1,141 +1,145 @@
--- bootstrap
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
----@diagnostic disable-next-line: undefined-field
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  vim.fn.system({
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable',
-    lazypath,
-  })
-end
-vim.opt.runtimepath:prepend(lazypath)
-
-require('lazy').setup({
+local plugins = {
   -- colorscheme
   {
-    'RRethy/nvim-base16',
-    config = function() require('plugins.base16') end,
-    priority = 1000
+    src = 'https://github.com/RRethy/nvim-base16',
+    config = 'plugins.base16',
   },
 
   -- nerdfont icons
   {
-    'nvim-mini/mini.icons',
-    version = false,
-    config = function() require('plugins.mini-icons') end
+    src = 'https://github.com/nvim-mini/mini.icons',
+    config = 'plugins.mini-icons',
   },
 
   -- file browser
   {
-    'stevearc/oil.nvim',
-    config = function() require('plugins.oil') end,
+    src = 'https://github.com/stevearc/oil.nvim',
+    config = 'plugins.oil',
   },
 
   -- file navigation through custom marks
   {
-    'cbochs/grapple.nvim',
-    config = function() require('plugins.grapple') end,
-    event = { 'BufReadPost', 'BufNewFile' },
+    src = 'https://github.com/cbochs/grapple.nvim',
+    config = 'plugins.grapple',
+    events = { 'BufReadPost', 'BufNewFile' },
+    pattern = '*',
   },
 
   -- git
   {
-    'tpope/vim-fugitive',
-    config = function() require('plugins.git') end,
-    dependencies = {
-      'lewis6991/gitsigns.nvim',
-    },
-    event = 'VeryLazy'
+    src = 'https://github.com/tpope/vim-fugitive',
+    config = 'plugins.git',
   },
+  { src = 'https://github.com/lewis6991/gitsigns.nvim', },
 
   -- detect tabstop and shiftwidth automatically
-  {
-    'tpope/vim-sleuth',
-    event = 'VeryLazy'
-  },
+  { src = 'https://github.com/tpope/vim-sleuth', },
 
   -- indent guides
   {
-    'lukas-reineke/indent-blankline.nvim',
-    main = 'ibl',
-    config = function() require('plugins.indent_blankline') end,
-    event = 'VeryLazy'
+    src = 'https://github.com/lukas-reineke/indent-blankline.nvim',
+    config = 'plugins.indent_blankline',
   },
 
   -- visualize rgb and hex values
   {
-    'catgoose/nvim-colorizer.lua',
-    config = function() require('colorizer').setup() end,
-    lazy = true,
-    ft = {
-      'css', 'html', 'javascript', 'typescript', 'lua', 'vim', 'markdown',
-      'yaml', 'toml', 'autohotkey'
-    }
+    src = 'https://github.com/catgoose/nvim-colorizer.lua',
+    config = 'plugins.colorizer',
+    events = 'BufEnter',
+    pattern = '*',
   },
 
   -- surround text objects
   {
-    'kylechui/nvim-surround',
-    config = function() require('plugins.nvim_surround') end,
-    version = '^3.0.0',
-    event = 'VeryLazy'
+    src = 'https://github.com/kylechui/nvim-surround',
+    version = vim.version.range('4.x'),
+    config = 'plugins.nvim_surround',
   },
 
   -- LSP
   {
-    'neovim/nvim-lspconfig',
-    config = function() require('plugins.lsp') end,
-    event = 'VeryLazy'
+    src = 'https://github.com/neovim/nvim-lspconfig',
+    config = 'plugins.lsp',
   },
   {
-    'folke/lazydev.nvim',
-    config = function() require('lazydev').setup() end,
-    ft = 'lua'
+    src = 'https://github.com/folke/lazydev.nvim',
+    config = 'plugins.lazydev',
+    events = 'FileType',
+    pattern = 'lua',
   },
 
   -- autocompletion
   {
-    'hrsh7th/nvim-cmp',
-    config = function() require('plugins.cmp') end,
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'L3MON4D3/LuaSnip',             -- snippet engine
-      'saadparwaiz1/cmp_luasnip',     -- cmp source for snippet engine
-      'rafamadriz/friendly-snippets', -- collection of premade snippets
-    },
-    event = 'InsertEnter'
+    src = 'https://github.com/hrsh7th/nvim-cmp',
+    config = 'plugins.cmp',
+    events = 'InsertEnter',
+    pattern = '*',
   },
+  { src = 'https://github.com/hrsh7th/cmp-nvim-lsp' },
+  { src = 'https://github.com/hrsh7th/cmp-buffer' },
+  { src = 'https://github.com/hrsh7th/cmp-path' },
+  { src = 'https://github.com/L3MON4D3/LuaSnip' },
+  { src = 'https://github.com/saadparwaiz1/cmp_luasnip' },
+  { src = 'https://github.com/rafamadriz/friendly-snippets' },
 
   -- visualize undo history
   {
-    'mbbill/undotree',
-    config = function() require('plugins.undotree') end,
-    event = 'VeryLazy'
+    src = 'https://github.com/mbbill/undotree',
+    config = 'plugins.undotree',
   },
 
   -- fuzzy finder
   {
-    'ibhagwan/fzf-lua',
-    config = function() require('plugins.fzf') end,
-    event = 'VeryLazy'
+    src = 'https://github.com/ibhagwan/fzf-lua',
+    config = 'plugins.fzf',
   },
 
   -- syntax hl
   {
-    'nvim-treesitter/nvim-treesitter',
-    config = function() require('plugins.treesitter') end,
-    branch = 'main',
-    lazy = false,
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      branch = 'main'
-    },
-    build = ':TSUpdate'
+    src = 'https://github.com/nvim-treesitter/nvim-treesitter',
+    config = 'plugins.treesitter',
   },
+  { src = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects', },
+}
+
+vim.pack.add(vim.tbl_map(function(plugin)
+  return {
+    src = plugin.src,
+    version = plugin.version,
+  }
+end, plugins))
+
+local pack_startup = Aug('pack_startup', { clear = true })
+
+for _, plugin in ipairs(plugins) do
+  if plugin.config then
+    local config = plugin.config
+    local function load()
+      local ok, err = pcall(require, config)
+      if not ok then
+        error(('Failed loading plugin config "%s":\n%s'):format(config, err))
+      end
+    end
+    if plugin.events then
+      Auc(plugin.events, {
+        group = pack_startup,
+        once = true,
+        pattern = plugin.pattern,
+        callback = load,
+      })
+    else
+      load()
+    end
+  end
+end
+
+Auc('PackChanged', {
+  group = pack_startup,
+  callback = function(ev)
+    local spec = ev.data and ev.data.spec
+    if spec and spec.name == 'nvim-treesitter' then
+      vim.cmd('TSUpdate')
+    end
+  end,
 })
 
