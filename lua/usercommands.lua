@@ -23,3 +23,11 @@ Com('Swdefault', function()
   vim.opt_local.softtabstop = 2
 end, {})
 
+Com('Packlist', function()
+  vim.pack.update(nil, { offline = true })
+end, {})
+
+Com('Packupdate', function()
+  vim.pack.update()
+end, {})
+
