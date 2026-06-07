@@ -2,19 +2,19 @@ local plugins = {
   -- colorscheme
   {
     src = 'https://github.com/RRethy/nvim-base16',
-    config = 'plugins.base16',
+    config = 'plugins.base16'
   },
 
   -- nerdfont icons
   {
     src = 'https://github.com/nvim-mini/mini.icons',
-    config = 'plugins.mini-icons',
+    config = 'plugins.mini-icons'
   },
 
   -- file browser
   {
     src = 'https://github.com/stevearc/oil.nvim',
-    config = 'plugins.oil',
+    config = 'plugins.oil'
   },
 
   -- file navigation through custom marks
@@ -22,23 +22,23 @@ local plugins = {
     src = 'https://github.com/cbochs/grapple.nvim',
     config = 'plugins.grapple',
     events = { 'BufReadPost', 'BufNewFile' },
-    pattern = '*',
+    pattern = '*'
   },
 
   -- git
   {
     src = 'https://github.com/tpope/vim-fugitive',
-    config = 'plugins.git',
+    config = 'plugins.git'
   },
-  { src = 'https://github.com/lewis6991/gitsigns.nvim', },
+  { src = 'https://github.com/lewis6991/gitsigns.nvim' },
 
   -- detect tabstop and shiftwidth automatically
-  { src = 'https://github.com/tpope/vim-sleuth', },
+  { src = 'https://github.com/tpope/vim-sleuth' },
 
   -- indent guides
   {
     src = 'https://github.com/lukas-reineke/indent-blankline.nvim',
-    config = 'plugins.indent_blankline',
+    config = 'plugins.indent_blankline'
   },
 
   -- visualize rgb and hex values
@@ -46,26 +46,26 @@ local plugins = {
     src = 'https://github.com/catgoose/nvim-colorizer.lua',
     config = 'plugins.colorizer',
     events = 'BufEnter',
-    pattern = '*',
+    pattern = '*'
   },
 
   -- surround text objects
   {
     src = 'https://github.com/kylechui/nvim-surround',
     version = vim.version.range('4.x'),
-    config = 'plugins.nvim_surround',
+    config = 'plugins.nvim_surround'
   },
 
   -- LSP
   {
     src = 'https://github.com/neovim/nvim-lspconfig',
-    config = 'plugins.lsp',
+    config = 'plugins.lsp'
   },
   {
     src = 'https://github.com/folke/lazydev.nvim',
     config = 'plugins.lazydev',
     events = 'FileType',
-    pattern = 'lua',
+    pattern = 'lua'
   },
 
   -- autocompletion
@@ -73,7 +73,7 @@ local plugins = {
     src = 'https://github.com/hrsh7th/nvim-cmp',
     config = 'plugins.cmp',
     events = 'InsertEnter',
-    pattern = '*',
+    pattern = '*'
   },
   { src = 'https://github.com/hrsh7th/cmp-nvim-lsp' },
   { src = 'https://github.com/hrsh7th/cmp-buffer' },
@@ -85,21 +85,21 @@ local plugins = {
   -- visualize undo history
   {
     src = 'https://github.com/mbbill/undotree',
-    config = 'plugins.undotree',
+    config = 'plugins.undotree'
   },
 
   -- fuzzy finder
   {
     src = 'https://github.com/ibhagwan/fzf-lua',
-    config = 'plugins.fzf',
+    config = 'plugins.fzf'
   },
 
   -- syntax hl
   {
     src = 'https://github.com/nvim-treesitter/nvim-treesitter',
-    config = 'plugins.treesitter',
+    config = 'plugins.treesitter'
   },
-  { src = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects', },
+  { src = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects' }
 }
 
 vim.pack.add(vim.tbl_map(function(plugin)
