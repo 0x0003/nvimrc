@@ -19,7 +19,7 @@ local on_attach = function()
     'LSP: popup symbol info')
   Kmap('n', '<leader>k', buf.signature_help,
     'LSP: signature help')
-  Kmap({'i', 'x'}, '<C-l>', buf.signature_help,
+  Kmap({ 'i', 'x' }, '<C-l>', buf.signature_help,
     'LSP: signature help in insert and visual modes')
   Kmap('n', '<leader>cn', buf.rename,
     'LSP: rename variable under cursor')
@@ -65,15 +65,20 @@ local servers = {
   -- hls = {},
   nil_ls = {},
   lua_ls = {
-    -- Lua = {
-    --   runtime = { version = 'LuaJIT' },
-    --   workspace = {
-    --     checkThirdParty = false,
-    --     -- BUG?: no definitions are provided if plugin files are
-    --     -- located in `.../plugin_root/lua/plugin/HERE`
-    --     library = vim.api.nvim_get_runtime_file('', true),
-    --   },
-    -- },
+    Lua = {
+      runtime = { version = 'LuaJIT' },
+      -- workspace = {
+      --   checkThirdParty = false,
+      --   -- NOTE/BUG: doesn't provide definitions everywhere,
+      --   -- e.g. `require('grapple').exists()` in
+      --   -- `lua/statusline.lua` shows unknown field
+      --   library = {
+      --     vim.env.VIMRUNTIME,
+      --     vim.fn.stdpath 'config',
+      --     vim.fn.stdpath 'data' .. '/site/pack/core/opt/',
+      --   }
+      -- }
+    },
   },
   html = {
     filetypes = { 'html', 'twig', 'hbs' }
@@ -84,7 +89,7 @@ local servers = {
 }
 
 for name, _ in pairs(servers) do
-  vim.lsp.config (name, {
+  vim.lsp.config(name, {
     capabilities = capabilities,
     on_attach = on_attach,
     -- handlers = handlers,
