@@ -17,6 +17,12 @@ local plugins = {
     config = 'plugins.oil'
   },
 
+  -- fuzzy finder
+  {
+    src = 'https://github.com/ibhagwan/fzf-lua',
+    config = 'plugins.fzf'
+  },
+
   -- file navigation through custom marks
   {
     src = 'https://github.com/cbochs/grapple.nvim',
@@ -27,13 +33,17 @@ local plugins = {
 
   -- git
   {
-    src = 'https://github.com/tpope/vim-fugitive',
-    config = 'plugins.git'
+    src = 'https://github.com/lewis6991/gitsigns.nvim',
+    config = 'plugins.git',
+    bundled = {
+      { src = 'https://github.com/tpope/vim-fugitive' }
+    }
   },
-  { src = 'https://github.com/lewis6991/gitsigns.nvim' },
 
   -- detect tabstop and shiftwidth automatically
-  { src = 'https://github.com/tpope/vim-sleuth' },
+  {
+    src = 'https://github.com/tpope/vim-sleuth'
+  },
 
   -- indent guides
   {
@@ -56,10 +66,28 @@ local plugins = {
     config = 'plugins.nvim_surround'
   },
 
+  -- completion
+  {
+    src = 'https://github.com/hrsh7th/nvim-cmp',
+    config = 'plugins.cmp',
+    bundled = {
+      { src = 'https://github.com/hrsh7th/cmp-buffer' },
+      { src = 'https://github.com/hrsh7th/cmp-path' },
+      { src = 'https://github.com/L3MON4D3/LuaSnip' },
+      { src = 'https://github.com/saadparwaiz1/cmp_luasnip' },
+      { src = 'https://github.com/rafamadriz/friendly-snippets' }
+    },
+    events = 'InsertEnter',
+    pattern = '*'
+  },
+
   -- LSP
   {
     src = 'https://github.com/neovim/nvim-lspconfig',
-    config = 'plugins.lsp'
+    config = 'plugins.lsp',
+    bundled = {
+      { src = 'https://github.com/hrsh7th/cmp-nvim-lsp' }
+    }
   },
   {
     src = 'https://github.com/folke/lazydev.nvim',
@@ -68,78 +96,75 @@ local plugins = {
     pattern = 'lua'
   },
 
-  -- autocompletion
-  {
-    src = 'https://github.com/hrsh7th/nvim-cmp',
-    config = 'plugins.cmp',
-    events = 'InsertEnter',
-    pattern = '*'
-  },
-  { src = 'https://github.com/hrsh7th/cmp-nvim-lsp' },
-  { src = 'https://github.com/hrsh7th/cmp-buffer' },
-  { src = 'https://github.com/hrsh7th/cmp-path' },
-  { src = 'https://github.com/L3MON4D3/LuaSnip' },
-  { src = 'https://github.com/saadparwaiz1/cmp_luasnip' },
-  { src = 'https://github.com/rafamadriz/friendly-snippets' },
-
   -- visualize undo history
   {
     src = 'https://github.com/mbbill/undotree',
     config = 'plugins.undotree'
   },
 
-  -- fuzzy finder
-  {
-    src = 'https://github.com/ibhagwan/fzf-lua',
-    config = 'plugins.fzf'
-  },
-
   -- syntax hl
   {
     src = 'https://github.com/nvim-treesitter/nvim-treesitter',
-    config = 'plugins.treesitter'
-  },
-  { src = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects' }
-}
-
-vim.pack.add(vim.tbl_map(function(plugin)
-  return {
-    src = plugin.src,
-    version = plugin.version,
+    config = 'plugins.treesitter',
+    bundled = {
+      {
+        src = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects'
+      }
+    }
   }
-end, plugins))
+}
 
 local pack_startup = Aug('pack_startup', { clear = true })
 
-for _, plugin in ipairs(plugins) do
-  if plugin.config then
-    local config = plugin.config
-    local function load()
-      local ok, err = pcall(require, config)
-      if not ok then
-        error(('Failed loading plugin config "%s":\n%s'):format(config, err))
+-- treesitter update hook
+Auc('PackChanged', {
+  group = pack_startup,
+  callback = function(ev)
+    local name = ev.data.spec.name
+    local kind = ev.data.kind
+    if name == 'nvim-treesitter' and kind == 'update' then
+      if not ev.data.active then
+        vim.cmd.packadd('nvim-treesitter')
       end
+      vim.cmd('TSUpdate')
     end
-    if plugin.events then
-      Auc(plugin.events, {
-        group = pack_startup,
-        once = true,
-        pattern = plugin.pattern,
-        callback = load,
-      })
-    else
-      load()
+  end
+})
+
+local configured = {}
+
+local function load_plugin(plugin)
+  if configured[plugin.src] then return end
+  configured[plugin.src] = true
+  vim.pack.add(vim.list_extend({
+    {
+      src = plugin.src,
+      version = plugin.version,
+    },
+  }, plugin.bundled or {}))
+  if plugin.config then
+    local ok, err = pcall(require, plugin.config)
+    if not ok then
+      error(
+        ('Failed loading plugin config "%s":\n%s')
+        :format(plugin.config, err)
+      )
     end
   end
 end
 
-Auc('PackChanged', {
-  group = pack_startup,
-  callback = function(ev)
-    local spec = ev.data and ev.data.spec
-    if spec and spec.name == 'nvim-treesitter' then
-      vim.cmd('TSUpdate')
-    end
-  end,
-})
+for _, plugin in ipairs(plugins) do
+  if plugin.events then
+    Auc(plugin.events, {
+      group = pack_startup,
+      once = true,
+      pattern = plugin.pattern,
+      callback = function()
+        load_plugin(plugin)
+      end,
+    })
+  else
+    load_plugin(plugin)
+  end
+end
 
