@@ -97,13 +97,10 @@ hl('FzfLuaBorder', c.base01)
 hl('FzfLuaDirPart', c.base06)
 hl('FzfLuaPreviewTitle', c.base03)
 
--- cmp
-hl('CmpItemAbbrMatch', c.base05)
-hl('CmpItemAbbrMatchFuzzy', c.base05)
-hl('CmpItemAbbr', c.base03)
-hl('CmpItemKind', c.base0E)
-hl('CmpItemMenu', c.base0E)
-hl('CmpItemKindSnippet', c.base0E)
+-- blink
+hl('BlinkCmpMenu', c.base05, c.popup00)
+hl('BlinkCmpMenuBorder', nil, c.popup00)
+hl('BlinkCmpKind', c.base0E, c.popup00)
 
 -- indent-blankline.nvim
 hl('IblScope', c.base03)

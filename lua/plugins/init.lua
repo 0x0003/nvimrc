@@ -66,16 +66,17 @@ local plugins = {
     config = 'plugins.nvim_surround'
   },
 
-  -- completion
+  -- autocompletion
   {
-    src = 'https://github.com/hrsh7th/nvim-cmp',
-    config = 'plugins.cmp',
+    src = 'https://github.com/saghen/blink.cmp',
+    config = 'plugins.blink',
+    version = vim.version.range('1.x'),
     bundled = {
-      { src = 'https://github.com/hrsh7th/cmp-buffer' },
-      { src = 'https://github.com/hrsh7th/cmp-path' },
-      { src = 'https://github.com/L3MON4D3/LuaSnip' },
-      { src = 'https://github.com/saadparwaiz1/cmp_luasnip' },
-      { src = 'https://github.com/rafamadriz/friendly-snippets' }
+      { src = 'https://github.com/rafamadriz/friendly-snippets' },
+      {
+        src = 'https://github.com/L3MON4D3/LuaSnip',
+        version = vim.version.range('v2.x')
+      },
     },
     events = 'InsertEnter',
     pattern = '*'
@@ -85,9 +86,6 @@ local plugins = {
   {
     src = 'https://github.com/neovim/nvim-lspconfig',
     config = 'plugins.lsp',
-    bundled = {
-      { src = 'https://github.com/hrsh7th/cmp-nvim-lsp' }
-    }
   },
   {
     src = 'https://github.com/folke/lazydev.nvim',

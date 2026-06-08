@@ -50,15 +50,6 @@ vim.diagnostic.config({
   virtual_text = true,
 })
 
--- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-capabilities.workspace = {
-  didChangeWatchedFiles = {
-    dynamicRegistration = true,
-  },
-}
-
 -- servers to setup
 -- `:h lspconfig-all`
 local servers = {
@@ -90,7 +81,7 @@ local servers = {
 
 for name, _ in pairs(servers) do
   vim.lsp.config(name, {
-    capabilities = capabilities,
+    -- capabilities = capabilities,
     on_attach = on_attach,
     -- handlers = handlers,
     settings = servers[name],
