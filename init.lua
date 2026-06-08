@@ -1,3 +1,5 @@
+vim.loader.enable()
+
 local modules = {
   'helpers',
   'options',
