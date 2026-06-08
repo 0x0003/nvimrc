@@ -10,15 +10,15 @@ local total_wins = 0
 
 local function guard(callable)
   local whitelist = {
-    "E11: Invalid in command%-line window",
-    "E523: Not allowed here",
+    'E11: Invalid in command%-line window',
+    'E523: Not allowed here',
     'E565: Not allowed to change',
   }
   local ok, err = pcall(callable)
   if ok then
     return true
   end
-  if type(err) ~= "string" then
+  if type(err) ~= 'string' then
     error(err)
   end
   for _, msg in ipairs(whitelist) do

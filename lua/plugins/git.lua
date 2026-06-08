@@ -29,7 +29,7 @@ gs.setup({
         if vim.api.nvim_get_mode().mode == 'n' then
           gs.stage_hunk()
         else
-          gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+          gs.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
         end
       end,
       'Git: hunk stage toggle')

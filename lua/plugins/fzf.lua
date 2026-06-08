@@ -109,7 +109,7 @@ fzf.setup({
         ['ctrl-x'] = false,
         ['ctrl-g'] = {
           fn = actions.git_branch_add,
-          field_index = "{q}",
+          field_index = '{q}',
           reload = true
         },
       }
@@ -147,9 +147,9 @@ fzf.setup({
         delay = 100,
       },
     },
-    -- cmd = 'rg --color=never --files --hidden --follow --g "!{' ..
+    -- cmd = 'rg --color=never --files --hidden --follow --g '!{' ..
     --     table.concat(ignored_patterns(), ',') ..
-    --     '}"',
+    --     '}'',
     fd_opts = '--color=never --type f --hidden --follow --exclude={' ..
         table.concat(ignored_patterns(), ',') ..
         '}'

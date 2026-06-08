@@ -1,5 +1,3 @@
-local luasnip = require('luasnip')
-
 require('luasnip.loaders.from_vscode').lazy_load()
 require('luasnip.loaders.from_lua').load({
   paths = {
@@ -7,7 +5,7 @@ require('luasnip.loaders.from_lua').load({
   }
 })
 
-luasnip.config.setup({
+require('luasnip').config.setup({
   history = false,
   enable_autosnippets = true,
   ext_opts = {
@@ -20,20 +18,20 @@ luasnip.config.setup({
 })
 
 local function get_mini_icon(ctx)
-  if ctx.source_name == "Path" then
+  if ctx.source_name == 'Path' then
     local is_unknown_type = vim.tbl_contains(
-      { "link", "socket", "fifo", "char", "block", "unknown" },
+      { 'link', 'socket', 'fifo', 'char', 'block', 'unknown' },
       ctx.item.data.type
     )
-    local mini_icon, mini_hl, _ = require("mini.icons").get(
-      is_unknown_type and "os" or ctx.item.data.type,
-      is_unknown_type and "" or ctx.label
+    local mini_icon, mini_hl, _ = require('mini.icons').get(
+      is_unknown_type and 'os' or ctx.item.data.type,
+      is_unknown_type and '' or ctx.label
     )
     if mini_icon then
       return mini_icon, mini_hl
     end
   end
-  local mini_icon, mini_hl, _ = require("mini.icons").get("lsp", ctx.kind)
+  local mini_icon, mini_hl, _ = require('mini.icons').get('lsp', ctx.kind)
   return mini_icon, mini_hl
 end
 
@@ -62,11 +60,12 @@ require('blink.cmp').setup({
   completion = {
     documentation = {
       auto_show = true,
-      scrollbar = false,
+      auto_show_delay_ms = 300,
     },
 
     menu = {
       scrollbar = false,
+      auto_show_delay_ms = 0,
       draw = {
         treesitter = { 'lsp' },
         components = {
@@ -89,8 +88,8 @@ require('blink.cmp').setup({
         },
 
         columns = {
-          { "label",     "label_description", gap = 1 },
-          { "kind_icon", "kind",              gap = 1 }
+          { 'label',     'label_description', gap = 1 },
+          { 'kind_icon', 'kind',              gap = 1 }
         }
       }
     },
@@ -124,6 +123,6 @@ require('blink.cmp').setup({
     }
   },
 
-  fuzzy = { implementation = "prefer_rust_with_warning" }
+  fuzzy = { implementation = 'prefer_rust_with_warning' }
 })
 
