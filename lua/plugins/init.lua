@@ -1,3 +1,6 @@
+-- NOTE: ORDER MATTERS!
+-- The plugins are loaded top to bottom. This also applies to
+-- plugins that are specified to lazy load on the same event
 local plugins = {
   -- colorscheme
   {
