@@ -26,6 +26,7 @@ set.nrformats = '' -- increment and subtract in decimal
 set.showcmd = true -- display keypresses/size of the selected area
 set.cursorline = true -- highlight a line that has the cursor on it
 -- set.colorcolumn = '80' -- highlight 80th column
+set.winborder = 'solid' -- default floating window border
 
 -- wrap long lines
 set.wrap = true
@@ -89,15 +90,6 @@ set.listchars = {
 
 -- cursor appearance
 set.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,t:ver25-TermCursor"
-
--- globally override floating preview border
-local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
----@diagnostic disable-next-line: duplicate-set-field
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-  opts = opts or {}
-  opts.border = opts.border or 'solid'
-  return orig_util_open_floating_preview(contents, syntax, opts, ...)
-end
 
 -- detect if running under wsl and handle clipboard accordingly
 local in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
