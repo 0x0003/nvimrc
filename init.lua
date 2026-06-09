@@ -3,6 +3,7 @@ vim.loader.enable()
 local modules = {
   'helpers',
   'options',
+  'ui2',
   'remaps',
   'plugins',
   'autocommands',

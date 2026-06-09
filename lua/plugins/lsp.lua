@@ -1,8 +1,6 @@
 local buf = vim.lsp.buf
 local fzf = require('fzf-lua')
 
-require('plugins.lsp_status')
-
 local on_attach = function()
   -- LSP
   Kmap('n', 'gd', function()

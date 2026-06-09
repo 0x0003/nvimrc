@@ -41,11 +41,11 @@ hl('TabLine', c.base02, c.base00)
 hl('TabLineSel', c.base06, c.base00)
 hl('TabLineFill', c.base00)
 
--- popup menu
-hl('Pmenu', nil, c.base01)
-hl('PmenuSbar', nil, c.base01)
-hl('PmenuThumb', nil, c.base01)
-hl('PmenuSel', nil, c.base02)
+-- popup menus
+hl('Pmenu', nil, c.popup00)
+hl('PmenuSbar', nil, c.popup00)
+hl('PmenuThumb', nil, c.popup00)
+hl('PmenuSel', nil, c.base01)
 
 -- line numbers
 hl('CursorLine', nil, c.base01)
@@ -103,9 +103,8 @@ hl('FzfLuaDirPart', c.base06)
 hl('FzfLuaPreviewTitle', c.base03)
 
 -- blink
-hl('BlinkCmpMenu', c.base05, c.popup00)
-hl('BlinkCmpMenuBorder', nil, c.popup00)
-hl('BlinkCmpKind', c.base0E, c.popup00)
+hl('BlinkCmpKind', c.base0E)
+hl('BlinkCmpLabelDetail', c.base0C)
 
 -- indent-blankline.nvim
 hl('IblScope', c.base03)
