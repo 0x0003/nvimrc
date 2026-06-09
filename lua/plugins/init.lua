@@ -34,7 +34,7 @@ local plugins = {
     pattern = '*'
   },
 
-  -- git
+  -- git integration
   {
     src = 'https://github.com/lewis6991/gitsigns.nvim',
     config = 'plugins.git',
@@ -51,7 +51,7 @@ local plugins = {
   -- indent guides
   {
     src = 'https://github.com/lukas-reineke/indent-blankline.nvim',
-    config = 'plugins.indent_blankline'
+    config = 'plugins.ibl'
   },
 
   -- visualize rgb and hex values
@@ -66,7 +66,7 @@ local plugins = {
   {
     src = 'https://github.com/kylechui/nvim-surround',
     version = vim.version.range('4.x'),
-    config = 'plugins.nvim_surround'
+    config = 'plugins.surround'
   },
 
   -- autocompletion
