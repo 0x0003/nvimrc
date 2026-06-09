@@ -1,3 +1,5 @@
+local ls = require('luasnip')
+
 require('luasnip.loaders.from_vscode').lazy_load()
 require('luasnip.loaders.from_lua').load({
   paths = {
@@ -5,7 +7,7 @@ require('luasnip.loaders.from_lua').load({
   }
 })
 
-require('luasnip').config.setup({
+ls.config.setup({
   history = false,
   enable_autosnippets = true,
   ext_opts = {
@@ -35,6 +37,20 @@ local function get_mini_icon(ctx)
   return mini_icon, mini_hl
 end
 
+--- @param cond function -> bool
+--- @param action function
+local function ls_map(cond, action)
+  return function()
+    if cond() then
+      vim.schedule(function()
+        action()
+      end)
+      return true -- consume key, prevent fallback
+    end
+    return false -- allow fallback
+  end
+end
+
 require('blink.cmp').setup({
   keymap = {
     preset = 'none',
@@ -49,8 +65,31 @@ require('blink.cmp').setup({
     ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
     ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
 
-    ['<C-j>'] = { 'snippet_forward', 'fallback' },
-    ['<C-k>'] = { 'snippet_backward', 'fallback' },
+    ['<C-j>'] = {
+      ls_map(
+        function() return ls.expand_or_jumpable() end,
+        function() ls.expand_or_jump() end
+      ), 'fallback',
+    },
+    ['<C-k>'] = {
+      ls_map(
+        function() return ls.locally_jumpable(-1) end,
+        function() ls.jump(-1) end
+      ), 'fallback'
+    },
+
+    ['<C-h>'] = {
+      ls_map(
+        function() return ls.choice_active() end,
+        function() ls.change_choice(-1) end
+      ), 'fallback'
+    },
+    ['<C-l>'] = {
+      ls_map(
+        function() return ls.choice_active() end,
+        function() ls.change_choice(1) end
+      ), 'fallback'
+    }
   },
 
   appearance = {
