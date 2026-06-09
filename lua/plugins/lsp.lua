@@ -50,26 +50,31 @@ vim.diagnostic.config({
   virtual_text = true,
 })
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+
 -- servers to setup
 -- `:h lspconfig-all`
 local servers = {
   -- hls = {},
   nil_ls = {},
   lua_ls = {
-    Lua = {
-      runtime = { version = 'LuaJIT' },
-      -- workspace = {
-      --   checkThirdParty = false,
-      --   -- NOTE/BUG: doesn't provide definitions everywhere,
-      --   -- e.g. `require('grapple').exists()` in
-      --   -- `lua/statusline.lua` shows unknown field
-      --   library = {
-      --     vim.env.VIMRUNTIME,
-      --     vim.fn.stdpath 'config',
-      --     vim.fn.stdpath 'data' .. '/site/pack/core/opt/',
-      --   }
-      -- }
-    },
+    settings = {
+      Lua = {
+        runtime = { version = 'LuaJIT' },
+        -- workspace = {
+        --   checkThirdParty = false,
+        --   -- NOTE/BUG: doesn't provide definitions everywhere,
+        --   -- e.g. `require('grapple').exists()` in
+        --   -- `lua/statusline.lua` shows unknown field
+        --   library = {
+        --     vim.env.VIMRUNTIME,
+        --     vim.fn.stdpath 'config',
+        --     vim.fn.stdpath 'data' .. '/site/pack/core/opt/',
+        --   }
+        -- }
+      }
+    }
   },
   html = {
     filetypes = { 'html', 'twig', 'hbs' }
@@ -79,12 +84,13 @@ local servers = {
   ts_ls = {},
 }
 
+-- enable servers
 for name, _ in pairs(servers) do
   vim.lsp.config(name, {
-    -- capabilities = capabilities,
+    capabilities = capabilities,
     on_attach = on_attach,
     -- handlers = handlers,
-    settings = servers[name],
+    settings = (servers[name] or {}).settings,
     filetypes = (servers[name] or {}).filetypes,
     root_markers = (servers[name] or {}).root_markers,
     root_dir = (servers[name] or {}).root_dir,
