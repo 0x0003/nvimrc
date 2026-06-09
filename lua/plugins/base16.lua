@@ -67,6 +67,11 @@ hl('DiffText', c.base0D, c.diff0D)
 -- floating windows
 hl('NormalFloat', nil, c.popup00)
 hl('FloatBorder', c.base06, c.popup00)
+hl('FloatShadow', nil, c.base01)
+
+-- messages
+hl('OkMsg', c.base0B)
+hl('WarningMsg', c.base0E)
 
 -- misc
 hl('WinSeparator', c.base01, nil)
