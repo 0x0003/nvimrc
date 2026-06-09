@@ -32,9 +32,10 @@ local function get_mini_icon(ctx)
     if mini_icon then
       return mini_icon, mini_hl
     end
+  else
+    local _, mini_hl, _ = require('mini.icons').get('lsp', ctx.kind)
+    return _, mini_hl
   end
-  local mini_icon, mini_hl, _ = require('mini.icons').get('lsp', ctx.kind)
-  return mini_icon, mini_hl
 end
 
 --- @param cond function -> bool
@@ -113,10 +114,10 @@ require('blink.cmp').setup({
         treesitter = { 'lsp' },
         components = {
           kind_icon = {
-            -- text = function(ctx)
-            --   local kind_icon, kind_hl = get_mini_icon(ctx)
-            --   return kind_icon
-            -- end,
+            text = function(ctx)
+              local kind_icon = get_mini_icon(ctx) or ctx.kind_icon
+              return kind_icon
+            end,
             highlight = function(ctx)
               local _, hl = get_mini_icon(ctx)
               return hl
