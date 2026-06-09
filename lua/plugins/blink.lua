@@ -1,9 +1,9 @@
 local ls = require('luasnip')
 
 require('luasnip.loaders.from_vscode').lazy_load()
-require('luasnip.loaders.from_lua').load({
+require('luasnip.loaders.from_lua').lazy_load({
   paths = {
-    vim.fn.stdpath('config') .. '/snippets'
+    vim.fn.stdpath('config') .. '/lua/snippets'
   }
 })
 
@@ -74,7 +74,7 @@ require('blink.cmp').setup({
       ls_map(
         function() return ls.expand_or_jumpable() end,
         function() ls.expand_or_jump() end
-      ), 'fallback',
+      ), 'select_and_accept', 'fallback',
     },
     ['<C-k>'] = {
       ls_map(
