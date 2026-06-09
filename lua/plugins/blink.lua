@@ -52,6 +52,10 @@ local function ls_map(cond, action)
 end
 
 require('blink.cmp').setup({
+  fuzzy = { implementation = 'prefer_rust_with_warning' },
+
+  cmdline = { enabled = false },
+
   keymap = {
     preset = 'none',
 
@@ -160,8 +164,6 @@ require('blink.cmp').setup({
         end
       }
     }
-  },
-
-  fuzzy = { implementation = 'prefer_rust_with_warning' }
+  }
 })
 
