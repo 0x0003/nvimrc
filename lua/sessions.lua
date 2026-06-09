@@ -19,7 +19,6 @@ end
 local sess = Aug('sess', { clear = true })
 -- automatically load session if launched without arguments
 Auc({ 'VimEnter' }, {
-  pattern = '*',
   group = sess,
   nested = true,
   callback = function()
@@ -30,7 +29,6 @@ Auc({ 'VimEnter' }, {
 })
 -- automatically create session on exit
 Auc({ 'VimLeave' }, {
-  pattern = '*',
   group = sess,
   callback = function()
     SessionMake()

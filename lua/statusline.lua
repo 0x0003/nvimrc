@@ -160,7 +160,6 @@ end
 local status = Aug('statusline', { clear = true })
 
 Auc({ 'WinEnter', 'BufEnter' }, {
-  pattern = '*',
   group = status,
   callback = function()
     vim.opt_local.statusline = '%!v:lua.Status.active()'
@@ -169,7 +168,6 @@ Auc({ 'WinEnter', 'BufEnter' }, {
 })
 
 Auc({ 'WinLeave', 'BufLeave' }, {
-  pattern = '*',
   group = status,
   callback = function()
     vim.opt_local.statusline = '%!v:lua.Status.inactive()'

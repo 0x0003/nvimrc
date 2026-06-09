@@ -1,11 +1,9 @@
 -- highlight on yank `:help vim.highlight.on_yank()`
-local highlight_group = Aug('YankHighlight', { clear = true })
 Auc('TextYankPost', {
+  group = Aug('YankHighlight', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,
-  group = highlight_group,
-  pattern = '*',
 })
 
 -- jump to last known cursor position when opening a file
@@ -33,7 +31,6 @@ Auc('BufRead', {
 local bufpos = Aug('bufpos', { clear = true })
 local winview = {}
 Auc({ 'BufLeave' }, {
-  pattern = '*',
   group = bufpos,
   callback = function()
     local bufnr = vim.api.nvim_get_current_buf()
@@ -44,7 +41,6 @@ Auc({ 'BufLeave' }, {
   end
 })
 Auc({ 'BufEnter' }, {
-  pattern = '*',
   group = bufpos,
   callback = function()
     local bufnr = vim.api.nvim_get_current_buf()
@@ -60,22 +56,18 @@ Auc({ 'BufEnter' }, {
 -- disable cursorline in insert mode and in inactive windows
 local cline = Aug('cline', { clear = true })
 Auc({ 'WinEnter', 'BufWinEnter' }, {
-  pattern = '*',
   group = cline,
   command = 'setlocal cursorline',
 })
 Auc('WinLeave', {
-  pattern = '*',
   group = cline,
   command = 'setlocal nocursorline',
 })
 Auc('InsertEnter', {
-  pattern = '*',
   group = cline,
   command = 'set nocursorline'
 })
 Auc('InsertLeave', {
-  pattern = '*',
   group = cline,
   command = 'set cursorline'
 })

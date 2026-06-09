@@ -30,8 +30,7 @@ local plugins = {
   {
     src = 'https://github.com/cbochs/grapple.nvim',
     config = 'plugins.grapple',
-    events = { 'BufReadPost', 'BufNewFile' },
-    pattern = '*'
+    events = { 'BufReadPost', 'BufNewFile' }
   },
 
   -- git integration
@@ -58,8 +57,7 @@ local plugins = {
   {
     src = 'https://github.com/catgoose/nvim-colorizer.lua',
     config = 'plugins.colorizer',
-    events = 'BufEnter',
-    pattern = '*'
+    events = 'BufEnter'
   },
 
   -- surround text objects
@@ -81,8 +79,7 @@ local plugins = {
         version = vim.version.range('v2.x')
       },
     },
-    events = 'InsertEnter',
-    pattern = '*'
+    events = 'InsertEnter'
   },
 
   -- LSP

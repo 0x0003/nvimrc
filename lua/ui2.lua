@@ -13,7 +13,6 @@ ui2.enable({
 
 Auc('LspProgress', {
   group = Aug('LspStatus', { clear = true }),
-  pattern = '*',
   callback = function(ev)
     local value = ev.data.params.value
     vim.api.nvim_echo(
