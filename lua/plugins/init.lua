@@ -92,7 +92,7 @@ local plugins = {
   },
   {
     src = 'https://github.com/folke/lazydev.nvim',
-    config = 'plugins.lazydev',
+    config = function() require('lazydev').setup() end,
     events = 'FileType',
     pattern = 'lua'
   },
@@ -144,7 +144,13 @@ local function load_plugin(plugin)
     },
   }, plugin.bundled or {}))
   if plugin.config then
-    local ok, err = pcall(require, plugin.config)
+    local loader
+    if type(plugin.config) == 'string' then
+      loader = function()
+        require(plugin.config)
+      end
+    else loader = plugin.config end
+    local ok, err = pcall(loader)
     if not ok then
       error(
         ('Failed loading plugin config "%s":\n%s')

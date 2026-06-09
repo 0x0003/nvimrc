@@ -1,2 +1,0 @@
-require('lazydev').setup()
-
