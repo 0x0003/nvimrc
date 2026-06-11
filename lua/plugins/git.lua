@@ -36,9 +36,9 @@ gs.setup({
     Kmap('n', '<leader>hr', gs.reset_hunk,
       'Git: hunk reset')
     Kmap('n', '<leader>gS', gs.stage_buffer,
-      'Git: stage buffer')
+      'Git: buffer stage')
     Kmap('n', '<leader>gR', gs.reset_buffer,
-      'Git: reset buffer')
+      'Git: buffer reset')
     Kmap('n', '<leader>hp', gs.preview_hunk,
       'Git: hunk popup preview', { buffer = bufnr })
     Kmap('n', '[h', function()
@@ -66,7 +66,7 @@ gs.setup({
           vim.cmd('20wincmd_')
         else
           vim.cmd.bd(name)
-          vim.cmd('doautocmd <nomodeline> statusline BufEnter')
+          vim.cmd('doautocmd <nomodeline> StatusLine BufEnter')
         end
       end,
       'Git: interactive status toggle')
@@ -81,7 +81,7 @@ gs.setup({
 
 Auc('FileType', {
   pattern = 'fugitive',
-  group = Aug('fugitivesize', { clear = true }),
+  group = Aug('FugitiveSize', { clear = true }),
   callback = function()
     vim.opt_local.winfixheight = true
   end

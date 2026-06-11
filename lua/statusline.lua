@@ -157,7 +157,7 @@ local function statusfill()
   end
 end
 
-local status = Aug('statusline', { clear = true })
+local status = Aug('StatusLine', { clear = true })
 
 Auc({ 'WinEnter', 'BufEnter' }, {
   group = status,

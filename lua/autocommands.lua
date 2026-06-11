@@ -8,7 +8,7 @@ Auc('TextYankPost', {
 
 -- jump to last known cursor position when opening a file
 Auc('BufRead', {
-  group = Aug('curpos', { clear = true }),
+  group = Aug('CursorPos', { clear = true }),
   callback = function(opts)
     Auc('BufWinEnter', {
       once = true,
@@ -28,7 +28,7 @@ Auc('BufRead', {
 })
 
 -- keep window position when swtiching buffers
-local bufpos = Aug('bufpos', { clear = true })
+local bufpos = Aug('BufferPos', { clear = true })
 local winview = {}
 Auc({ 'BufLeave' }, {
   group = bufpos,
@@ -54,7 +54,7 @@ Auc({ 'BufEnter' }, {
 })
 
 -- disable cursorline in insert mode and in inactive windows
-local cline = Aug('cline', { clear = true })
+local cline = Aug('CurLine', { clear = true })
 Auc({ 'WinEnter', 'BufWinEnter' }, {
   group = cline,
   command = 'setlocal cursorline',
@@ -75,7 +75,7 @@ Auc('InsertLeave', {
 -- spellcheck
 Auc('FileType', {
   pattern = { 'markdown', 'text', 'gitcommit' },
-  group = Aug('splchk', { clear = true }),
+  group = Aug('SpellCheck', { clear = true }),
   callback = function()
     vim.opt_local.spell = true
     vim.opt_local.spelllang = { 'en_us', 'cjk' }
@@ -88,7 +88,7 @@ Auc('FileType', {
 -- pandoc-flavored markdown syntax highlighting
 Auc('BufReadPost', {
   pattern = '*.md',
-  group = Aug('mdpandoc', { clear = true }),
+  group = Aug('MdPandoc', { clear = true }),
   callback = function()
     vim.opt_local.syntax = 'markdown.pandoc'
   end

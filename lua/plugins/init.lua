@@ -112,7 +112,7 @@ local plugins = {
   }
 }
 
-local pack_startup = Aug('pack_startup', { clear = true })
+local pack_startup = Aug('PackStartup', { clear = true })
 
 -- treesitter update hook
 Auc('PackChanged', {

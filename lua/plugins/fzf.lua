@@ -232,7 +232,7 @@ Kmap('n', '<leader>sl', fzf.lines,
 Kmap('n', '<leader>sh', fzf.helptags,
   'FZF: help tags')
 Kmap('n', '<leader>sw', fzf.grep_cword,
-  'FZF: grep string under cursor')
+  'FZF: grep string under the cursor')
 Kmap('n', '<leader>sg', fzf.live_grep_native,
   'FZF: live grep')
 Kmap('n', '<leader>sf', function()

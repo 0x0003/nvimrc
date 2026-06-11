@@ -11,7 +11,7 @@ end):totable()
 require('nvim-treesitter').install(to_install)
 
 Auc('FileType', {
-  group = Aug('treesitter-start', { clear = true }),
+  group = Aug('TreesitterStart', { clear = true }),
   callback = function()
     pcall(vim.treesitter.start)
     vim.bo.indentexpr = 'v:lua.require(\'nvim-treesitter\').indentexpr()'

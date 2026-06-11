@@ -20,7 +20,7 @@ local on_attach = function()
   Kmap({ 'i', 'x' }, '<C-l>', buf.signature_help,
     'LSP: signature help in insert and visual modes')
   Kmap('n', '<leader>cn', buf.rename,
-    'LSP: rename variable under cursor')
+    'LSP: rename variable under the cursor')
   Kmap('n', '<leader>ca', buf.code_action,
     'LSP: code actions')
   Kmap('n', '<leader>cs', fzf.lsp_document_symbols,

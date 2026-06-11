@@ -16,7 +16,7 @@ function SessionLoad()
   end
 end
 
-local sess = Aug('sess', { clear = true })
+local sess = Aug('SessAuto', { clear = true })
 -- automatically load session if launched without arguments
 Auc({ 'VimEnter' }, {
   group = sess,
