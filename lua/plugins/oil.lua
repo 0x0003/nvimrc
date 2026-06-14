@@ -1,5 +1,8 @@
-local oil = require('oil')
+require('oil-grapple').setup({
+  prefix = '',
+})
 
+local oil = require('oil')
 oil.setup({
   default_file_explorer = true,
 

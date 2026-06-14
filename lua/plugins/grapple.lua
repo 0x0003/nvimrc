@@ -44,6 +44,18 @@ Kmap('n', '<leader>m', function()
   end,
   'Grapple: tag current file')
 
+Kmap('n', '<leader>M', function()
+    if vim.bo.filetype == 'oil' then
+      local oil = require('oil')
+      local dir = oil.get_current_dir()
+      local file = oil.get_cursor_entry().name
+      g.untag ({ path = require('grapple.path').join(dir, file) })
+    else
+      g.untag()
+    end
+  end,
+  'Grapple: untag current file')
+
 Kmap('n', '<leader>j', function()
     input(g.select)
   end,

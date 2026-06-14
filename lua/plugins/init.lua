@@ -14,16 +14,21 @@ local plugins = {
     config = 'plugins.mini-icons'
   },
 
-  -- file browser
-  {
-    src = 'https://github.com/stevearc/oil.nvim',
-    config = 'plugins.oil'
-  },
-
   -- fuzzy finder
   {
     src = 'https://github.com/ibhagwan/fzf-lua',
     config = 'plugins.fzf'
+  },
+
+  -- file browser
+  {
+    src = 'https://github.com/stevearc/oil.nvim',
+    config = 'plugins.oil',
+    bundled = {
+      {
+        src = 'https://github.com/0x0003/oil-grapple.nvim',
+      },
+    }
   },
 
   -- file navigation through custom marks
@@ -70,8 +75,8 @@ local plugins = {
   -- autocompletion
   {
     src = 'https://github.com/saghen/blink.cmp',
-    config = 'plugins.blink',
     version = vim.version.range('1.x'),
+    config = 'plugins.blink',
     bundled = {
       { src = 'https://github.com/rafamadriz/friendly-snippets' },
       {
