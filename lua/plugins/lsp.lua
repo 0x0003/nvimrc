@@ -59,20 +59,12 @@ local servers = {
   lua_ls = {
     settings = {
       Lua = {
-        runtime = { version = 'LuaJIT' },
-        -- workspace = {
-        --   checkThirdParty = false,
-        --   -- NOTE/BUG: doesn't provide definitions everywhere,
-        --   -- e.g. `require('grapple').exists()` in
-        --   -- `lua/statusline.lua` shows unknown field
-        --   library = {
-        --     vim.env.VIMRUNTIME,
-        --     vim.fn.stdpath 'config',
-        --     vim.fn.stdpath 'data' .. '/site/pack/core/opt/',
-        --   }
-        -- }
-      }
-    }
+        runtime = {
+          version = 'LuaJIT',
+          path = { 'lua/?.lua', 'lua/?/init.lua' },
+        },
+      },
+    },
   },
   html = {
     filetypes = { 'html', 'twig', 'hbs' }
