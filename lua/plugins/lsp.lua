@@ -57,14 +57,14 @@ local servers = {
   -- hls = {},
   nil_ls = {},
   lua_ls = {
-    settings = {
-      Lua = {
-        runtime = {
-          version = 'LuaJIT',
-          path = { 'lua/?.lua', 'lua/?/init.lua' },
-        },
-      },
-    },
+    -- settings = {
+    --   Lua = {
+    --     runtime = {
+    --       version = 'LuaJIT',
+    --       path = { 'lua/?.lua', 'lua/?/init.lua' },
+    --     },
+    --   },
+    -- },
   },
   html = {
     filetypes = { 'html', 'twig', 'hbs' }

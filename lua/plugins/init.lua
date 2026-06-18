@@ -34,8 +34,7 @@ local plugins = {
   -- file navigation through custom marks
   {
     src = 'https://github.com/cbochs/grapple.nvim',
-    config = 'plugins.grapple',
-    events = { 'BufReadPost', 'BufNewFile' }
+    config = 'plugins.grapple'
   },
 
   -- git integration
@@ -91,6 +90,12 @@ local plugins = {
   {
     src = 'https://github.com/neovim/nvim-lspconfig',
     config = 'plugins.lsp',
+  },
+  {
+    src = 'https://github.com/folke/lazydev.nvim',
+    config = function() require('lazydev').setup() end,
+    events = 'FileType',
+    pattern = 'lua'
   },
 
   -- visualize undo history
