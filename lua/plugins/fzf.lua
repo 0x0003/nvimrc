@@ -161,6 +161,8 @@ fzf.setup({
         fn = actions.file_edit_or_qf, prefix = 'select-all+'
       },
     },
+    follow = true,
+    RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
     prompt = ':Rg ',
     winopts = win_large(0.75, 'vertical')
   },
