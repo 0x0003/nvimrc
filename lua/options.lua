@@ -70,7 +70,7 @@ set.wildignore = {
   '*.flac', '*.alac', '*.m4a', '*.mp3', '*.ape', '*.wav',
   '*.pdf', '*.psd', '*.zip', '*.7z', '*.tar', '*.gz',
   '*.exe', '*.swp', '*.svg', '*.bin', '*.dmp', '*.db',
-  '*.sqlite', '*.sqlite-shm', '*.sqlite-wal',
+  '*.sqlite', '*.sqlite-shm', '*.sqlite-wal', '*.age',
   'node_modules/*', 'bower_components/*', '.direnv/*',
   '.git/*', 'cache/*', 'shader-cache/*'
 }
