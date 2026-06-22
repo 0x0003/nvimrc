@@ -15,3 +15,7 @@
 | html, css, json | `nix profile install nixpkgs#vscode-langservers-extracted` |
 | ts_ls           | `npm install -g typescript-language-server typescript`     |
 
+---
+
+![screenshot](https://github.com/user-attachments/assets/faaebdaf-433c-467e-946e-ea966f46f043)
+
