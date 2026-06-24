@@ -1,4 +1,4 @@
-local ui2 = require("vim._core.ui2")
+local ui2 = require('vim._core.ui2')
 ui2.enable({
   enable = true,
   msg = {
@@ -9,6 +9,26 @@ ui2.enable({
       timeout = 2000
     }
   }
+})
+
+Auc('FileType', {
+  group = Aug('StyleMsg', { clear = true }),
+  pattern = 'msg',
+  callback = function()
+    local win = vim.api.nvim_get_current_win()
+    vim.api.nvim_set_option_value(
+      'winhighlight',
+      'Normal:StatusNormal,FloatBorder:StatusNormal',
+      { scope = 'local', win = win }
+    )
+    vim.api.nvim_win_set_config(win, {
+      relative = 'editor',
+      anchor = 'SE',
+      row = vim.o.lines - 1,
+      col = vim.o.columns - 1,
+      border = 'solid',
+    })
+  end
 })
 
 Auc('LspProgress', {
@@ -25,18 +45,6 @@ Auc('LspProgress', {
         status = value.kind ~= 'end' and 'running' or 'success',
         -- percent = value.percentage
       })
-    vim.api.nvim_set_option_value(
-      "winhighlight",
-      "Normal:StatusNormal,FloatBorder:StatusNormal",
-      { scope = "local", win = ui2.wins.msg }
-    )
-    vim.api.nvim_win_set_config(ui2.wins.msg, {
-      relative = "editor",
-      anchor = "SE",
-      row = vim.o.lines - 1,
-      col = vim.o.columns - 1,
-      border = "solid",
-    })
   end
 })
 
