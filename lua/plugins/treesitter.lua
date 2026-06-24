@@ -1,7 +1,8 @@
 local parsers = {
   'c', 'haskell', 'nix', 'lua', 'python', 'bash', 'fish',
   'javascript', 'typescript', 'vimdoc', 'vim', 'css', 'html',
-  'yaml', 'toml', 'markdown', 'markdown_inline', 'regex'
+  'yaml', 'toml', 'markdown', 'markdown_inline', 'regex',
+  'gotmpl'
 }
 
 local already_installed = require('nvim-treesitter.config').get_installed()
