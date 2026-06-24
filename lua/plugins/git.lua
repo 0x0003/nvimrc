@@ -49,8 +49,17 @@ gs.setup({
         gs.nav_hunk('next')
       end,
       'Git: hunk next', { buffer = bufnr })
-    Kmap('n', '<leader>gB', function() gs.blame_line { full = true } end,
+    Kmap('n', '<leader>gp', function() gs.blame_line { full = true } end,
       'Git: blame popup')
+    Kmap('n', '<leader>gb', function()
+        local name = 'gitsigns-blame://'
+        if vim.fn.bufexists(vim.fn.bufname(name)) == 0 then
+          gs.blame()
+        else
+          vim.api.nvim_buf_delete(vim.fn.bufnr(name), {})
+        end
+      end,
+      'Git: blame split')
     Kmap('n', '<leader>gd', gs.diffthis,
       'Git: diffthis')
     Kmap('n', '<leader>gD', function() gs.diffthis('~') end,
@@ -74,7 +83,7 @@ gs.setup({
       'Git: commit')
     Kmap('n', '<leader>gP', function() vim.cmd('Git push') end,
       'Git: push', { silent = false })
-    Kmap('n', '<leader>gp', function() vim.cmd('Git pull') end,
+    Kmap('n', '<leader>gL', function() vim.cmd('Git pull') end,
       'Git: pull', { silent = false })
   end
 })

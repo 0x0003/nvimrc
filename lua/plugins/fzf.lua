@@ -219,7 +219,7 @@ Kmap('n', '<leader>o', fzf.files,
   'FZF: files')
 Kmap('n', '<leader>go', fzf.git_files,
   'FZF: git files')
-Kmap('n', '<leader>gb', fzf.git_branches,
+Kmap('n', '<leader>gB', fzf.git_branches,
   'FZF: git branches')
 Kmap('n', '<leader>gs', fzf.git_status,
   'FZF: git status')
