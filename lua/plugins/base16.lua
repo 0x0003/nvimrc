@@ -2,17 +2,22 @@ local base16 = require('base16-colorscheme')
 
 vim.cmd('hi clear')
 
-Palette = 'main'
-
-local palette_exists, c = pcall(require, 'colors.' .. Palette)
-
-if palette_exists then
-  base16.setup(c)
+local c
+local chez_exists, chez = pcall(dofile, vim.fn.stdpath('data') .. '/site/lua/colors/chez.lua')
+if chez_exists then
+  c = chez
 else
   Palette = 'main'
-  c = require('colors.' .. Palette)
-  base16.setup(c)
+  local palette_exists, bundled = pcall(require, 'colors.' .. Palette)
+  if palette_exists then
+    c = bundled
+  else
+    Palette = 'main'
+    c = require('colors.' .. Palette)
+  end
 end
+
+base16.setup(c)
 
 ---@param group string
 ---@param fg string|nil
