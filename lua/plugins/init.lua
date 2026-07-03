@@ -25,9 +25,7 @@ local plugins = {
     src = 'https://github.com/stevearc/oil.nvim',
     config = 'plugins.oil',
     bundled = {
-      {
-        src = 'https://github.com/0x0003/oil-grapple.nvim',
-      },
+      { src = 'https://github.com/0x0003/oil-grapple.nvim' }
     }
   },
 
