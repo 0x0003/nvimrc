@@ -24,7 +24,13 @@ Aug = vim.api.nvim_create_augroup
 -- user-command
 Com = vim.api.nvim_create_user_command
 
----transform windows paths for `gf` on WSL
+---check if running under wsl
+---@return boolean
+function IsWSL()
+  return os.getenv('WSL_DISTRO_NAME') ~= nil
+end
+
+---transform windows paths for `gf` on wsl
 ---@param fname string
 ---@return string
 function WSLpath(fname)

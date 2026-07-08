@@ -91,9 +91,8 @@ set.listchars = {
 -- cursor appearance
 set.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,t:ver25-TermCursor'
 
--- detect if running under wsl and handle clipboard accordingly
-local in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
-if in_wsl then
+-- handle clipboard under wsl
+if IsWSL() then
   vim.g.clipboard = {
     name = 'WslClipboard',
     copy = {
