@@ -24,3 +24,21 @@ Aug = vim.api.nvim_create_augroup
 -- user-command
 Com = vim.api.nvim_create_user_command
 
+---transform windows paths for `gf` on WSL
+---@param fname string
+---@return string
+function WSLpath(fname)
+  if fname:sub(1, 1) == '/' then
+    return fname
+  end
+  local result = fname:gsub('\\', '/')
+  if result:sub(1, 2) == '//' then
+    return result
+  end
+  local drive = result:match('^([A-Za-z]):/')
+  if drive then
+    return '/mnt/' .. drive:lower() .. result:sub(3)
+  end
+  return result
+end
+
