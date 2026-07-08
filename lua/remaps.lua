@@ -103,7 +103,11 @@ Kmap('i', '<C-u>', '<C-u>',
 
 -- xdg-open
 local function xdgo(x)
-  f.execute('!xdg-open ' .. f.shellescape(f.expand(x), true))
+  local path = f.expand(x)
+  if vim.b.wsl_gx then
+    path = WSLpath(path)
+  end
+  f.execute('!xdg-open ' .. f.shellescape(path, true))
 end
 Kmap('n', 'gx', function() xdgo('<cfile>') end,
   'Open filepath or url under the cursor with xdg-open', { expr = true })
