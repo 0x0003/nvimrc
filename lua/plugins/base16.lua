@@ -110,6 +110,15 @@ hl('FzfLuaPreviewTitle', c.base03)
 -- blink
 hl('BlinkCmpKind', c.base0E)
 hl('BlinkCmpLabelDetail', c.base0C)
+hl('BlinkCmpMenu', nil, c.popup00)
+hl('BlinkCmpMenuBorder', nil, c.popup00)
+hl('BlinkCmpMenuSelection', nil, c.base01)
+hl('BlinkCmpDoc', nil, c.popup00)
+hl('BlinkCmpDocBorder', nil, c.popup00)
+hl('BlinkCmpDocSeparator', nil, c.popup00)
+hl('BlinkCmpDocCursorLine', nil, c.base01)
+hl('BlinkCmpSignatureHelp', nil, c.popup00)
+hl('BlinkCmpSignatureHelpBorder', nil, c.popup00)
 
 -- indent-blankline.nvim
 hl('IblScope', c.base03)
